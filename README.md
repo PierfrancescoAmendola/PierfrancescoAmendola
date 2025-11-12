@@ -34,7 +34,7 @@ Computer Science student passionate about software development and artificial in
     * Algorithms and Data Structures Lab: **25**
     * Algebra abstract math: **25**
 
-### **Francesco Saverio Nitti Scientific High School – High School Diploma in Applied Sciences 
+### **Francesco Saverio Nitti Scientific High School** – High School Diploma in Applied Sciences 
 * **Enrollment:** 2018-2023
 * (Grade: 82/100)
 
