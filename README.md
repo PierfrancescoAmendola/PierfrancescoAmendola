@@ -1,4 +1,4 @@
-Pierfrancesco Amendola
+**Pierfrancesco Amendola**
 
 📍 Naples 80125, Italy
 📧 Personal Email: checcofran717@gmail.com
@@ -7,15 +7,15 @@ Pierfrancesco Amendola
 GitHub: github.com/PierfrancescoAmendola
 Instagram: @pierfrancesco.amendola
 
-👤 Profile
+**👤 Profile**
 
 Computer Science student passionate about software development and artificial intelligence. I chose computer science to provide innovative tools for doctors and contribute to medical progress through advanced software and technological systems. Currently, I am doing an internship at CNR in bioinformatics, developing AI systems for medical image analysis. My goal is to deepen my skills in software engineering, data science, and algorithm design to make a tangible impact on the world.
 
 I want my time on this earth to be remembered; I want to write THE history.
 
-🎓 Education
+**🎓 Education**
 
-University of Naples Federico II – Bachelor’s Degree in Computer Science
+**University of Naples Federico II – Bachelor’s Degree in Computer Science**
 
 Enrollment: 2023 – Present
 GPA: 25.40/30 (6 exams remaining)
@@ -34,21 +34,21 @@ Architecture of elaborators: 26
 **Francesco Saverio Nitti Scientific High School – High School Diploma in Applied Sciences (Grade: 82/100)**
 Enrollment: 2018–2023
 
-📜 Certifications
+**📜 Certifications**
 
-EIPASS 7 Modules User (Certificate No. TXY7A3FKYS)
+-**EIPASS 7 Modules User (Certificate No. TXY7A3FKYS)**
 
-Completed the European Informatics Passport certification, demonstrating digital competence across seven core ICT areas:
+-Completed the European Informatics Passport certification, demonstrating digital competence across seven core ICT areas:
 
-ICT fundamentals and computer essentials
-Cybersecurity and data protection
-Web navigation and online information search
-Online communication and collaboration
-Word processing and document editing
-Spreadsheets and data organization
-Multimedia presentations and digital content creation
+  -ICT fundamentals and computer essentials
+  -Cybersecurity and data protection
+  -Web navigation and online information search
+  -Online communication and collaboration
+  -Word processing and document editing
+  -Spreadsheets and data organization
+  -Multimedia presentations and digital content creation
 
-Cisco Networking Academy – Introduction to Cybersecurity (2022)
+**Cisco Networking Academy – Introduction to Cybersecurity (2022)**
 
 Completed the Cisco Networking Academy® course Introduction to Cybersecurity, demonstrating the ability to:
 
