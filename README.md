@@ -63,9 +63,9 @@ Completed the Cisco Networking Academy® course **Introduction to Cybersecurity*
 ### Cisco Cybersecurity Scholarship Program (2023)
 Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced personal training path focusing on threat analysis, network defense strategies, and security fundamentals for IT professionals.
 
-###JavaScript Algorithms and Data Structures – freeCodeCamp (2025)
-*Issued: November 3, 2025  
-*[Certificate Link](https://www.freecodecamp.org/certification/pierfrancesco05/javascript-algorithms-and-data-structures-v8)  
+### JavaScript Algorithms and Data Structures – freeCodeCamp (2025)
+* **Issued:** November 3, 2025  
+* [Certificate Link](https://www.freecodecamp.org/certification/pierfrancesco05/javascript-algorithms-and-data-structures-v8)  
 
 
 ---
