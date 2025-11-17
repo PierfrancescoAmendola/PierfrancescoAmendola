@@ -127,7 +127,7 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 * **Merit Scholarship – Freie Universität Berlin (declined):**
     Awarded a scholarship for advanced studies at **Freie Universität Berlin**, declined in order to complete the Computer Science degree in Italy.
 * **Amazon KDP self-publishing:**
-  Wrote and self-published four children’s books through Amazon KDP, covering educational, narrative, and coloring themes. Managed the entire       creative process — writing, illustration design, layout, and publication.
+  Wrote and self-published four children’s books through Amazon KDP, covering educational, narrative, and coloring themes. Managed the entire       creative process — writing, illustration design, layout, and publication. https://www.amazon.it/stores/Pierfrancesco-Amendola/author/B0G2FJ3QPF?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true
 * **Award Ceremony – 49th National Competition “Civis Sum”**
   Participated in the national award ceremony recognizing civic engagement and cultural excellence.
 * **Learning Walk in San Giovanni a Teduccio:**
