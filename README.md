@@ -21,7 +21,7 @@ Computer Science student passionate about software development and artificial in
 
 ### **University of Naples Federico II** – Bachelor’s Degree in Computer Science
 * **Enrollment:** 2023 – Present
-* **GPA:** 25.40/30 (6 exams remaining)
+* **GPA:** 25.40/30 (5 exams remaining)
 * **Relevant Courses:**
     * Programming Lab: **30**
     * Multimedia Information Systems: **30**
@@ -31,6 +31,7 @@ Computer Science student passionate about software development and artificial in
     * Architecture of elaborators: **26**
     * Programming: **25**
     * Databases: **25**
+    * Object Orientation: **25**
     * Algorithms and Data Structures Lab: **25**
     * Algebra abstract math: **25**
 
