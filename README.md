@@ -88,7 +88,7 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 * Extended the project with a linked list variant (`SetLst`) supporting successor and predecessor queries.
 * Developed as part of the “Programming and Data Structures” course at the University of Naples Federico II.
 
-### Academic Project – FoodLab (University Project) in Java
+### Academic Project – FoodLab in Java
 * Full-stack application designed for managing cooking courses and chef activities.
 * Backend developed in Java with DAO architecture and advanced OOP patterns.
 * Frontend GUI built using Java Swing with MVC structure.
