@@ -6,6 +6,7 @@
 * 📱 **Phone:** +39 370 339 4489
 * **GitHub:** [github.com/PierfrancescoAmendola](https://github.com/PierfrancescoAmendola)
 * **Instagram:** [@pierfrancesco.amendola](https://www.instagram.com/pierfrancesco.amendola?igsh=MXVyNTg4ejVhOWY5eA==)
+* **Actually an Apple Developer**
 
 ---
 
