@@ -22,7 +22,7 @@ Computer Science student passionate about software development and artificial in
 
 ### **University of Naples Federico II** – Bachelor’s Degree in Computer Science
 * **Enrollment:** 2023 – Present
-* **GPA:** 25.40/30 (5 exams remaining)
+* **GPA:** 25.40/30 (4 exams remaining)
 * **Relevant Courses:**
     * Programming Lab: **30**
     * Multimedia Information Systems: **30**
@@ -38,7 +38,6 @@ Computer Science student passionate about software development and artificial in
 
 ### **Francesco Saverio Nitti Scientific High School** – High School Diploma in Applied Sciences 
 * **Enrollment:** 2018-2023
-* (Grade: 82/100)
 
 
 ---
@@ -77,6 +76,14 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 ### CNR Internship – Bioinformatics and AI
 * Developing AI systems for medical image analysis
 * Classification of malignant and benign tumors using expert-annotated images
+
+### Personal Project – Ripassa (iOS App)
+* Flashcard-based study app with a minimal and distraction-free design
+* Supports creation, organization, and review of custom flashcards for efficient learning
+* Focused on simplicity, performance, and user experience
+* Developed in Swift using SwiftUI
+* Published on the Apple App Store
+👉 https://apps.apple.com/us/app/ripassa-flashcard-minimal/id6756633023
 
 ### Personal Project – FedericoII App
 * Mobile app for Federico II students with features for finding classrooms, schedules, departments, calculating grades, and predicting future results
