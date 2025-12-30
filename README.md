@@ -7,6 +7,7 @@
 * **GitHub:** [github.com/PierfrancescoAmendola](https://github.com/PierfrancescoAmendola)
 * **Instagram:** [@pierfrancesco.amendola](https://www.instagram.com/pierfrancesco.amendola?igsh=MXVyNTg4ejVhOWY5eA==)
 * **Actually an Apple Developer**
+* https://linktr.ee/PierfrancescoAmendola?utm_source=linktree_profile_share&ltsid=ef29265b-824c-46aa-afb1-4ee2f981aea6
 
 ---
 
@@ -23,18 +24,6 @@ Computer Science student passionate about software development and artificial in
 ### **University of Naples Federico II** – Bachelor’s Degree in Computer Science
 * **Enrollment:** 2023 – Present
 * **GPA:** 25.40/30 (4 exams remaining)
-* **Relevant Courses:**
-    * Programming Lab: **30**
-    * Multimedia Information Systems: **30**
-    * Elements of Theoretical Computer Science: **29**
-    * Operating Systems: **29**
-    * Physics: **27**
-    * Architecture of elaborators: **26**
-    * Programming: **25**
-    * Databases: **25**
-    * Object Orientation: **25**
-    * Algorithms and Data Structures Lab: **25**
-    * Algebra abstract math: **25**
 
 ### **Francesco Saverio Nitti Scientific High School** – High School Diploma in Applied Sciences 
 * **Enrollment:** 2018-2023
@@ -118,11 +107,14 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 
 ## 🌍 Languages
 
+I am deeply motivated to learn and speak multiple languages because I see languages as powerful tools for connection, cultural understanding, and personal growth. Each new language allows me to engage with different perspectives, traditions, and ways of thinking, fostering openness and adaptability. I enjoy the intellectual challenge of language learning and appreciate the ability to communicate across cultural boundaries. This passion drives me to continually improve my existing language skills and actively pursue learning new languages. Over the years, I have had the opportunity to speak with native speakers and improve my knowledge of English and Spanish. I learned pronunciation and, in addition to the right way to pronounce and write it, I learned common language, the true life words of those languages. I improved and consolidated my English studies in London for a couple of months. Instead, as far as Spanish is concerned, I had the opportunity to communicate for most of my childhood and adolescence with a Venezuelan family, very close to my family, and in doing so I took on Latin pronunciation and learned everything there was to know about Venezuela and its traditions. Even thought I was born, here in Italy, and I grew up here, I feel that my soul is a little Latin too
+
 * **Italian:** Native
 * **English:** Native-level (UK certification), B2 in Italy
 * **Spanish:** Fluent
 * **French:** studied at middle school, I understand it but a little difficult to speak it
 * **German:** I can speak basic German
+* **Portoguese:** I'm learning 
 
 ---
 
@@ -131,7 +123,7 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 * **International Chamber Music Workshop (October 31 – November 3, 2024):**
     Participated in an international chamber music workshop led by **Dora Cantella** (Professor at CRD de Meudon, Paris) and **Pierfrancesco Borrelli** (Professor at the Conservatory of Avellino).
 * **Piano and Guitar Instructor:**
-    Teaching piano and guitar to children, focusing on musical expression and foundational technique. Began studying piano at age 3 and later learned guitar and violin as a self-taught musician during a period spent in England.
+    Teaching piano and guitar to children, focusing on musical expression and foundational technique. Began studying piano at age 3 and later learned guitar and violin as a self-taught musician during a period spent in England. On instagram there are my performances about piano, and all my concerts.
 * **Musical Composition and Direction:**
     Composed instrumental bases and lyrics for original songs, directed an orchestra, and currently serve as **Artistic Director** for local music projects.
 * **Author and Researcher:**
@@ -142,8 +134,10 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
     Ranked **5th** in the first edition and **3rd** in the second.
 * **Merit Scholarship – Freie Universität Berlin (declined):**
     Awarded a scholarship for advanced studies at **Freie Universität Berlin**, declined in order to complete the Computer Science degree in Italy.
-* **Amazon KDP self-publishing:**
-  Wrote and self-published four children’s books through Amazon KDP, covering educational, narrative, and coloring themes. Managed the entire       creative process — writing, illustration design, layout, and publication. https://www.amazon.it/stores/Pierfrancesco-Amendola/author/B0G2FJ3QPF?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true
+* **Published children’s books via Amazon Kindle Direct Publishing (KDP):**
+  Wrote and self-published four children’s books through Amazon KDP, covering educational, narrative, and coloring themes. Managed the entire creative process — writing, illustration design, layout, and publication. https://www.amazon.it/stores/Pierfrancesco-Amendola/author/B0G2FJ3QPF?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true
+* **Theatre Activities:**
+  Active participant in theatrical productions and stage performances. Performed in multiple theatrical shows as part of an organized theatre program. Member of the Tricca Ballacche Theatre Company. Performed on stage at the Auditorium of Bagnoli for Christmas, contributing to live theatrical productions.
 * **Award Ceremony – 49th National Competition “Civis Sum”**
   Participated in the national award ceremony recognizing civic engagement and cultural excellence.
 * **Learning Walk in San Giovanni a Teduccio:**
@@ -157,6 +151,6 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 
 ## 🎹 Interests & Extracurricular Activities
 
-* Professional pianist
+* Professional pianist, and rookie theatre actor
 * Passion for AI applied to medicine and bioinformatics
 * Software development projects to improve university tools and services
