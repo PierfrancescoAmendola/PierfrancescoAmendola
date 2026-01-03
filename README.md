@@ -1,6 +1,7 @@
 # Pierfrancesco Amendola
 
 * 📍 Naples 80125, Italy
+* **Date of Birth:** 30/09/2005
 * 📧 **Personal Email:** [checcofran717@gmail.com](mailto:checcofran717@gmail.com)
 * 🎓 **University Email:** [pi.amendola@studenti.unina.it](mailto:pi.amendola@studenti.unina.it)
 * 📱 **Phone:** +39 370 339 4489
