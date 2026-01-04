@@ -67,18 +67,7 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 * Developing AI systems for medical image analysis
 * Classification of malignant and benign tumors using expert-annotated images
 
-### Personal Project – Ripassa (iOS App)
-* Flashcard-based study app with a minimal and distraction-free design
-* Supports creation, organization, and review of custom flashcards for efficient learning
-* Focused on simplicity, performance, and user experience
-* Developed in Swift using SwiftUI
-* Published on the Apple App Store
-👉 https://apps.apple.com/us/app/ripassa-flashcard-minimal/id6756633023
-
-### Personal Project – FedericoII App
-* Mobile app for Federico II students with features for finding classrooms, schedules, departments, calculating grades, and predicting future results
-* Developed in **React Native**
-* Currently in development, release expected in 2–3 weeks
+### ACADEMIC PROJECT
 
 ### Academic Project – Ordered Data Structures in C++
 * Designed and implemented a generic `SetVec` class (ordered set) using a circular vector and binary search for efficient insertion, deletion, and lookup operations.
@@ -92,6 +81,30 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 * Frontend GUI built using Java Swing with MVC structure.
 * Implements user authentication, course creation, chef management, and database interaction via PostgreSQL.
 * Available on GitHub as part of university coursework.
+
+### PERSONAL PROJECT & APP ON STORES
+
+### Personal Project - FreshCheck – (iOS/Android App)
+Purpose & Objectives: FreshCheck was developed to digitize and streamline the monitoring of perishable goods, actively combating food waste and optimizing expiration date management. The app was created to address the inefficiencies of manual tracking, providing an agile tool suitable for both domestic use and small-scale professional environments (Retail/HoReCa).
+**Key Features:**
+* Intelligent Tracking: Centralized product management featuring rapid entry for expiration dates and batch numbers.
+* Alert System: Proactive notifications that signal imminent product spoilage, enabling timely consumption or sale.
+* Freshness Analysis: An immediate visual interface designed to prioritize consumption based on real-time preservation status.
+* Impact & Value: The application aims to promote a more sustainable lifestyle and workflow (Sustainability-focused), reducing financial losses caused by expired products and        enhancing food safety through precise, constant digital surveillance.
+👉 https://apps.apple.com/it/app/freshcheck/id6757205025?l=en-GB
+
+### Personal Project – Ripassa (iOS App)
+* Flashcard-based study app with a minimal and distraction-free design
+* Supports creation, organization, and review of custom flashcards for efficient learning
+* Focused on simplicity, performance, and user experience
+* Developed in Swift using SwiftUI
+* Published on the Apple App Store
+👉 https://apps.apple.com/us/app/ripassa-flashcard-minimal/id6756633023
+
+### Personal Project – FedericoII App
+* Mobile app for Federico II students with features for finding classrooms, schedules, departments, calculating grades, and predicting future results
+* Developed in **React Native**
+* Currently in development, release expected in 2–3 weeks
 
 ---
 
