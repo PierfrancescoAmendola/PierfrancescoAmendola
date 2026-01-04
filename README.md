@@ -67,7 +67,7 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 * Developing AI systems for medical image analysis
 * Classification of malignant and benign tumors using expert-annotated images
 
-### ACADEMIC PROJECT
+### ACADEMIC PROJECT 🎓: 
 
 ### Academic Project – Ordered Data Structures in C++
 * Designed and implemented a generic `SetVec` class (ordered set) using a circular vector and binary search for efficient insertion, deletion, and lookup operations.
@@ -82,7 +82,7 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 * Implements user authentication, course creation, chef management, and database interaction via PostgreSQL.
 * Available on GitHub as part of university coursework.
 
-### PERSONAL PROJECT & APP ON STORES
+### PERSONAL PROJECT & APP ON STORES 👨🏻‍💻:
 
 ### Personal Project - FreshCheck – (iOS/Android App)
 Purpose & Objectives: FreshCheck was developed to digitize and streamline the monitoring of perishable goods, actively combating food waste and optimizing expiration date management. The app was created to address the inefficiencies of manual tracking, providing an agile tool suitable for both domestic use and small-scale professional environments (Retail/HoReCa).
