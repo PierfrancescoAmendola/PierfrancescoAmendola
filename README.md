@@ -81,6 +81,19 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 * Frontend GUI built using Java Swing with MVC structure.
 * Implements user authentication, course creation, chef management, and database interaction via PostgreSQL.
 * Available on GitHub as part of university coursework.
+ 
+### Academic Project – Post Management System (Software Engineering)
+* Full-stack distributed application based on microservices architecture for managing posts (questions, bugs, features, documentation).
+* Backend developed with Spring Boot featuring three independent microservices: authentication service (JWT-based), home service (post management), and admin service (archiving, user management).
+* Frontend GUI built using Java Swing with MVC pattern and shared common components across multiple interfaces.
+* Implemented Docker containerization with Docker Compose for orchestrating PostgreSQL database and all microservices.
+* Applied software engineering best practices: DTO pattern, factory pattern, DAO architecture, dependency injection, and unit testing with JUnit.
+* Multi-module Maven project with shared libraries (common-config, common-utils, common-dtofactory) for code reusability.
+* Secure authentication system using JWT tokens with role-based access control (Admin/User).
+* Final Grade: 30/30
+* Developed in collaboration with Fausto Andrea Bellucci.
+* Available on GitHub as part of university coursework.
+
 
 ### PERSONAL PROJECT & APP ON STORES 👨🏻‍💻:
 
