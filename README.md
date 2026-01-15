@@ -24,7 +24,7 @@ Computer Science student passionate about software development and artificial in
 
 ### **University of Naples Federico II** – Bachelor’s Degree in Computer Science
 * **Enrollment:** 2023 – Present
-* **GPA:** 25.40/30 (4 exams remaining)
+* **GPA:** 25.40/30 (3 exams remaining)
 
 ### **Francesco Saverio Nitti Scientific High School** – High School Diploma in Applied Sciences 
 * **Enrollment:** 2018-2023
