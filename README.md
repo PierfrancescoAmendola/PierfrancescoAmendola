@@ -138,11 +138,15 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 
 ### Personal Project - FreshCheck – (iOS/Android App)
 Purpose & Objectives: FreshCheck was developed to digitize and streamline the monitoring of perishable goods, actively combating food waste and optimizing expiration date management. The app was created to address the inefficiencies of manual tracking, providing an agile tool suitable for both domestic use and small-scale professional environments (Retail/HoReCa).
-**Key Features:**
+
+#### Key Features:
+
 * Intelligent Tracking: Centralized product management featuring rapid entry for expiration dates and batch numbers.
 * Alert System: Proactive notifications that signal imminent product spoilage, enabling timely consumption or sale.
 * Freshness Analysis: An immediate visual interface designed to prioritize consumption based on real-time preservation status.
-* Impact & Value: The application aims to promote a more sustainable lifestyle and workflow (Sustainability-focused), reducing financial losses caused by expired products and        enhancing food safety through precise, constant digital surveillance.
+* Impact & Value: The application aims to promote a more sustainable lifestyle and workflow (Sustainability-focused), reducing financial losses caused by expired products and enhancing food safety through precise, constant digital surveillance.
+* Technical Stack: Developed in Swift using SwiftUI, leveraging SwiftData for persistence and Swift Charts for elegant data visualization. * Supports iOS 17.0+, multilingual interface (IT/EN/ES/FR/DE), and native Dark Mode.
+* Published on the Apple App Store
 👉 https://apps.apple.com/it/app/freshcheck/id6757205025?l=en-GB
 
 ### Personal Project – Ripassa (iOS App)
