@@ -99,6 +99,25 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 ### PERSONAL PROJECT & APP ON STORES 👨🏻‍💻:
 
 
+### Personal Project – SubTracker (iOS App)
+
+* **Purpose & Objectives:** SubTracker was developed to provide users with a centralized, elegant solution for managing all their subscriptions in one place. 
+* The app addresses the growing need for financial awareness in an era of subscription-based services, helping users track recurring expenses, avoid unexpected charges, and maintain control over their monthly and yearly spending.
+
+#### Key Features:
+
+* Smart Dashboard: Real-time overview of monthly and yearly subscription expenses with subscriptions automatically sorted by renewal date
+* Complete Subscription Management: Add, edit, or delete subscriptions with detailed information including name, price, frequency (weekly, monthly, yearly), start date, custom colors, and icons
+* Intuitive Swipe Actions: Swipe right to edit, swipe left to delete, with security confirmation for data protection
+* Smart Renewal Reminders: Customizable push notifications to alert users before subscription renewals, with adjustable advance notice in settings
+* Multi-Language Support: Full localization for Italian, English, French, German, Portuguese, and Spanish with dynamic language switching without app restart
+* Premium Version: Elegant paywall with StoreKit 2 integration for secure in-app purchases and promotional code system with SHA256 validation
+* Premium UX Design: Cascade animations on launch, haptic feedback on key interactions, and colored cards with custom icons for instant service recognition
+* Impact & Value: The application empowers users to take control of their recurring expenses, avoid unwanted renewals, and optimize their subscription portfolio. Built with 100% on-device data storage using SwiftData with iCloud sync, ensuring seamless access across devices while maintaining privacy.
+* Technical Stack: Developed in Swift 5.10 using SwiftUI, leveraging SwiftData for persistence and iCloud synchronization. Implements MVVM architecture with Observation framework, StoreKit 2 for payments, and CryptoKit for secure promotional code validation. Supports iOS 17.0+, multilingual interface, and native Dark Mode.
+* Published on the Apple App Store 👉 https://apps.apple.com/us/app/subtracker/id6757951413
+
+
 ### Personal Project – UniStats (iOS App)
 
 * **Purpose & Objectives:** UniStats was developed to provide Italian university students with a comprehensive digital toolkit for tracking academic progress, analyzing performance trends, and strategically planning their degree path.
@@ -116,8 +135,6 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 * **Technical Stack:** Developed in Swift using SwiftUI, leveraging SwiftData for persistence and Swift Charts for elegant data visualization. * Supports iOS 17.0+, multilingual interface (IT/EN/ES/FR/DE), and native Dark Mode.
 * **Published on the Apple App Store**
 👉https://apps.apple.com/us/app/unistats/id6756898737
-
-
 
 ### Personal Project - FreshCheck – (iOS/Android App)
 Purpose & Objectives: FreshCheck was developed to digitize and streamline the monitoring of perishable goods, actively combating food waste and optimizing expiration date management. The app was created to address the inefficiencies of manual tracking, providing an agile tool suitable for both domestic use and small-scale professional environments (Retail/HoReCa).
