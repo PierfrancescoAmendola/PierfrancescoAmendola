@@ -294,7 +294,7 @@ p {
     position: relative;
     background: var(--gradient-dark);
     overflow: hidden;
-    padding: var(--spacing-3xl) var(--spacing-xl);
+    padding: calc(var(--spacing-3xl) + 80px) var(--spacing-xl) var(--spacing-3xl);
 }
 
 .hero-bg {

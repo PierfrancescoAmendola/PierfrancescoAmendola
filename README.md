@@ -26,7 +26,7 @@ Computer Science student passionate about software development and artificial in
 
 ### **University of Naples Federico II** – Bachelor's Degree in Computer Science
 * **Enrollment:** 2023 – Present
-* **GPA:** 25.40/30 (3 exams remaining)
+* **GPA:** 25.42/30 (2 exams remaining)
 
 ### **Francesco Saverio Nitti Scientific High School** – High School Diploma in Applied Sciences 
 * **Enrollment:** 2018-2023
@@ -70,6 +70,16 @@ Successfully completed the **Cisco Cybersecurity Scholarship 2023**, an advanced
 * Classification of malignant and benign tumors using expert-annotated images
 
 ### ACADEMIC PROJECT 🎓: 
+
+### Academic Project – Multiplayer Battleship System (Operating Systems)
+* Client-server distributed application for a multiplayer Battleship game, featuring a custom TCP-based text communication protocol.
+* Backend server developed in C, utilizing POSIX threads for handling concurrent client connections and mutexes for thread-safe synchronization of shared lobbys and game states.
+* Implemented rigorous system-level features including POSIX signal handling for clean teardowns, timeout mechanisms for handling disconnections, and strict memory management (validated as memory-leak-free with Valgrind).
+* Frontend graphical interface (GUI) built in Python using CustomTkinter for a modern user experience, complemented by an alternative terminal-based CLI client developed in C.
+* Integrated Docker containerization for streamlined deployment and included automated functional tests along with stress-testing scripts to evaluate server stability under load.
+* Final Grade: 30/30
+* Developed as part of the "Operating Systems" course at the University of Naples Federico II.
+* Available on GitHub as part of university coursework.
 
 ### Academic Project – Ordered Data Structures in C++
 * Designed and implemented a generic `SetVec` class (ordered set) using a circular vector and binary search for efficient insertion, deletion, and lookup operations.
