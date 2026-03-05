@@ -168,6 +168,22 @@ Purpose & Objectives: FreshCheck was developed to digitize and streamline the mo
 * Published on the Apple App Store
 👉 https://apps.apple.com/us/app/ripassa-flashcard-minimal/id6756633023
 
+### Personal Project – UniStudy Italia (iOS/Android App)
+
+* **Purpose & Objectives:** UniStudy Italia was developed to provide Italian university students with a centralized and real-time platform for locating and navigating study rooms, libraries, and academic spaces. The app addresses the challenge of finding suitable study environments by mapping data from over 100 institutions (including AFAM institutions) into a single intuitive and modern interface.
+
+#### Key Features:
+
+* **Complete Academic Database:** Mapping of over 100 Italian universities and conservatories, categorized by region, university hub, city, and individual building.
+* **Real-time Insights:** Dynamic "Open/Closed" status indicators based on official hours and estimated crowding levels to optimize study sessions.
+* **Advanced Geolocation:** Interactive map interface with classroom clustering, precise user distance calculation, and support for multimodal navigation (Public Transport, Walking, Car).
+* **Student Radar (P2P Connectivity):** Innovative peer-discovery feature based on Bluetooth Low Energy (BLE) that allows students in the same building to detect and connect with each other in real-time.
+* **SmartWeather Integration:** Contextual "SmartWeatherCard" providing local weather forecasts and personalized alerts to help students plan commutes between campuses.
+* **Dynamic UI Personalization:** Premium design system with a theming engine that automatically adapts interface colors to the official colors of the selected university.
+* **Impact & Value:** The application optimizes the daily logistics of university life, reducing search times for facilities and fostering localized networking. Designed with a strong focus on privacy, it ensures 100% data persistence on the device through secure storage layers.
+* **Technical Stack:** Developed in TypeScript using React Native (Expo). Leverages React Navigation for screen architecture, react-native-maps for geospatial features, react-native-ble-plx for proximity networking, React Native Reanimated for premium micro-animations, and AsyncStorage for local persistence. Automated test suite implemented with Jest and Testing Library.
+* **Published on the Apple App Store** 👉 https://apps.apple.com/us/app/unistudy-italia/id6757367573
+
 ### Personal Project – FedericoII App
 * Mobile app for Federico II students with features for finding classrooms, schedules, departments, calculating grades, and predicting future results
 * Developed in **React Native**
