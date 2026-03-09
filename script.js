@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initTextRotation();
     initProjectTabs();
     initSolarSystem();
+    initAstronaut();
+    initCoder();
     initEarth();
 });
 
@@ -359,6 +361,560 @@ function initSolarSystem() {
         const g = parseInt(hex.slice(3, 5), 16);
         const b = parseInt(hex.slice(5, 7), 16);
         return `rgba(${r},${g},${b},${a})`;
+    }
+
+    draw();
+}
+
+// ─── FLOATING ASTRONAUT ──────────────────────────────────
+function initAstronaut() {
+    const canvas = document.getElementById('astronaut-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+    }
+    resize();
+    let resizeTimer;
+    window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 200); });
+
+    const W = () => canvas.width / (window.devicePixelRatio || 1);
+    const H = () => canvas.height / (window.devicePixelRatio || 1);
+
+    // Floating particles
+    const particles = [];
+    for (let i = 0; i < 50; i++) {
+        particles.push({
+            x: Math.random(), y: Math.random(),
+            r: Math.random() * 2 + 0.5,
+            speed: Math.random() * 0.15 + 0.05,
+            alpha: Math.random() * 0.6 + 0.2,
+            phase: Math.random() * Math.PI * 2
+        });
+    }
+
+    function drawAstronaut(cx, cy, scale, t) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(scale, scale);
+
+        // Subtle rotation
+        ctx.rotate(Math.sin(t * 0.4) * 0.08);
+
+        // Jetpack
+        ctx.fillStyle = '#3a3a5c';
+        roundRect(-22, -18, 8, 36, 3);
+        roundRect(14, -18, 8, 36, 3);
+
+        // Jetpack flames
+        const flicker = Math.sin(t * 8) * 2;
+        const grad1 = ctx.createLinearGradient(-18, 18, -18, 30 + flicker);
+        grad1.addColorStop(0, 'rgba(145, 94, 255, 0.8)');
+        grad1.addColorStop(0.5, 'rgba(99, 102, 241, 0.4)');
+        grad1.addColorStop(1, 'rgba(99, 102, 241, 0)');
+        ctx.fillStyle = grad1;
+        ctx.beginPath();
+        ctx.moveTo(-22, 18); ctx.lineTo(-14, 18);
+        ctx.lineTo(-16, 30 + flicker); ctx.lineTo(-20, 30 + flicker);
+        ctx.closePath(); ctx.fill();
+
+        const grad2 = ctx.createLinearGradient(18, 18, 18, 30 + flicker);
+        grad2.addColorStop(0, 'rgba(145, 94, 255, 0.8)');
+        grad2.addColorStop(0.5, 'rgba(99, 102, 241, 0.4)');
+        grad2.addColorStop(1, 'rgba(99, 102, 241, 0)');
+        ctx.fillStyle = grad2;
+        ctx.beginPath();
+        ctx.moveTo(14, 18); ctx.lineTo(22, 18);
+        ctx.lineTo(20, 30 + flicker); ctx.lineTo(16, 30 + flicker);
+        ctx.closePath(); ctx.fill();
+
+        // Body
+        ctx.fillStyle = '#e8e8f0';
+        roundRect(-16, -12, 32, 40, 8);
+
+        // Chest panel
+        ctx.fillStyle = '#c0c0d8';
+        roundRect(-8, -4, 16, 12, 3);
+        ctx.fillStyle = '#915EFF';
+        ctx.fillRect(-5, -1, 4, 3);
+        ctx.fillStyle = '#6366f1';
+        ctx.fillRect(1, -1, 4, 3);
+        ctx.fillStyle = '#10b981';
+        ctx.fillRect(-5, 4, 4, 3);
+        ctx.fillStyle = '#f59e0b';
+        ctx.fillRect(1, 4, 4, 3);
+
+        // Belt
+        ctx.fillStyle = '#6366f1';
+        roundRect(-16, 20, 32, 4, 1);
+
+        // Legs
+        ctx.fillStyle = '#d0d0e0';
+        const legSwing = Math.sin(t * 0.7) * 4;
+        roundRect(-12, 28, 10, 20 + legSwing, 4);
+        roundRect(2, 28, 10, 20 - legSwing, 4);
+
+        // Boots
+        ctx.fillStyle = '#4a4a6a';
+        roundRect(-14, 46 + legSwing, 14, 6, 3);
+        roundRect(0, 46 - legSwing, 14, 6, 3);
+
+        // Arms
+        ctx.fillStyle = '#d8d8ec';
+        const armSwing = Math.sin(t * 0.5) * 6;
+        // Left arm — waving
+        ctx.save();
+        ctx.translate(-16, -6);
+        ctx.rotate(-0.4 + Math.sin(t * 1.2) * 0.25);
+        roundRect(-12, -3, 12, 7, 3);
+        // Glove
+        ctx.fillStyle = '#4a4a6a';
+        ctx.beginPath(); ctx.arc(-12, 0, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+
+        // Right arm
+        ctx.save();
+        ctx.fillStyle = '#d8d8ec';
+        ctx.translate(16, -6);
+        ctx.rotate(0.3 + Math.sin(t * 0.6 + 1) * 0.15);
+        roundRect(0, -3, 12, 7, 3);
+        ctx.fillStyle = '#4a4a6a';
+        ctx.beginPath(); ctx.arc(12, 0, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+
+        // Helmet
+        ctx.fillStyle = '#e8e8f0';
+        ctx.beginPath();
+        ctx.arc(0, -26, 20, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Visor
+        const visorGrad = ctx.createLinearGradient(-14, -38, 14, -18);
+        visorGrad.addColorStop(0, '#1a1040');
+        visorGrad.addColorStop(0.3, '#2d1b69');
+        visorGrad.addColorStop(0.7, '#915EFF');
+        visorGrad.addColorStop(1, '#4a2c8a');
+        ctx.fillStyle = visorGrad;
+        ctx.beginPath();
+        ctx.arc(0, -26, 16, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Visor reflection
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+        ctx.beginPath();
+        ctx.ellipse(-5, -32, 6, 3, -0.4, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Visor stars reflection
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.beginPath(); ctx.arc(6, -30, 1.2, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(-8, -22, 0.8, 0, Math.PI * 2); ctx.fill();
+
+        // Antenna
+        ctx.strokeStyle = '#c0c0d8';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(8, -44);
+        ctx.lineTo(12, -54);
+        ctx.stroke();
+        ctx.fillStyle = '#915EFF';
+        ctx.beginPath(); ctx.arc(12, -55, 3, 0, Math.PI * 2); ctx.fill();
+
+        // Antenna glow
+        const antennaGlow = (Math.sin(t * 3) + 1) / 2;
+        ctx.fillStyle = `rgba(145, 94, 255, ${0.3 * antennaGlow})`;
+        ctx.beginPath(); ctx.arc(12, -55, 7, 0, Math.PI * 2); ctx.fill();
+
+        // Tether line
+        ctx.strokeStyle = 'rgba(145, 94, 255, 0.25)';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(16, 6);
+        const tetherX = 60 + Math.sin(t * 0.3) * 10;
+        const tetherY = 60 + Math.cos(t * 0.4) * 5;
+        ctx.quadraticCurveTo(40, 40, tetherX, tetherY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.restore();
+    }
+
+    function roundRect(x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+        ctx.lineTo(x + w, y + h - r);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        ctx.lineTo(x + r, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    function draw() {
+        const w = W(), h = H();
+        ctx.clearRect(0, 0, w, h);
+        const t = performance.now() / 1000;
+
+        // floating particles
+        particles.forEach(p => {
+            const px = p.x * w;
+            let py = (p.y * h - p.speed * t * 20) % h;
+            if (py < 0) py += h;
+            const pulse = 0.5 + 0.5 * Math.sin(t * 2 + p.phase);
+            ctx.globalAlpha = p.alpha * (0.6 + 0.4 * pulse);
+            ctx.fillStyle = '#915EFF';
+            ctx.beginPath();
+            ctx.arc(px, py, p.r, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        ctx.globalAlpha = 1;
+
+        // Astronaut floating motion
+        const floatY = Math.sin(t * 0.8) * 12;
+        const floatX = Math.cos(t * 0.5) * 6;
+        const cx = w * 0.5 + floatX;
+        const cy = h * 0.48 + floatY;
+        const sc = Math.min(w, h) / 180;
+
+        drawAstronaut(cx, cy, sc, t);
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+}
+
+// ─── CODER AT DESK ───────────────────────────────────────
+function initCoder() {
+    const canvas = document.getElementById('coder-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+    }
+    resize();
+    let resizeTimer;
+    window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 200); });
+
+    const W = () => canvas.width / (window.devicePixelRatio || 1);
+    const H = () => canvas.height / (window.devicePixelRatio || 1);
+
+    // Code lines for the screen
+    const codeLines = [];
+    for (let i = 0; i < 12; i++) {
+        const indent = Math.floor(Math.random() * 3);
+        const widthFrac = Math.random() * 0.5 + 0.2;
+        const colors = ['#915EFF', '#6366f1', '#818cf8', '#c084fc', '#34d399', '#fbbf24', '#e8e8f0'];
+        codeLines.push({
+            indent,
+            width: widthFrac,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            delay: i * 0.3,
+            visible: false
+        });
+    }
+
+    // Floating particles
+    const particles = [];
+    for (let i = 0; i < 30; i++) {
+        particles.push({
+            x: Math.random(), y: Math.random(),
+            r: Math.random() * 1.5 + 0.5,
+            speed: Math.random() * 0.08 + 0.02,
+            alpha: Math.random() * 0.4 + 0.15,
+            phase: Math.random() * Math.PI * 2
+        });
+    }
+
+    function roundRect(x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+        ctx.lineTo(x + w, y + h - r);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        ctx.lineTo(x + r, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    function drawScene(t) {
+        const w = W(), h = H();
+        ctx.clearRect(0, 0, w, h);
+        const sc = Math.min(w, h) / 320;
+
+        // Center everything
+        const cx = w * 0.5;
+        const baseY = h * 0.65;
+
+        ctx.save();
+        ctx.translate(cx, baseY);
+        ctx.scale(sc, sc);
+
+        // ── DESK ──
+        // Desktop surface
+        ctx.fillStyle = '#1a1a2e';
+        roundRect(-120, 0, 240, 10, 3);
+        // Desk front panel
+        ctx.fillStyle = '#151528';
+        roundRect(-110, 10, 220, 50, 2);
+        // Desk edge highlight
+        ctx.fillStyle = 'rgba(145, 94, 255, 0.1)';
+        ctx.fillRect(-120, 0, 240, 2);
+
+        // ── MONITOR ──
+        // Monitor stand
+        ctx.fillStyle = '#2a2a3e';
+        roundRect(-5, -8, 10, 12, 2);
+
+        // Monitor base
+        ctx.fillStyle = '#2a2a3e';
+        roundRect(-20, -2, 40, 5, 2);
+
+        // Monitor body
+        ctx.fillStyle = '#1e1e30';
+        roundRect(-80, -120, 160, 112, 6);
+
+        // Screen border
+        ctx.fillStyle = '#2a2a40';
+        roundRect(-76, -116, 152, 104, 4);
+
+        // Screen
+        const screenGrad = ctx.createLinearGradient(-72, -112, -72, -16);
+        screenGrad.addColorStop(0, '#0a0a1a');
+        screenGrad.addColorStop(1, '#0d0d20');
+        ctx.fillStyle = screenGrad;
+        roundRect(-72, -112, 144, 96, 3);
+
+        // Screen glow on face
+        ctx.fillStyle = 'rgba(99, 102, 241, 0.03)';
+        roundRect(-72, -112, 144, 96, 3);
+
+        // Code lines on screen
+        const lineH = 5;
+        const lineGap = 2.5;
+        const screenLeft = -64;
+        const screenTop = -104;
+        const screenW = 128;
+        const typingLine = Math.floor((t * 1.5) % (codeLines.length + 3));
+
+        codeLines.forEach((line, i) => {
+            if (i > typingLine) return;
+            const indentPx = line.indent * 10;
+            const lineW = line.width * (screenW - indentPx - 10);
+            const ly = screenTop + i * (lineH + lineGap);
+
+            ctx.globalAlpha = i === typingLine ? 0.5 + 0.5 * Math.sin(t * 6) : 0.7;
+            ctx.fillStyle = line.color;
+            roundRect(screenLeft + indentPx, ly, lineW, lineH, 1.5);
+        });
+        ctx.globalAlpha = 1;
+
+        // Cursor blink
+        if (typingLine < codeLines.length) {
+            const cl = codeLines[typingLine];
+            const cursorX = screenLeft + cl.indent * 10 + cl.width * (screenW - cl.indent * 10 - 10) * ((t * 2) % 1);
+            if (Math.sin(t * 6) > 0) {
+                ctx.fillStyle = '#e8e8f0';
+                ctx.fillRect(cursorX, screenTop + typingLine * (lineH + lineGap), 2, lineH);
+            }
+        }
+
+        // Monitor LED
+        const ledPulse = (Math.sin(t * 2) + 1) / 2;
+        ctx.fillStyle = `rgba(145, 94, 255, ${0.5 + 0.5 * ledPulse})`;
+        ctx.beginPath(); ctx.arc(0, -12, 2, 0, Math.PI * 2); ctx.fill();
+
+        // Screen glow effect (ambient)
+        const glowGrad = ctx.createRadialGradient(0, -65, 20, 0, -65, 120);
+        glowGrad.addColorStop(0, 'rgba(99, 102, 241, 0.06)');
+        glowGrad.addColorStop(1, 'rgba(99, 102, 241, 0)');
+        ctx.fillStyle = glowGrad;
+        ctx.fillRect(-150, -180, 300, 250);
+
+        // ── KEYBOARD ──
+        ctx.fillStyle = '#222238';
+        roundRect(-45, 6, 60, 14, 3);
+        // Keys
+        for (let r = 0; r < 3; r++) {
+            for (let c = 0; c < 10; c++) {
+                const kx = -40 + c * 5.2;
+                const ky = 8 + r * 4;
+                const keyBright = (Math.sin(t * 8 + c * 0.7 + r * 1.3) + 1) / 2;
+                ctx.fillStyle = `rgba(145, 94, 255, ${0.08 + 0.15 * keyBright})`;
+                ctx.fillRect(kx, ky, 4, 2.8);
+            }
+        }
+
+        // ── COFFEE MUG ──
+        ctx.fillStyle = '#2a2a40';
+        roundRect(90, -18, 18, 20, 3);
+        // Handle
+        ctx.strokeStyle = '#2a2a40';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.arc(110, -10, 6, -Math.PI * 0.4, Math.PI * 0.4);
+        ctx.stroke();
+        // Coffee
+        ctx.fillStyle = '#4a2c1a';
+        roundRect(92, -14, 14, 8, 2);
+        // Steam
+        for (let s = 0; s < 3; s++) {
+            const sx = 96 + s * 4;
+            const sy = -22 - Math.sin(t * 2 + s) * 4;
+            const steamAlpha = 0.15 + 0.1 * Math.sin(t * 1.5 + s * 1.2);
+            ctx.strokeStyle = `rgba(200, 200, 220, ${steamAlpha})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(sx, -18);
+            ctx.quadraticCurveTo(sx + Math.sin(t + s) * 3, sy - 4, sx + 1, sy - 8);
+            ctx.stroke();
+        }
+
+        // ── PERSON (you!) ──
+        // Body
+        ctx.fillStyle = '#151530';
+        roundRect(-25, 30, 50, 35, 8);
+
+        // Hoodie details
+        ctx.fillStyle = 'rgba(145, 94, 255, 0.12)';
+        roundRect(-18, 36, 36, 4, 2);
+
+        // Shoulders
+        ctx.fillStyle = '#1a1a35';
+        ctx.beginPath();
+        ctx.ellipse(-25, 36, 10, 14, 0.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(25, 36, 10, 14, -0.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Arms (typing)
+        const lArmAngle = Math.sin(t * 4) * 0.06;
+        const rArmAngle = Math.sin(t * 4 + Math.PI) * 0.06;
+
+        ctx.fillStyle = '#151530';
+        // Left arm
+        ctx.save();
+        ctx.translate(-28, 42);
+        ctx.rotate(-0.7 + lArmAngle);
+        roundRect(0, -3, 30, 7, 3);
+        ctx.restore();
+        // Right arm
+        ctx.save();
+        ctx.translate(28, 42);
+        ctx.rotate(0.7 + rArmAngle);
+        roundRect(-30, -3, 30, 7, 3);
+        ctx.restore();
+
+        // Hands — on keyboard area
+        ctx.fillStyle = '#c8a882';
+        const lhx = -20 + Math.sin(t * 4) * 2;
+        const rhx = 12 + Math.sin(t * 4 + Math.PI) * 2;
+        ctx.beginPath(); ctx.arc(lhx, 10, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(rhx, 10, 4, 0, Math.PI * 2); ctx.fill();
+
+        // Neck
+        ctx.fillStyle = '#c8a882';
+        roundRect(-6, 22, 12, 10, 3);
+
+        // Head
+        ctx.fillStyle = '#c8a882';
+        ctx.beginPath();
+        ctx.ellipse(0, 10, 16, 18, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Hair
+        ctx.fillStyle = '#1a1a2e';
+        ctx.beginPath();
+        ctx.ellipse(0, 1, 17, 12, 0, Math.PI, Math.PI * 2);
+        ctx.fill();
+        // Hair sides
+        ctx.beginPath();
+        ctx.ellipse(-15, 6, 5, 10, 0.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(15, 6, 5, 10, -0.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Eyes (looking at screen)
+        ctx.fillStyle = '#e8e8f0';
+        ctx.beginPath(); ctx.ellipse(-6, 8, 3.5, 2.5, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(6, 8, 3.5, 2.5, 0, 0, Math.PI * 2); ctx.fill();
+        // Pupils
+        ctx.fillStyle = '#1a1a2e';
+        ctx.beginPath(); ctx.arc(-5, 8.5, 1.5, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(7, 8.5, 1.5, 0, Math.PI * 2); ctx.fill();
+
+        // Glasses (purple frame!)
+        ctx.strokeStyle = 'rgba(145, 94, 255, 0.7)';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.ellipse(-6, 8, 5, 4, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(6, 8, 5, 4, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(1, 8); ctx.lineTo(-1, 8); ctx.stroke();
+
+        // Mouth — subtle smile
+        ctx.strokeStyle = '#a08070';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(0, 14, 4, 0.1, Math.PI - 0.1);
+        ctx.stroke();
+
+        // Headphones
+        ctx.strokeStyle = '#3a3a5c';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(0, 2, 18, Math.PI + 0.3, -0.3);
+        ctx.stroke();
+        // Ear cups
+        ctx.fillStyle = '#3a3a5c';
+        roundRect(-20, 2, 8, 12, 4);
+        roundRect(12, 2, 8, 12, 4);
+        // Purple accent on cups
+        ctx.fillStyle = 'rgba(145, 94, 255, 0.3)';
+        roundRect(-18, 4, 4, 8, 2);
+        roundRect(14, 4, 4, 8, 2);
+
+        ctx.restore();
+
+        // Floating particles
+        particles.forEach(p => {
+            const px = p.x * w;
+            let py = (p.y * h + p.speed * t * 15) % h;
+            const pulse = 0.5 + 0.5 * Math.sin(t * 1.5 + p.phase);
+            ctx.globalAlpha = p.alpha * (0.5 + 0.5 * pulse);
+            ctx.fillStyle = Math.random() > 0.5 ? '#915EFF' : '#6366f1';
+            ctx.beginPath(); ctx.arc(px, py, p.r, 0, Math.PI * 2); ctx.fill();
+        });
+        ctx.globalAlpha = 1;
+    }
+
+    function draw() {
+        const t = performance.now() / 1000;
+        drawScene(t);
+        requestAnimationFrame(draw);
     }
 
     draw();

@@ -112,18 +112,25 @@
     <!-- About / Overview Section -->
     <section id="about" class="section">
         <div class="container">
-            <div class="section-header" data-animate>
-                <p class="section-sub">Introduction</p>
-                <h2 class="section-title">Overview.</h2>
+            <div class="about-layout">
+                <div class="about-left">
+                    <div class="section-header" data-animate>
+                        <p class="section-sub">Introduction</p>
+                        <h2 class="section-title">Overview.</h2>
+                    </div>
+                    <p class="section-description" data-animate>
+                        Computer Science student at the <strong>University of Naples Federico II</strong> with a passion 
+                        for software development and artificial intelligence. I chose this path to provide innovative 
+                        tools for doctors and contribute to medical progress through advanced software and technological systems.
+                        Currently interning at <strong>CNR in bioinformatics</strong>, developing AI systems for medical image analysis. 
+                        With <strong>5+ published apps</strong> on the App Store and a GPA of <strong>25.42/30</strong>, I bring 
+                        a track record of shipping real products.
+                    </p>
+                </div>
+                <div class="about-right">
+                    <canvas id="astronaut-canvas"></canvas>
+                </div>
             </div>
-            <p class="section-description" data-animate>
-                Computer Science student at the <strong>University of Naples Federico II</strong> with a passion 
-                for software development and artificial intelligence. I chose this path to provide innovative 
-                tools for doctors and contribute to medical progress through advanced software and technological systems.
-                Currently interning at <strong>CNR in bioinformatics</strong>, developing AI systems for medical image analysis. 
-                With <strong>5+ published apps</strong> on the App Store and a GPA of <strong>25.42/30</strong>, I bring 
-                a track record of shipping real products.
-            </p>
 
             <div class="services-grid">
                 <div class="service-card" data-animate data-tilt>
@@ -167,47 +174,60 @@
             </div>
 
             <div class="vertical-timeline">
-                <!-- Bachelor's -->
-                <div class="timeline-element" data-animate>
-                    <div class="timeline-icon" style="background: #383E56;">
+                <!-- Bachelor's — LEFT -->
+                <div class="timeline-element tl-left" data-animate>
+                    <div class="timeline-icon" style="background: linear-gradient(135deg, #6366f1, #818cf8);">
                         <i data-lucide="graduation-cap"></i>
                     </div>
                     <div class="timeline-content-box">
-                        <h3>Bachelor's in Computer Science</h3>
+                        <div class="timeline-arrow"></div>
+                        <div class="timeline-badge badge-education">Education</div>
+                        <div class="timeline-card-header">
+                            <h3>Bachelor's in Computer Science</h3>
+                            <span class="timeline-date">2023 — Present</span>
+                        </div>
                         <p class="timeline-subtitle">University of Naples Federico II</p>
                         <ul>
                             <li>GPA: 25.42/30 (2 exams remaining)</li>
                             <li>Focus on software engineering, algorithms, and AI</li>
                             <li>Multiple academic projects with perfect scores (30/30)</li>
                         </ul>
-                        <span class="timeline-date">2023 — Present</span>
                     </div>
                 </div>
 
-                <!-- CNR Internship -->
-                <div class="timeline-element" data-animate>
-                    <div class="timeline-icon" style="background: #E6DEDD;">
+                <!-- CNR Internship — RIGHT -->
+                <div class="timeline-element tl-right" data-animate>
+                    <div class="timeline-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
                         <i data-lucide="building-2"></i>
                     </div>
                     <div class="timeline-content-box">
-                        <h3>Bioinformatics Internship</h3>
+                        <div class="timeline-arrow"></div>
+                        <div class="timeline-badge badge-internship">Internship</div>
+                        <div class="timeline-card-header">
+                            <h3>Bioinformatics Internship</h3>
+                            <span class="timeline-date">2025</span>
+                        </div>
                         <p class="timeline-subtitle">CNR — National Research Council</p>
                         <ul>
                             <li>Developing AI systems for medical image analysis</li>
                             <li>Working with machine learning and computer vision</li>
                             <li>Contributing to medical research with advanced software</li>
                         </ul>
-                        <span class="timeline-date">2025</span>
                     </div>
                 </div>
 
-                <!-- freeCodeCamp -->
-                <div class="timeline-element" data-animate>
-                    <div class="timeline-icon" style="background: #383E56;">
+                <!-- freeCodeCamp — LEFT -->
+                <div class="timeline-element tl-left" data-animate>
+                    <div class="timeline-icon" style="background: linear-gradient(135deg, #915EFF, #c084fc);">
                         <i data-lucide="code-2"></i>
                     </div>
                     <div class="timeline-content-box">
-                        <h3>JavaScript Algorithms & Data Structures</h3>
+                        <div class="timeline-arrow"></div>
+                        <div class="timeline-badge badge-cert">Certification</div>
+                        <div class="timeline-card-header">
+                            <h3>JavaScript Algorithms & Data Structures</h3>
+                            <span class="timeline-date">2025</span>
+                        </div>
                         <p class="timeline-subtitle">freeCodeCamp</p>
                         <ul>
                             <li>Comprehensive certification in JavaScript fundamentals</li>
@@ -217,53 +237,64 @@
                             target="_blank" rel="noopener noreferrer" class="timeline-link">
                             <i data-lucide="external-link"></i> View Certificate
                         </a>
-                        <span class="timeline-date">2025</span>
                     </div>
                 </div>
 
-                <!-- Cisco -->
-                <div class="timeline-element" data-animate>
-                    <div class="timeline-icon" style="background: #E6DEDD;">
+                <!-- Cisco — RIGHT -->
+                <div class="timeline-element tl-right" data-animate>
+                    <div class="timeline-icon" style="background: linear-gradient(135deg, #10b981, #34d399);">
                         <i data-lucide="shield"></i>
                     </div>
                     <div class="timeline-content-box">
-                        <h3>Cisco Cybersecurity Scholarship</h3>
+                        <div class="timeline-arrow"></div>
+                        <div class="timeline-badge badge-cert">Certification</div>
+                        <div class="timeline-card-header">
+                            <h3>Cisco Cybersecurity Scholarship</h3>
+                            <span class="timeline-date">2023</span>
+                        </div>
                         <p class="timeline-subtitle">Cisco Networking Academy</p>
                         <ul>
                             <li>Advanced training in threat analysis and network defense</li>
                             <li>Security fundamentals and cyber threat management</li>
                         </ul>
-                        <span class="timeline-date">2023</span>
                     </div>
                 </div>
 
-                <!-- EIPASS -->
-                <div class="timeline-element" data-animate>
-                    <div class="timeline-icon" style="background: #383E56;">
+                <!-- EIPASS — LEFT -->
+                <div class="timeline-element tl-left" data-animate>
+                    <div class="timeline-icon" style="background: linear-gradient(135deg, #915EFF, #c084fc);">
                         <i data-lucide="award"></i>
                     </div>
                     <div class="timeline-content-box">
-                        <h3>EIPASS 7 Modules User</h3>
+                        <div class="timeline-arrow"></div>
+                        <div class="timeline-badge badge-cert">Certification</div>
+                        <div class="timeline-card-header">
+                            <h3>EIPASS 7 Modules User</h3>
+                            <span class="timeline-date">2022</span>
+                        </div>
                         <p class="timeline-subtitle">European Informatics Passport</p>
                         <ul>
                             <li>Digital competence certification across ICT areas</li>
                         </ul>
-                        <span class="timeline-date">2022</span>
                     </div>
                 </div>
 
-                <!-- High School -->
-                <div class="timeline-element" data-animate>
-                    <div class="timeline-icon" style="background: #E6DEDD;">
+                <!-- High School — RIGHT -->
+                <div class="timeline-element tl-right" data-animate>
+                    <div class="timeline-icon" style="background: linear-gradient(135deg, #6366f1, #818cf8);">
                         <i data-lucide="school"></i>
                     </div>
                     <div class="timeline-content-box">
-                        <h3>High School Diploma — Applied Sciences</h3>
+                        <div class="timeline-arrow"></div>
+                        <div class="timeline-badge badge-education">Education</div>
+                        <div class="timeline-card-header">
+                            <h3>High School Diploma — Applied Sciences</h3>
+                            <span class="timeline-date">2018 — 2023</span>
+                        </div>
                         <p class="timeline-subtitle">L.S.S. Francesco Saverio Nitti</p>
                         <ul>
                             <li>Scientific track with focus on applied sciences</li>
                         </ul>
-                        <span class="timeline-date">2018 — 2023</span>
                     </div>
                 </div>
             </div>
@@ -375,15 +406,22 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
-            <div class="section-header" data-animate>
-                <p class="section-sub">My work</p>
-                <h2 class="section-title">Projects.</h2>
+            <div class="projects-intro-layout">
+                <div class="projects-intro-left">
+                    <div class="section-header" data-animate>
+                        <p class="section-sub">My work</p>
+                        <h2 class="section-title">Projects.</h2>
+                    </div>
+                    <p class="section-description" data-animate>
+                        The following projects showcase my skills and experience through real-world examples.
+                        Each project has links to the App Store where applicable. They reflect my ability to
+                        solve complex problems, work with different technologies, and ship complete products.
+                    </p>
+                </div>
+                <div class="projects-intro-right">
+                    <canvas id="coder-canvas"></canvas>
+                </div>
             </div>
-            <p class="section-description" data-animate>
-                The following projects showcase my skills and experience through real-world examples.
-                Each project has links to the App Store where applicable. They reflect my ability to
-                solve complex problems, work with different technologies, and ship complete products.
-            </p>
 
             <!-- Tab Filters -->
             <div class="project-tabs" data-animate>
