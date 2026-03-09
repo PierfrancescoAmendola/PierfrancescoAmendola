@@ -387,25 +387,134 @@ function initEarth() {
         resizeTimer = setTimeout(resize, 200);
     });
 
-    // Generate land masses as procedural patches on a sphere
-    // We use a seeded set of "continent" blobs defined by lat/lng and size
-    const continents = [
-        // Roughly inspired by real positions
-        { lat: 48, lng: -10, r: 28, name: 'Europe' },
-        { lat: 35, lng: 20, r: 22, name: 'Middle East' },
-        { lat: 10, lng: 20, r: 35, name: 'Africa' },
-        { lat: 55, lng: 90, r: 40, name: 'Asia' },
-        { lat: 25, lng: 80, r: 25, name: 'India' },
-        { lat: 45, lng: -100, r: 30, name: 'North America' },
-        { lat: 30, lng: -90, r: 18, name: 'Central America' },
-        { lat: -15, lng: -55, r: 32, name: 'South America' },
-        { lat: -25, lng: 135, r: 26, name: 'Australia' },
-        { lat: 40, lng: 130, r: 15, name: 'Japan/Korea' },
-        { lat: 65, lng: -50, r: 18, name: 'Greenland' },
-        { lat: 60, lng: 60, r: 20, name: 'Russia West' },
-        { lat: 60, lng: 120, r: 25, name: 'Russia East' },
-        { lat: 5, lng: 110, r: 18, name: 'Southeast Asia' },
+    // Improved continent data with sub-regions for more realistic shapes
+    const landRegions = [
+        // North America
+        { lat: 50, lng: -100, r: 22 },
+        { lat: 42, lng: -90, r: 18 },
+        { lat: 55, lng: -115, r: 16 },
+        { lat: 60, lng: -100, r: 14 },
+        { lat: 35, lng: -85, r: 10 },
+        { lat: 48, lng: -75, r: 12 },
+        { lat: 62, lng: -130, r: 12 },
+        { lat: 30, lng: -98, r: 12 },
+        // Central America
+        { lat: 22, lng: -100, r: 8 },
+        { lat: 16, lng: -90, r: 7 },
+        { lat: 12, lng: -84, r: 5 },
+        // South America
+        { lat: -3, lng: -60, r: 20 },
+        { lat: -12, lng: -52, r: 18 },
+        { lat: -22, lng: -48, r: 14 },
+        { lat: -32, lng: -62, r: 12 },
+        { lat: 4, lng: -72, r: 10 },
+        { lat: -8, lng: -38, r: 10 },
+        { lat: -44, lng: -68, r: 8 },
+        // Europe
+        { lat: 48, lng: 5, r: 14 },
+        { lat: 52, lng: 12, r: 10 },
+        { lat: 45, lng: -5, r: 8 },
+        { lat: 40, lng: 0, r: 7 },
+        { lat: 42, lng: 13, r: 8 },
+        { lat: 56, lng: 10, r: 8 },
+        { lat: 60, lng: 20, r: 10 },
+        { lat: 65, lng: 16, r: 8 },
+        { lat: 38, lng: 24, r: 7 },
+        { lat: 55, lng: -5, r: 7 },
+        // Africa
+        { lat: 30, lng: 10, r: 14 },
+        { lat: 18, lng: 15, r: 18 },
+        { lat: 5, lng: 20, r: 16 },
+        { lat: -5, lng: 28, r: 14 },
+        { lat: -18, lng: 30, r: 12 },
+        { lat: -28, lng: 26, r: 10 },
+        { lat: 10, lng: 40, r: 10 },
+        { lat: 0, lng: 10, r: 10 },
+        // Russia/Asia
+        { lat: 58, lng: 40, r: 16 },
+        { lat: 56, lng: 65, r: 18 },
+        { lat: 55, lng: 90, r: 16 },
+        { lat: 58, lng: 110, r: 14 },
+        { lat: 54, lng: 130, r: 12 },
+        { lat: 62, lng: 130, r: 10 },
+        { lat: 64, lng: 160, r: 10 },
+        // China / East Asia
+        { lat: 40, lng: 105, r: 16 },
+        { lat: 32, lng: 110, r: 14 },
+        { lat: 35, lng: 118, r: 10 },
+        { lat: 28, lng: 100, r: 10 },
+        { lat: 45, lng: 90, r: 10 },
+        // India
+        { lat: 22, lng: 78, r: 14 },
+        { lat: 28, lng: 80, r: 10 },
+        { lat: 14, lng: 78, r: 8 },
+        { lat: 10, lng: 76, r: 6 },
+        // Southeast Asia
+        { lat: 15, lng: 105, r: 10 },
+        { lat: 5, lng: 105, r: 8 },
+        { lat: 0, lng: 115, r: 10 },
+        { lat: -5, lng: 120, r: 8 },
+        // Japan/Korea
+        { lat: 36, lng: 138, r: 6 },
+        { lat: 40, lng: 140, r: 5 },
+        { lat: 33, lng: 132, r: 5 },
+        { lat: 37, lng: 127, r: 5 },
+        // Middle East
+        { lat: 26, lng: 46, r: 12 },
+        { lat: 32, lng: 44, r: 8 },
+        { lat: 34, lng: 36, r: 6 },
+        { lat: 22, lng: 56, r: 8 },
+        // Australia
+        { lat: -24, lng: 134, r: 18 },
+        { lat: -30, lng: 140, r: 14 },
+        { lat: -18, lng: 130, r: 12 },
+        { lat: -32, lng: 148, r: 10 },
+        { lat: -20, lng: 145, r: 10 },
+        // Greenland
+        { lat: 72, lng: -42, r: 12 },
+        { lat: 68, lng: -50, r: 10 },
+        // Ice caps hint
+        { lat: -78, lng: 0, r: 18 },
+        { lat: -75, lng: 60, r: 14 },
+        { lat: -75, lng: -60, r: 14 },
     ];
+
+    // Pre-generate noise map for terrain detail
+    const noiseSize = 256;
+    const noiseMap = new Float32Array(noiseSize * noiseSize);
+    // Simple value noise
+    function seedNoise() {
+        const grid = 16;
+        const base = new Float32Array(grid * grid);
+        for (let i = 0; i < base.length; i++) base[i] = Math.random();
+        for (let y = 0; y < noiseSize; y++) {
+            for (let x = 0; x < noiseSize; x++) {
+                const gx = (x / noiseSize) * grid;
+                const gy = (y / noiseSize) * grid;
+                const ix = Math.floor(gx);
+                const iy = Math.floor(gy);
+                const fx = gx - ix;
+                const fy = gy - iy;
+                const sf = (t) => t * t * (3 - 2 * t);
+                const a = base[(iy % grid) * grid + (ix % grid)];
+                const b = base[(iy % grid) * grid + ((ix + 1) % grid)];
+                const c = base[((iy + 1) % grid) * grid + (ix % grid)];
+                const d = base[((iy + 1) % grid) * grid + ((ix + 1) % grid)];
+                const top = a + sf(fx) * (b - a);
+                const bot = c + sf(fx) * (d - c);
+                noiseMap[y * noiseSize + x] = top + sf(fy) * (bot - top);
+            }
+        }
+    }
+    seedNoise();
+
+    function getNoise(u, v) {
+        const x = ((u % 1) + 1) % 1 * (noiseSize - 1);
+        const y = ((v % 1) + 1) % 1 * (noiseSize - 1);
+        const ix = Math.floor(x);
+        const iy = Math.floor(y);
+        return noiseMap[iy * noiseSize + ix] || 0;
+    }
 
     let rotation = 0;
 
@@ -419,6 +528,144 @@ function initEarth() {
         };
     }
 
+    function isLand(lat, lng) {
+        for (const r of landRegions) {
+            const dlat = lat - r.lat;
+            const dlng = lng - r.lng;
+            const d = Math.sqrt(dlat * dlat + dlng * dlng);
+            if (d < r.r) return true;
+        }
+        return false;
+    }
+
+    // Pre-render the earth sphere to an offscreen canvas for performance
+    let offscreen = null;
+    let offCtx = null;
+    let lastR = 0;
+    let frameCount = 0;
+
+    function renderSphere(cx, cy, earthR) {
+        const size = Math.ceil(earthR * 2) + 4;
+        if (!offscreen || offscreen.width !== size) {
+            offscreen = document.createElement('canvas');
+            offscreen.width = size;
+            offscreen.height = size;
+            offCtx = offscreen.getContext('2d');
+        }
+        offCtx.clearRect(0, 0, size, size);
+
+        const oc = earthR + 2;
+        const step = 2; // pixel density — 2px steps for good quality
+
+        for (let py = -earthR; py <= earthR; py += step) {
+            for (let px = -earthR; px <= earthR; px += step) {
+                const dist = Math.sqrt(px * px + py * py);
+                if (dist > earthR) continue;
+
+                // Map pixel to sphere coordinates
+                const pz = Math.sqrt(earthR * earthR - px * px - py * py);
+                const lat = Math.asin(-py / earthR) * 180 / Math.PI;
+                const lng = Math.atan2(px, pz) * 180 / Math.PI - rotation;
+                const normLng = ((lng % 360) + 360) % 360 - 180;
+
+                const depthFactor = pz / earthR;
+                const nVal = getNoise((normLng + 180) / 360, (lat + 90) / 180);
+
+                let r, g, b;
+
+                if (isLand(lat, normLng)) {
+                    // Land with varied terrain
+                    const latAbs = Math.abs(lat);
+                    if (latAbs > 65) {
+                        // Snow/ice caps
+                        r = 210 + nVal * 30;
+                        g = 220 + nVal * 25;
+                        b = 230 + nVal * 20;
+                    } else if (latAbs < 15) {
+                        // Tropical green
+                        r = 30 + nVal * 40;
+                        g = 100 + nVal * 60;
+                        b = 25 + nVal * 30;
+                    } else if (latAbs < 35) {
+                        // Temperate / desert blend
+                        const desertChance = nVal;
+                        if (desertChance > 0.6) {
+                            r = 170 + nVal * 40;
+                            g = 150 + nVal * 30;
+                            b = 90 + nVal * 20;
+                        } else {
+                            r = 50 + nVal * 40;
+                            g = 110 + nVal * 50;
+                            b = 35 + nVal * 25;
+                        }
+                    } else {
+                        // Boreal/temperate
+                        r = 40 + nVal * 35;
+                        g = 85 + nVal * 50;
+                        b = 35 + nVal * 25;
+                    }
+                } else {
+                    // Ocean with depth variation
+                    const depth = 0.4 + nVal * 0.3;
+                    r = 10 + depth * 30;
+                    g = 40 + depth * 60 + depthFactor * 20;
+                    b = 100 + depth * 80 + depthFactor * 40;
+                }
+
+                // Apply lighting (sun from upper-left)
+                const lightX = -0.4, lightY = -0.5, lightZ = 0.76;
+                const nx = px / earthR, ny = -py / earthR, nz = pz / earthR;
+                const diffuse = Math.max(0, nx * lightX + ny * lightY + nz * lightZ);
+                const ambient = 0.3;
+                const light = ambient + (1 - ambient) * diffuse;
+
+                r = Math.min(255, Math.floor(r * light));
+                g = Math.min(255, Math.floor(g * light));
+                b = Math.min(255, Math.floor(b * light));
+
+                offCtx.fillStyle = `rgb(${r},${g},${b})`;
+                offCtx.fillRect(oc + px - step / 2, oc + py - step / 2, step + 0.5, step + 0.5);
+            }
+        }
+
+        // Cloud layer on the offscreen canvas
+        offCtx.save();
+        offCtx.beginPath();
+        offCtx.arc(oc, oc, earthR, 0, Math.PI * 2);
+        offCtx.clip();
+
+        const cloudSpeed = rotation * 0.12;
+        const cloudPatterns = [
+            { lat: 45, lng: 20, r: 24 }, { lat: -8, lng: -40, r: 28 },
+            { lat: 20, lng: 100, r: 22 }, { lat: -35, lng: 70, r: 20 },
+            { lat: 55, lng: -70, r: 22 }, { lat: -5, lng: 150, r: 18 },
+            { lat: 30, lng: -130, r: 24 }, { lat: 10, lng: 60, r: 16 },
+            { lat: -45, lng: -20, r: 18 }, { lat: 60, lng: 80, r: 16 },
+        ];
+        for (const cl of cloudPatterns) {
+            for (let dlat = -cl.r; dlat <= cl.r; dlat += 8) {
+                for (let dlng = -cl.r; dlng <= cl.r; dlng += 8) {
+                    const d = Math.sqrt(dlat * dlat + dlng * dlng);
+                    if (d > cl.r) continue;
+                    const edgeFade = 1 - (d / cl.r);
+                    const p = latLngTo3D(cl.lat + dlat, cl.lng + dlng + cloudSpeed, earthR + 2);
+                    if (p.z < earthR * 0.1) continue;
+                    const sx = oc + p.x;
+                    const sy = oc - p.y;
+                    const df = p.z / earthR;
+                    const alpha = df * edgeFade * 0.2;
+                    offCtx.fillStyle = `rgba(255,255,255,${alpha.toFixed(3)})`;
+                    offCtx.beginPath();
+                    offCtx.arc(sx, sy, 5 * df, 0, Math.PI * 2);
+                    offCtx.fill();
+                }
+            }
+        }
+        offCtx.restore();
+
+        return { size, oc };
+    }
+
     function draw() {
         const w = canvas.width / (window.devicePixelRatio || 1);
         const h = canvas.height / (window.devicePixelRatio || 1);
@@ -428,114 +675,74 @@ function initEarth() {
         const cy = h / 2;
         const earthR = Math.min(w, h) / 2 - 30;
 
-        // Atmosphere glow
-        const atmoGrad = ctx.createRadialGradient(cx, cy, earthR * 0.9, cx, cy, earthR + 35);
-        atmoGrad.addColorStop(0, 'rgba(100, 180, 255, 0.0)');
-        atmoGrad.addColorStop(0.5, 'rgba(80, 160, 255, 0.08)');
-        atmoGrad.addColorStop(0.8, 'rgba(60, 140, 255, 0.04)');
-        atmoGrad.addColorStop(1, 'transparent');
-        ctx.fillStyle = atmoGrad;
+        // Outer atmosphere glow
+        const atmo1 = ctx.createRadialGradient(cx, cy, earthR, cx, cy, earthR + 40);
+        atmo1.addColorStop(0, 'rgba(80, 160, 255, 0.12)');
+        atmo1.addColorStop(0.5, 'rgba(60, 140, 255, 0.05)');
+        atmo1.addColorStop(1, 'transparent');
+        ctx.fillStyle = atmo1;
         ctx.beginPath();
-        ctx.arc(cx, cy, earthR + 35, 0, Math.PI * 2);
+        ctx.arc(cx, cy, earthR + 40, 0, Math.PI * 2);
         ctx.fill();
 
-        // Ocean base
-        const oceanGrad = ctx.createRadialGradient(cx - earthR * 0.3, cy - earthR * 0.3, earthR * 0.1, cx, cy, earthR);
-        oceanGrad.addColorStop(0, '#4a90d9');
-        oceanGrad.addColorStop(0.4, '#2a6ab5');
-        oceanGrad.addColorStop(0.8, '#1a4a85');
-        oceanGrad.addColorStop(1, '#0d2d5a');
-        ctx.fillStyle = oceanGrad;
-        ctx.beginPath();
-        ctx.arc(cx, cy, earthR, 0, Math.PI * 2);
-        ctx.fill();
+        // Render sphere
+        const { size, oc } = renderSphere(cx, cy, earthR);
 
-        // Clip to sphere for land
+        // Clip sphere and draw the offscreen result
         ctx.save();
         ctx.beginPath();
         ctx.arc(cx, cy, earthR, 0, Math.PI * 2);
         ctx.clip();
-
-        // Draw continents
-        for (const c of continents) {
-            // Generate multiple dots per continent for organic shape
-            const steps = 12;
-            for (let dlat = -c.r; dlat <= c.r; dlat += steps) {
-                for (let dlng = -c.r; dlng <= c.r; dlng += steps) {
-                    const dist = Math.sqrt(dlat * dlat + dlng * dlng);
-                    if (dist > c.r) continue;
-
-                    const p = latLngTo3D(c.lat + dlat, c.lng + dlng, earthR);
-                    // Only draw if facing us (z > 0)
-                    if (p.z < 0) continue;
-
-                    const screenX = cx + p.x;
-                    const screenY = cy - p.y;
-
-                    // Size varies with depth
-                    const depthFactor = (p.z / earthR);
-                    const dotSize = (steps * 0.7) * depthFactor;
-
-                    // Color varies slightly
-                    const brightness = 0.3 + depthFactor * 0.7;
-                    const g1 = Math.floor(120 + brightness * 80);
-                    const g2 = Math.floor(80 + brightness * 60);
-                    ctx.fillStyle = `rgb(${g2}, ${g1}, ${g2 - 20})`;
-                    ctx.beginPath();
-                    ctx.arc(screenX, screenY, Math.max(dotSize, 2), 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-        }
-
-        // Cloud layer - subtle white patches
-        const cloudSeeds = [
-            { lat: 40, lng: 30, r: 20 },
-            { lat: -10, lng: -30, r: 25 },
-            { lat: 20, lng: 100, r: 22 },
-            { lat: -30, lng: 70, r: 18 },
-            { lat: 50, lng: -60, r: 20 },
-            { lat: -5, lng: 150, r: 16 },
-            { lat: 30, lng: -120, r: 22 },
-        ];
-        for (const cl of cloudSeeds) {
-            const cloudLng = cl.lng + rotation * 0.15; // clouds move slightly slower
-            for (let dlat = -cl.r; dlat <= cl.r; dlat += 15) {
-                for (let dlng = -cl.r; dlng <= cl.r; dlng += 15) {
-                    if (Math.sqrt(dlat * dlat + dlng * dlng) > cl.r) continue;
-                    const p = latLngTo3D(cl.lat + dlat, cloudLng + dlng, earthR + 1);
-                    if (p.z < earthR * 0.2) continue;
-                    const sx = cx + p.x;
-                    const sy = cy - p.y;
-                    const df = p.z / earthR;
-                    ctx.fillStyle = `rgba(255, 255, 255, ${(df * 0.15).toFixed(2)})`;
-                    ctx.beginPath();
-                    ctx.arc(sx, sy, 6 * df, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-        }
-
+        ctx.drawImage(offscreen, cx - oc, cy - oc);
         ctx.restore();
 
         // Specular highlight
-        const specGrad = ctx.createRadialGradient(cx - earthR * 0.35, cy - earthR * 0.35, 0, cx, cy, earthR);
-        specGrad.addColorStop(0, 'rgba(255, 255, 255, 0.12)');
-        specGrad.addColorStop(0.3, 'rgba(255, 255, 255, 0.04)');
-        specGrad.addColorStop(1, 'rgba(0, 0, 0, 0.2)');
+        const specGrad = ctx.createRadialGradient(
+            cx - earthR * 0.35, cy - earthR * 0.35, 0,
+            cx - earthR * 0.1, cy - earthR * 0.1, earthR * 0.8
+        );
+        specGrad.addColorStop(0, 'rgba(255, 255, 255, 0.18)');
+        specGrad.addColorStop(0.4, 'rgba(255, 255, 255, 0.03)');
+        specGrad.addColorStop(1, 'transparent');
         ctx.fillStyle = specGrad;
         ctx.beginPath();
         ctx.arc(cx, cy, earthR, 0, Math.PI * 2);
         ctx.fill();
 
-        // Edge rim light
-        ctx.strokeStyle = 'rgba(120, 180, 255, 0.2)';
+        // Terminator shadow (dark side)
+        const shadowGrad = ctx.createRadialGradient(
+            cx + earthR * 0.5, cy + earthR * 0.4, earthR * 0.2,
+            cx, cy, earthR
+        );
+        shadowGrad.addColorStop(0, 'rgba(0, 0, 20, 0.35)');
+        shadowGrad.addColorStop(0.6, 'rgba(0, 0, 20, 0.1)');
+        shadowGrad.addColorStop(1, 'transparent');
+        ctx.fillStyle = shadowGrad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, earthR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Fresnel rim light
+        ctx.strokeStyle = 'rgba(100, 180, 255, 0.25)';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(cx, cy, earthR, 0, Math.PI * 2);
         ctx.stroke();
 
-        rotation += 0.15;
+        // Inner bright rim on the lit side
+        const rimGrad = ctx.createRadialGradient(
+            cx - earthR * 0.4, cy - earthR * 0.3, earthR * 0.7,
+            cx, cy, earthR
+        );
+        rimGrad.addColorStop(0, 'transparent');
+        rimGrad.addColorStop(0.9, 'transparent');
+        rimGrad.addColorStop(1, 'rgba(120, 190, 255, 0.15)');
+        ctx.fillStyle = rimGrad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, earthR, 0, Math.PI * 2);
+        ctx.fill();
+
+        rotation += 0.12;
         requestAnimationFrame(draw);
     }
 

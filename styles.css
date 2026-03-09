@@ -382,6 +382,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .section-header { margin-bottom: 40px; }
 
+#experience .section-header,
+#experience .section-description {
+    text-align: center;
+}
+
 .section-sub {
     font-size: 0.9rem;
     font-weight: 500;
