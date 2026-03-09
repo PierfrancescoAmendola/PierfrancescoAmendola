@@ -20,7 +20,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
 
     <!-- Lucide Icons -->
@@ -30,32 +30,60 @@
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-logo">PA</div>
+            <div class="preloader-bar"><div class="preloader-fill"></div></div>
+            <div class="preloader-text">Loading Experience...</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#hero" class="nav-logo">PA</a>
+            <a href="#hero" class="nav-logo" data-magnetic>
+                <span class="logo-text">PA</span>
+                <span class="logo-dot"></span>
+            </a>
             <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
+                <a href="#about" data-magnetic>About</a>
+                <a href="#experience" data-magnetic>Experience</a>
+                <a href="#projects" data-magnetic>Projects</a>
+                <a href="#skills" data-magnetic>Skills</a>
+                <a href="#contact" data-magnetic>Contact</a>
             </div>
-            <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-right">
+                <div class="nav-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Available for hire</span>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <div class="mobile-menu-bg"></div>
+        <div class="mobile-menu-content">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
     </div>
 
     <!-- Hero Section -->
@@ -64,64 +92,115 @@
             <div class="gradient-orb orb-1"></div>
             <div class="gradient-orb orb-2"></div>
             <div class="gradient-orb orb-3"></div>
+            <div class="hero-grid-bg"></div>
+            <div class="aurora"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-badge">
+            <div class="hero-badge" data-animate="fade-up" data-delay="0.2">
+                <span class="badge-pulse"></span>
                 <i data-lucide="apple" class="badge-icon"></i>
                 <span>Apple Developer</span>
             </div>
-            <h1 class="hero-title">
+            <h1 class="hero-title" data-animate="fade-up" data-delay="0.4">
                 <span class="greeting">Hello, I'm</span>
-                <span class="name">Pierfrancesco<br>Amendola</span>
+                <span class="name glitch-text" data-text="Pierfrancesco Amendola">
+                    <span class="name-line">Pierfrancesco</span>
+                    <span class="name-line">Amendola</span>
+                </span>
             </h1>
-            <p class="hero-subtitle">iOS Developer • CS Student • AI Enthusiast</p>
-            <p class="hero-description">
+            <div class="hero-roles" data-animate="fade-up" data-delay="0.6">
+                <span class="role-item active">iOS Developer</span>
+                <span class="role-separator">/</span>
+                <span class="role-item">CS Student</span>
+                <span class="role-separator">/</span>
+                <span class="role-item">AI Enthusiast</span>
+            </div>
+            <p class="hero-description" data-animate="fade-up" data-delay="0.8">
                 Passionate about creating innovative tools for medicine and university life through advanced software
-                and AI.
-                Currently pursuing a Bachelor's in Computer Science at University of Naples Federico II with 5+ apps
+                and AI. Currently pursuing a Bachelor's in Computer Science at University of Naples Federico II with 5+ apps
                 published on the App Store.
             </p>
-            <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">
-                    <i data-lucide="rocket"></i>
-                    View My Work
+            <div class="hero-cta" data-animate="fade-up" data-delay="1.0">
+                <a href="#projects" class="btn btn-primary magnetic-btn">
+                    <span class="btn-bg"></span>
+                    <span class="btn-content">
+                        <i data-lucide="rocket"></i>
+                        View My Work
+                    </span>
                 </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <i data-lucide="mail"></i>
-                    Get in Touch
+                <a href="#contact" class="btn btn-secondary magnetic-btn">
+                    <span class="btn-border"></span>
+                    <span class="btn-content">
+                        <i data-lucide="mail"></i>
+                        Get in Touch
+                    </span>
                 </a>
             </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">5+</span>
+            <div class="hero-stats" data-animate="fade-up" data-delay="1.2">
+                <div class="stat" data-tilt>
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-plus">+</span>
                     <span class="stat-label">Apps Published</span>
+                    <div class="stat-glow"></div>
                 </div>
-                <div class="stat">
-                    <span class="stat-number">25.4</span>
+                <div class="stat-divider"></div>
+                <div class="stat" data-tilt>
+                    <span class="stat-number" data-count="25.4" data-decimal="true">0</span>
                     <span class="stat-label">GPA / 30</span>
+                    <div class="stat-glow"></div>
                 </div>
-                <div class="stat">
-                    <span class="stat-number">5+</span>
+                <div class="stat-divider"></div>
+                <div class="stat" data-tilt>
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-plus">+</span>
                     <span class="stat-label">Languages</span>
+                    <div class="stat-glow"></div>
                 </div>
             </div>
         </div>
         <div class="scroll-indicator">
-            <i data-lucide="chevron-down"></i>
+            <div class="mouse">
+                <div class="mouse-wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+        <div class="hero-marquee">
+            <div class="marquee-track">
+                <span>SWIFT</span><span>•</span>
+                <span>REACT NATIVE</span><span>•</span>
+                <span>PYTHON</span><span>•</span>
+                <span>JAVA</span><span>•</span>
+                <span>C++</span><span>•</span>
+                <span>SWIFTUI</span><span>•</span>
+                <span>TYPESCRIPT</span><span>•</span>
+                <span>AI/ML</span><span>•</span>
+                <span>SWIFT</span><span>•</span>
+                <span>REACT NATIVE</span><span>•</span>
+                <span>PYTHON</span><span>•</span>
+                <span>JAVA</span><span>•</span>
+                <span>C++</span><span>•</span>
+                <span>SWIFTUI</span><span>•</span>
+                <span>TYPESCRIPT</span><span>•</span>
+                <span>AI/ML</span><span>•</span>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section about">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-number">01</span>
                 <span class="section-label">About Me</span>
-                <h2 class="section-title">Driven by Purpose</h2>
+                <h2 class="section-title reveal-text">Driven by Purpose</h2>
+                <div class="section-line"></div>
             </div>
             <div class="about-grid">
-                <div class="about-content">
+                <div class="about-content" data-animate="fade-right">
                     <blockquote class="about-quote">
-                        "I want my time on this earth to be remembered; I want to write THE history."
+                        <span class="quote-mark">"</span>
+                        I want my time on this earth to be remembered; I want to write THE history.
+                        <span class="quote-mark">"</span>
                     </blockquote>
                     <p class="about-text">
                         Computer Science student with a passion for software development and artificial intelligence.
@@ -135,42 +214,50 @@
                         and algorithm design to make a tangible impact on the world.
                     </p>
                     <div class="about-highlights">
-                        <div class="highlight-card">
-                            <i data-lucide="graduation-cap"></i>
+                        <div class="highlight-card" data-tilt>
+                            <div class="highlight-icon-wrap">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
                             <div>
                                 <h4>University of Naples Federico II</h4>
                                 <p>Bachelor's in Computer Science</p>
                             </div>
+                            <div class="highlight-shine"></div>
                         </div>
-                        <div class="highlight-card">
-                            <i data-lucide="building-2"></i>
+                        <div class="highlight-card" data-tilt>
+                            <div class="highlight-icon-wrap">
+                                <i data-lucide="building-2"></i>
+                            </div>
                             <div>
                                 <h4>CNR Bioinformatics Internship</h4>
                                 <p>AI for Medical Image Analysis</p>
                             </div>
+                            <div class="highlight-shine"></div>
                         </div>
                     </div>
                 </div>
-                <div class="about-visual">
-                    <div class="visual-card">
+                <div class="about-visual" data-animate="fade-left">
+                    <div class="visual-card glass-card" data-tilt>
+                        <div class="card-gradient-border"></div>
                         <div class="location-badge">
                             <i data-lucide="map-pin"></i>
                             <span>Naples, Italy</span>
                         </div>
                         <div class="languages-grid">
-                            <div class="lang-item">🇮🇹 Italian</div>
-                            <div class="lang-item">🇬🇧 English</div>
-                            <div class="lang-item">🇪🇸 Spanish</div>
-                            <div class="lang-item">🇫🇷 French</div>
-                            <div class="lang-item">🇩🇪 German</div>
-                            <div class="lang-item">🇧🇷 Portuguese</div>
+                            <div class="lang-item" data-animate="scale-in" data-delay="0.1">🇮🇹 Italian</div>
+                            <div class="lang-item" data-animate="scale-in" data-delay="0.2">🇬🇧 English</div>
+                            <div class="lang-item" data-animate="scale-in" data-delay="0.3">🇪🇸 Spanish</div>
+                            <div class="lang-item" data-animate="scale-in" data-delay="0.4">🇫🇷 French</div>
+                            <div class="lang-item" data-animate="scale-in" data-delay="0.5">🇩🇪 German</div>
+                            <div class="lang-item" data-animate="scale-in" data-delay="0.6">🇧🇷 Portuguese</div>
                         </div>
                         <div class="interests-pills">
-                            <span class="pill">🎹 Pianist</span>
-                            <span class="pill">🎭 Theatre</span>
-                            <span class="pill">📚 Writer</span>
-                            <span class="pill">🤖 AI</span>
+                            <span class="pill floating-pill" style="--float-delay: 0s">🎹 Pianist</span>
+                            <span class="pill floating-pill" style="--float-delay: 0.5s">🎭 Theatre</span>
+                            <span class="pill floating-pill" style="--float-delay: 1s">📚 Writer</span>
+                            <span class="pill floating-pill" style="--float-delay: 1.5s">🤖 AI</span>
                         </div>
+                        <div class="visual-card-orb"></div>
                     </div>
                 </div>
             </div>
@@ -180,55 +267,68 @@
     <!-- Experience Section -->
     <section id="experience" class="section experience">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-number">02</span>
                 <span class="section-label">Experience</span>
-                <h2 class="section-title">Education & Certifications</h2>
+                <h2 class="section-title reveal-text">Education & Certifications</h2>
+                <div class="section-line"></div>
             </div>
 
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                <div class="timeline-glow"></div>
+                <div class="timeline-item" data-animate="fade-right">
+                    <div class="timeline-marker">
+                        <span class="marker-pulse"></span>
+                    </div>
+                    <div class="timeline-content glass-card" data-tilt>
                         <span class="timeline-date">2023 - Present</span>
                         <h3>Bachelor's in Computer Science</h3>
                         <p class="timeline-org">University of Naples Federico II</p>
                         <p>GPA: 25.42/30 (2 exams remaining)</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                <div class="timeline-item" data-animate="fade-right">
+                    <div class="timeline-marker">
+                        <span class="marker-pulse"></span>
+                    </div>
+                    <div class="timeline-content glass-card" data-tilt>
                         <span class="timeline-date">2025</span>
                         <h3>JavaScript Algorithms & Data Structures</h3>
                         <p class="timeline-org">freeCodeCamp</p>
                         <a href="https://www.freecodecamp.org/certification/pierfrancesco05/javascript-algorithms-and-data-structures-v8"
-                            target="_blank" class="cert-link">
+                            target="_blank" rel="noopener noreferrer" class="cert-link">
                             <i data-lucide="external-link"></i>
                             View Certificate
                         </a>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                <div class="timeline-item" data-animate="fade-right">
+                    <div class="timeline-marker">
+                        <span class="marker-pulse"></span>
+                    </div>
+                    <div class="timeline-content glass-card" data-tilt>
                         <span class="timeline-date">2023</span>
                         <h3>Cisco Cybersecurity Scholarship</h3>
                         <p class="timeline-org">Cisco Networking Academy</p>
                         <p>Advanced training in threat analysis and network defense</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                <div class="timeline-item" data-animate="fade-right">
+                    <div class="timeline-marker">
+                        <span class="marker-pulse"></span>
+                    </div>
+                    <div class="timeline-content glass-card" data-tilt>
                         <span class="timeline-date">2022</span>
                         <h3>EIPASS 7 Modules User</h3>
                         <p class="timeline-org">European Informatics Passport</p>
                         <p>Digital competence certification across ICT areas</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                <div class="timeline-item" data-animate="fade-right">
+                    <div class="timeline-marker">
+                        <span class="marker-pulse"></span>
+                    </div>
+                    <div class="timeline-content glass-card" data-tilt>
                         <span class="timeline-date">2018 - 2023</span>
                         <h3>High School Diploma - Applied Sciences</h3>
                         <p class="timeline-org">L.S.S. Francesco Saverio Nitti</p>
@@ -240,20 +340,30 @@
 
     <!-- Projects Section -->
     <section id="projects" class="section projects">
+        <div class="projects-bg-pattern"></div>
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-number">03</span>
                 <span class="section-label">Portfolio</span>
-                <h2 class="section-title">Featured Projects</h2>
+                <h2 class="section-title reveal-text">Featured Projects</h2>
+                <div class="section-line"></div>
             </div>
 
             <div class="projects-tabs">
-                <button class="tab-btn active" data-tab="published">Published Apps</button>
-                <button class="tab-btn" data-tab="academic">Academic Projects</button>
+                <button class="tab-btn active" data-tab="published">
+                    <span class="tab-bg"></span>
+                    <span class="tab-text">Published Apps</span>
+                </button>
+                <button class="tab-btn" data-tab="academic">
+                    <span class="tab-bg"></span>
+                    <span class="tab-text">Academic Projects</span>
+                </button>
             </div>
 
             <div class="projects-grid" id="published">
                 <!-- UniStudy Italia -->
-                <article class="project-card featured">
+                <article class="project-card featured" data-tilt>
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
                         <div class="project-icon"
                             style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
@@ -262,7 +372,7 @@
                         <div class="project-badges">
                             <span class="badge ios">iOS</span>
                             <span class="badge android">Android</span>
-                            <span class="badge live">Live on App Store</span>
+                            <span class="badge live"><span class="live-dot"></span>Live</span>
                         </div>
                     </div>
                     <h3>UniStudy Italia</h3>
@@ -284,14 +394,16 @@
                         <span>Maps</span>
                     </div>
                     <a href="https://apps.apple.com/us/app/unistudy-italia/id6757367573" target="_blank"
-                        class="project-link">
+                        rel="noopener noreferrer" class="project-link magnetic-btn">
                         <i data-lucide="app-window"></i>
                         View on App Store
+                        <i data-lucide="arrow-up-right" class="link-arrow"></i>
                     </a>
                 </article>
 
                 <!-- SubTracker -->
-                <article class="project-card featured">
+                <article class="project-card featured" data-tilt>
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
                         <div class="project-icon"
                             style="background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);">
@@ -299,7 +411,7 @@
                         </div>
                         <div class="project-badges">
                             <span class="badge ios">iOS</span>
-                            <span class="badge live">Live on App Store</span>
+                            <span class="badge live"><span class="live-dot"></span>Live</span>
                         </div>
                     </div>
                     <h3>SubTracker</h3>
@@ -321,14 +433,16 @@
                         <span>iCloud</span>
                     </div>
                     <a href="https://apps.apple.com/us/app/subtracker/id6757951413" target="_blank"
-                        class="project-link">
+                        rel="noopener noreferrer" class="project-link magnetic-btn">
                         <i data-lucide="app-window"></i>
                         View on App Store
+                        <i data-lucide="arrow-up-right" class="link-arrow"></i>
                     </a>
                 </article>
 
                 <!-- UniStats -->
-                <article class="project-card featured">
+                <article class="project-card featured" data-tilt>
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
                         <div class="project-icon"
                             style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
@@ -336,7 +450,7 @@
                         </div>
                         <div class="project-badges">
                             <span class="badge ios">iOS</span>
-                            <span class="badge live">Live on App Store</span>
+                            <span class="badge live"><span class="live-dot"></span>Live</span>
                         </div>
                     </div>
                     <h3>UniStats</h3>
@@ -356,14 +470,17 @@
                         <span>SwiftData</span>
                         <span>Swift Charts</span>
                     </div>
-                    <a href="https://apps.apple.com/us/app/unistats/id6756898737" target="_blank" class="project-link">
+                    <a href="https://apps.apple.com/us/app/unistats/id6756898737" target="_blank"
+                        rel="noopener noreferrer" class="project-link magnetic-btn">
                         <i data-lucide="app-window"></i>
                         View on App Store
+                        <i data-lucide="arrow-up-right" class="link-arrow"></i>
                     </a>
                 </article>
 
                 <!-- FreshCheck -->
-                <article class="project-card featured">
+                <article class="project-card featured" data-tilt>
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
                         <div class="project-icon"
                             style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
@@ -372,7 +489,7 @@
                         <div class="project-badges">
                             <span class="badge ios">iOS</span>
                             <span class="badge android">Android</span>
-                            <span class="badge live">Live on App Store</span>
+                            <span class="badge live"><span class="live-dot"></span>Live</span>
                         </div>
                     </div>
                     <h3>FreshCheck</h3>
@@ -393,14 +510,16 @@
                         <span>Swift Charts</span>
                     </div>
                     <a href="https://apps.apple.com/it/app/freshcheck/id6757205025" target="_blank"
-                        class="project-link">
+                        rel="noopener noreferrer" class="project-link magnetic-btn">
                         <i data-lucide="app-window"></i>
                         View on App Store
+                        <i data-lucide="arrow-up-right" class="link-arrow"></i>
                     </a>
                 </article>
 
                 <!-- Ripassa -->
-                <article class="project-card featured">
+                <article class="project-card featured" data-tilt>
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
                         <div class="project-icon"
                             style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
@@ -408,7 +527,7 @@
                         </div>
                         <div class="project-badges">
                             <span class="badge ios">iOS</span>
-                            <span class="badge live">Live on App Store</span>
+                            <span class="badge live"><span class="live-dot"></span>Live</span>
                         </div>
                     </div>
                     <h3>Ripassa</h3>
@@ -427,14 +546,16 @@
                         <span>SwiftUI</span>
                     </div>
                     <a href="https://apps.apple.com/us/app/ripassa-flashcard-minimal/id6756633023" target="_blank"
-                        class="project-link">
+                        rel="noopener noreferrer" class="project-link magnetic-btn">
                         <i data-lucide="app-window"></i>
                         View on App Store
+                        <i data-lucide="arrow-up-right" class="link-arrow"></i>
                     </a>
                 </article>
 
                 <!-- Federico II App -->
-                <article class="project-card featured coming-soon">
+                <article class="project-card featured coming-soon" data-tilt>
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
                         <div class="project-icon"
                             style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
@@ -459,13 +580,17 @@
                         <span>React Native</span>
                         <span>TypeScript</span>
                     </div>
-                    <span class="project-wip">🚧 In Development</span>
+                    <span class="project-wip">
+                        <span class="wip-pulse"></span>
+                        In Development
+                    </span>
                 </article>
             </div>
 
             <div class="projects-grid hidden" id="academic">
                 <!-- Multiplayer Battleship -->
-                <article class="project-card featured">
+                <article class="project-card featured" data-tilt>
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
                         <div class="project-icon"
                             style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);">
@@ -495,7 +620,8 @@
                 </article>
 
                 <!-- Software Engineering Project -->
-                <article class="project-card featured">
+                <article class="project-card featured" data-tilt>
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
                         <div class="project-icon"
                             style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
@@ -525,7 +651,8 @@
                 </article>
 
                 <!-- FoodLab -->
-                <article class="project-card">
+                <article class="project-card" data-tilt>
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
                         <div class="project-icon"
                             style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
@@ -548,7 +675,8 @@
                 </article>
 
                 <!-- SetVec -->
-                <article class="project-card">
+                <article class="project-card" data-tilt>
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
                         <div class="project-icon"
                             style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
@@ -575,95 +703,128 @@
     <!-- Skills Section -->
     <section id="skills" class="section skills">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-number">04</span>
                 <span class="section-label">Expertise</span>
-                <h2 class="section-title">Technical Skills</h2>
+                <h2 class="section-title reveal-text">Technical Skills</h2>
+                <div class="section-line"></div>
             </div>
 
             <div class="skills-grid">
-                <div class="skill-category">
+                <div class="skill-category glass-card" data-tilt data-animate="fade-up" data-delay="0.1">
                     <div class="skill-header">
-                        <i data-lucide="code-2"></i>
+                        <div class="skill-icon-wrap">
+                            <i data-lucide="code-2"></i>
+                        </div>
                         <h3>Languages</h3>
                     </div>
                     <div class="skill-items">
                         <div class="skill-item">
-                            <span class="skill-name">Swift</span>
+                            <div class="skill-meta">
+                                <span class="skill-name">Swift</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
                             <div class="skill-bar">
-                                <div class="skill-fill" style="width: 90%"></div>
+                                <div class="skill-fill" style="width: 90%">
+                                    <span class="skill-fill-glow"></span>
+                                </div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">Python</span>
+                            <div class="skill-meta">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
                             <div class="skill-bar">
-                                <div class="skill-fill" style="width: 85%"></div>
+                                <div class="skill-fill" style="width: 85%">
+                                    <span class="skill-fill-glow"></span>
+                                </div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">Java</span>
+                            <div class="skill-meta">
+                                <span class="skill-name">Java</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
                             <div class="skill-bar">
-                                <div class="skill-fill" style="width: 85%"></div>
+                                <div class="skill-fill" style="width: 85%">
+                                    <span class="skill-fill-glow"></span>
+                                </div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">TypeScript / JavaScript</span>
+                            <div class="skill-meta">
+                                <span class="skill-name">TypeScript / JavaScript</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
                             <div class="skill-bar">
-                                <div class="skill-fill" style="width: 80%"></div>
+                                <div class="skill-fill" style="width: 80%">
+                                    <span class="skill-fill-glow"></span>
+                                </div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">C / C++</span>
+                            <div class="skill-meta">
+                                <span class="skill-name">C / C++</span>
+                                <span class="skill-percent">75%</span>
+                            </div>
                             <div class="skill-bar">
-                                <div class="skill-fill" style="width: 75%"></div>
+                                <div class="skill-fill" style="width: 75%">
+                                    <span class="skill-fill-glow"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category glass-card" data-tilt data-animate="fade-up" data-delay="0.2">
                     <div class="skill-header">
-                        <i data-lucide="smartphone"></i>
+                        <div class="skill-icon-wrap">
+                            <i data-lucide="smartphone"></i>
+                        </div>
                         <h3>Mobile Development</h3>
                     </div>
                     <div class="skill-tags">
-                        <span>SwiftUI</span>
-                        <span>UIKit</span>
-                        <span>Swift Charts</span>
-                        <span>SwiftData</span>
-                        <span>React Native</span>
-                        <span>Expo</span>
+                        <span class="skill-tag-animated">SwiftUI</span>
+                        <span class="skill-tag-animated">UIKit</span>
+                        <span class="skill-tag-animated">Swift Charts</span>
+                        <span class="skill-tag-animated">SwiftData</span>
+                        <span class="skill-tag-animated">React Native</span>
+                        <span class="skill-tag-animated">Expo</span>
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category glass-card" data-tilt data-animate="fade-up" data-delay="0.3">
                     <div class="skill-header">
-                        <i data-lucide="wrench"></i>
+                        <div class="skill-icon-wrap">
+                            <i data-lucide="wrench"></i>
+                        </div>
                         <h3>Tools & Technologies</h3>
                     </div>
                     <div class="skill-tags">
-                        <span>Git</span>
-                        <span>GitHub</span>
-                        <span>GitHubPages</span>
-                        <span>Docker</span>
-                        <span>Xcode</span>
-                        <span>VS Code</span>
-                        <span>Android Studio</span>
-                        <span>Android Studio</span>
-                        <span>Antigravity</span>
+                        <span class="skill-tag-animated">Git</span>
+                        <span class="skill-tag-animated">GitHub</span>
+                        <span class="skill-tag-animated">GitHub Pages</span>
+                        <span class="skill-tag-animated">Docker</span>
+                        <span class="skill-tag-animated">Xcode</span>
+                        <span class="skill-tag-animated">VS Code</span>
+                        <span class="skill-tag-animated">Android Studio</span>
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category glass-card" data-tilt data-animate="fade-up" data-delay="0.4">
                     <div class="skill-header">
-                        <i data-lucide="database"></i>
+                        <div class="skill-icon-wrap">
+                            <i data-lucide="database"></i>
+                        </div>
                         <h3>Backend & Data</h3>
                     </div>
                     <div class="skill-tags">
-                        <span>Spring Boot</span>
-                        <span>PostgreSQL</span>
-                        <span>REST APIs</span>
-                        <span>JWT</span>
-                        <span>Python AI/ML</span>
+                        <span class="skill-tag-animated">Spring Boot</span>
+                        <span class="skill-tag-animated">PostgreSQL</span>
+                        <span class="skill-tag-animated">REST APIs</span>
+                        <span class="skill-tag-animated">JWT</span>
+                        <span class="skill-tag-animated">Python AI/ML</span>
                     </div>
                 </div>
             </div>
@@ -673,44 +834,61 @@
     <!-- Achievements Section -->
     <section id="achievements" class="section achievements">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-number">05</span>
                 <span class="section-label">Beyond Code</span>
-                <h2 class="section-title">Artistic & Cultural Achievements</h2>
+                <h2 class="section-title reveal-text">Artistic & Cultural</h2>
+                <div class="section-line"></div>
             </div>
 
             <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">📚</div>
+                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.1">
+                    <div class="achievement-icon-wrap">
+                        <span class="achievement-icon">📚</span>
+                    </div>
                     <h4>Published Author</h4>
-                    <p>Co-author of "Arcobaleni e Nuvole" with University Federico II. 4 children's books on Amazon KDP.
-                    </p>
+                    <p>Co-author of "Arcobaleni e Nuvole" with University Federico II. 4 children's books on Amazon KDP.</p>
+                    <div class="achievement-card-shine"></div>
                 </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">🎹</div>
+                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.2">
+                    <div class="achievement-icon-wrap">
+                        <span class="achievement-icon">🎹</span>
+                    </div>
                     <h4>Musician</h4>
-                    <p>Professional pianist since age 3. Guitar & violin instructor. Artistic Director for local music
-                        projects.</p>
+                    <p>Professional pianist since age 3. Guitar & violin instructor. Artistic Director for local music projects.</p>
+                    <div class="achievement-card-shine"></div>
                 </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">🎭</div>
+                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.3">
+                    <div class="achievement-icon-wrap">
+                        <span class="achievement-icon">🎭</span>
+                    </div>
                     <h4>Theatre Actor</h4>
                     <p>Member of Tricca Ballacche Theatre Company. Performed at Auditorium di Bagnoli.</p>
+                    <div class="achievement-card-shine"></div>
                 </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">🏆</div>
+                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.4">
+                    <div class="achievement-icon-wrap">
+                        <span class="achievement-icon">🏆</span>
+                    </div>
                     <h4>Competition Winner</h4>
-                    <p>3rd place in "Adotta un filosofo e uno scienziato" national competition with original cinematic
-                        projects.</p>
+                    <p>3rd place in "Adotta un filosofo e uno scienziato" national competition with original cinematic projects.</p>
+                    <div class="achievement-card-shine"></div>
                 </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">🎓</div>
+                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.5">
+                    <div class="achievement-icon-wrap">
+                        <span class="achievement-icon">🎓</span>
+                    </div>
                     <h4>Berlin Scholarship</h4>
                     <p>Awarded merit scholarship at Freie Universität Berlin (declined to complete degree in Italy).</p>
+                    <div class="achievement-card-shine"></div>
                 </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">🎼</div>
+                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.6">
+                    <div class="achievement-icon-wrap">
+                        <span class="achievement-icon">🎼</span>
+                    </div>
                     <h4>Chamber Music</h4>
                     <p>International Chamber Music Workshop with professors from Paris Conservatory and Avellino.</p>
+                    <div class="achievement-card-shine"></div>
                 </div>
             </div>
         </div>
@@ -719,57 +897,67 @@
     <!-- Contact Section -->
     <section id="contact" class="section contact">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-number">06</span>
                 <span class="section-label">Let's Connect</span>
-                <h2 class="section-title">Get in Touch</h2>
+                <h2 class="section-title reveal-text">Get in Touch</h2>
+                <div class="section-line"></div>
             </div>
 
             <div class="contact-grid">
-                <div class="contact-info">
+                <div class="contact-info" data-animate="fade-right">
                     <p class="contact-intro">
                         I'm always open to discussing new opportunities, collaborations,
                         or just having a conversation about technology and innovation.
                     </p>
 
                     <div class="contact-cards">
-                        <a href="mailto:checcofran717@gmail.com" class="contact-card">
+                        <a href="mailto:checcofran717@gmail.com" class="contact-card glass-card magnetic-btn">
                             <i data-lucide="mail"></i>
                             <div>
                                 <span class="label">Email</span>
                                 <span class="value">checcofran717@gmail.com</span>
                             </div>
+                            <div class="contact-card-shine"></div>
                         </a>
-                        <a href="tel:+393703394489" class="contact-card">
+                        <a href="tel:+393703394489" class="contact-card glass-card magnetic-btn">
                             <i data-lucide="phone"></i>
                             <div>
                                 <span class="label">Phone</span>
                                 <span class="value">+39 370 339 4489</span>
                             </div>
+                            <div class="contact-card-shine"></div>
                         </a>
-                        <a href="https://github.com/PierfrancescoAmendola" target="_blank" class="contact-card">
+                        <a href="https://github.com/PierfrancescoAmendola" target="_blank" rel="noopener noreferrer" class="contact-card glass-card magnetic-btn">
                             <i data-lucide="github"></i>
                             <div>
                                 <span class="label">GitHub</span>
                                 <span class="value">PierfrancescoAmendola</span>
                             </div>
+                            <div class="contact-card-shine"></div>
                         </a>
-                        <a href="https://www.instagram.com/pierfrancesco.amendola" target="_blank" class="contact-card">
+                        <a href="https://www.instagram.com/pierfrancesco.amendola" target="_blank" rel="noopener noreferrer" class="contact-card glass-card magnetic-btn">
                             <i data-lucide="instagram"></i>
                             <div>
                                 <span class="label">Instagram</span>
                                 <span class="value">@pierfrancesco.amendola</span>
                             </div>
+                            <div class="contact-card-shine"></div>
                         </a>
                     </div>
                 </div>
 
-                <div class="contact-cta">
+                <div class="contact-cta" data-animate="fade-left">
                     <div class="cta-card">
+                        <div class="cta-card-bg"></div>
                         <h3>Looking for an iOS Developer?</h3>
                         <p>I'm passionate about creating beautiful, functional apps that make a difference.</p>
-                        <a href="https://linktr.ee/PierfrancescoAmendola" target="_blank" class="btn btn-primary">
-                            <i data-lucide="link"></i>
-                            View All Links
+                        <a href="https://linktr.ee/PierfrancescoAmendola" target="_blank" rel="noopener noreferrer" class="btn btn-primary magnetic-btn">
+                            <span class="btn-bg"></span>
+                            <span class="btn-content">
+                                <i data-lucide="link"></i>
+                                View All Links
+                            </span>
                         </a>
                     </div>
                 </div>
@@ -782,23 +970,26 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="nav-logo">PA</span>
-                    <p>Crafted with ❤️ in Naples, Italy</p>
+                    <span class="nav-logo">
+                        <span class="logo-text">PA</span>
+                        <span class="logo-dot"></span>
+                    </span>
+                    <p>Crafted with passion in Naples, Italy</p>
                 </div>
                 <div class="footer-links">
-                    <a href="https://github.com/PierfrancescoAmendola" target="_blank">
+                    <a href="https://github.com/PierfrancescoAmendola" target="_blank" rel="noopener noreferrer" class="magnetic-btn">
                         <i data-lucide="github"></i>
                     </a>
-                    <a href="https://www.instagram.com/pierfrancesco.amendola" target="_blank">
+                    <a href="https://www.instagram.com/pierfrancesco.amendola" target="_blank" rel="noopener noreferrer" class="magnetic-btn">
                         <i data-lucide="instagram"></i>
                     </a>
-                    <a href="mailto:checcofran717@gmail.com">
+                    <a href="mailto:checcofran717@gmail.com" class="magnetic-btn">
                         <i data-lucide="mail"></i>
                     </a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Pierfrancesco Amendola. All rights reserved.</p>
+                <p>&copy; 2025 Pierfrancesco Amendola. All rights reserved.</p>
             </div>
         </div>
     </footer>
