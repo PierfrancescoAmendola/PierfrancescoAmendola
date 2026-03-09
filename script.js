@@ -1,225 +1,215 @@
 // ===================================
-// PIERFRANCESCO AMENDOLA — SPECTACULAR PORTFOLIO JS
+// PIERFRANCESCO AMENDOLA - 3D PORTFOLIO
+// Inspired by ladunjexa/reactjs18-3d-portfolio
 // ===================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    initPreloader();
-    initCursor();
-    initParticles();
-    initNavigation();
-    initProjectTabs();
-    initScrollAnimations();
-    initCounters();
-    initRoleRotation();
-    initCardGlow();
-    initTiltEffect();
     lucide.createIcons();
+    initStars();
+    initNavigation();
+    initScrollAnimations();
+    initTiltEffect();
+    initTextRotation();
+    initProjectTabs();
 });
 
-// ===================================
-// Preloader
-// ===================================
-function initPreloader() {
-    document.body.classList.add('loading');
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const preloader = document.getElementById('preloader');
-            preloader.classList.add('loaded');
-            document.body.classList.remove('loading');
-        }, 2200);
-    });
-}
-
-// ===================================
-// Custom Cursor
-// ===================================
-function initCursor() {
-    const dot = document.querySelector('.cursor-dot');
-    const outline = document.querySelector('.cursor-outline');
-    if (!dot || !outline) return;
-
-    let mouseX = 0, mouseY = 0;
-    let outlineX = 0, outlineY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        dot.style.left = mouseX + 'px';
-        dot.style.top = mouseY + 'px';
-    });
-
-    function animateOutline() {
-        outlineX += (mouseX - outlineX) * 0.15;
-        outlineY += (mouseY - outlineY) * 0.15;
-        outline.style.left = outlineX + 'px';
-        outline.style.top = outlineY + 'px';
-        requestAnimationFrame(animateOutline);
-    }
-    animateOutline();
-
-    const hoverTargets = document.querySelectorAll('a, button, .project-card, .achievement-card, .contact-card, .skill-tag-animated, .magnetic-btn, [data-tilt]');
-    hoverTargets.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            dot.classList.add('hover');
-            outline.classList.add('hover');
-        });
-        el.addEventListener('mouseleave', () => {
-            dot.classList.remove('hover');
-            outline.classList.remove('hover');
-        });
-    });
-}
-
-// ===================================
-// Particle System
-// ===================================
-function initParticles() {
-    const canvas = document.getElementById('particle-canvas');
+// ─── STARS CANVAS ────────────────────────────────────────
+function initStars() {
+    const canvas = document.getElementById('stars-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    let width, height;
-    const particles = [];
-    const PARTICLE_COUNT = 80;
-    let mouse = { x: null, y: null };
+    let stars = [];
+    const STAR_COUNT = 300;
 
     function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    document.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-    });
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-        particles.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5,
-            size: Math.random() * 2 + 0.5,
-            opacity: Math.random() * 0.5 + 0.1,
-            color: ['#7c3aed', '#06b6d4', '#ec4899', '#a78bfa'][Math.floor(Math.random() * 4)]
-        });
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     }
 
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-        particles.forEach((p, i) => {
-            p.x += p.vx;
-            p.y += p.vy;
+    function createStars() {
+        stars = [];
+        for (let i = 0; i < STAR_COUNT; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 1.5 + 0.3,
+                alpha: Math.random(),
+                delta: (Math.random() - 0.5) * 0.015
+            });
+        }
+    }
 
-            if (p.x < 0) p.x = width;
-            if (p.x > width) p.x = 0;
-            if (p.y < 0) p.y = height;
-            if (p.y > height) p.y = 0;
-
-            // Mouse interaction
-            if (mouse.x !== null) {
-                const dx = p.x - mouse.x;
-                const dy = p.y - mouse.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 150) {
-                    p.x += dx * 0.01;
-                    p.y += dy * 0.01;
-                }
-            }
-
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (const s of stars) {
+            s.alpha += s.delta;
+            if (s.alpha <= 0.1 || s.alpha >= 1) s.delta = -s.delta;
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = p.color;
-            ctx.globalAlpha = p.opacity;
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha.toFixed(2)})`;
             ctx.fill();
-
-            // Lines between close particles
-            for (let j = i + 1; j < particles.length; j++) {
-                const p2 = particles[j];
-                const dx = p.x - p2.x;
-                const dy = p.y - p2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 120) {
-                    ctx.beginPath();
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = p.color;
-                    ctx.globalAlpha = (1 - dist / 120) * 0.15;
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
-                }
-            }
-        });
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(draw);
     }
-    animate();
+
+    resize();
+    createStars();
+    draw();
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => { resize(); createStars(); }, 200);
+    });
 }
 
-// ===================================
-// Navigation
-// ===================================
+// ─── NAVIGATION ──────────────────────────────────────────
 function initNavigation() {
     const navbar = document.querySelector('.navbar');
-    const navToggle = document.querySelector('.nav-toggle');
+    const toggle = document.querySelector('.nav-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu-content a');
 
+    // Scroll class
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 60) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
     });
 
-    navToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
+    // Mobile toggle
+    if (toggle && mobileMenu) {
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                toggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
     });
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-                    mobileMenu.classList.remove('active');
-                    navToggle.classList.remove('active');
-                }
+    // Active link highlight
+    const sections = document.querySelectorAll('.section, .hero');
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    const linkObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle(
+                        'active',
+                        link.getAttribute('href') === '#' + entry.target.id
+                    );
+                });
             }
+        });
+    }, { threshold: 0.3 });
+
+    sections.forEach(sec => { if (sec.id) linkObserver.observe(sec); });
+}
+
+// ─── SCROLL ANIMATIONS ──────────────────────────────────
+function initScrollAnimations() {
+    const animElements = document.querySelectorAll('[data-animate]');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    animElements.forEach(el => observer.observe(el));
+}
+
+// ─── TILT EFFECT ─────────────────────────────────────────
+function initTiltEffect() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
+    document.querySelectorAll('[data-tilt]').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -8;
+            const rotateY = ((x - centerX) / centerX) * 8;
+            card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
         });
     });
 }
 
-// ===================================
-// Project Tabs
-// ===================================
+// ─── TEXT ROTATION ───────────────────────────────────────
+function initTextRotation() {
+    const el = document.getElementById('rotating-text');
+    if (!el) return;
+
+    const words = [
+        'iOS applications',
+        'AI solutions',
+        'SwiftUI interfaces',
+        'React Native apps',
+        'innovative tools'
+    ];
+    let idx = 0;
+
+    setInterval(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(8px)';
+        setTimeout(() => {
+            idx = (idx + 1) % words.length;
+            el.textContent = words[idx];
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, 300);
+    }, 2500);
+
+    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+}
+
+// ─── PROJECT TABS ────────────────────────────────────────
 function initProjectTabs() {
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const projectGrids = document.querySelectorAll('.projects-grid');
+    const tabs = document.querySelectorAll('.project-tab');
+    const grids = document.querySelectorAll('.projects-grid');
 
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const tab = btn.dataset.tab;
-            tabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
 
-            projectGrids.forEach(grid => {
-                if (grid.id === tab) {
+            const target = tab.dataset.filter;
+            grids.forEach(grid => {
+                if (grid.id === 'projects-' + target) {
                     grid.classList.remove('hidden');
-                    grid.querySelectorAll('.project-card').forEach((card, index) => {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(30px)';
-                        setTimeout(() => {
-                            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, index * 120);
+                    // Re-trigger animations
+                    grid.querySelectorAll('[data-animate]').forEach(el => {
+                        el.classList.remove('visible');
+                        void el.offsetWidth;
+                        el.classList.add('visible');
                     });
                 } else {
                     grid.classList.add('hidden');
@@ -228,163 +218,3 @@ function initProjectTabs() {
         });
     });
 }
-
-// ===================================
-// Scroll Animations (Intersection Observer)
-// ===================================
-function initScrollAnimations() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const delay = entry.target.dataset.delay || 0;
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, delay * 1000);
-
-                // Animate skill bars when category becomes visible
-                if (entry.target.classList.contains('skill-category')) {
-                    entry.target.querySelectorAll('.skill-fill').forEach(bar => {
-                        const w = bar.style.width;
-                        bar.style.width = '0';
-                        setTimeout(() => { bar.style.width = w; }, 200);
-                    });
-                }
-            }
-        });
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-
-    // Also animate elements that don't have data-animate but are inside sections
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.timeline-item, .project-card, .achievement-card, .contact-card').forEach((el, i) => {
-        if (!el.hasAttribute('data-animate')) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${(i % 6) * 0.1}s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${(i % 6) * 0.1}s`;
-            sectionObserver.observe(el);
-        }
-    });
-}
-
-// ===================================
-// Counter Animation
-// ===================================
-function initCounters() {
-    const counters = document.querySelectorAll('[data-count]');
-    const observed = new Set();
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !observed.has(entry.target)) {
-                observed.add(entry.target);
-                animateCounter(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => observer.observe(counter));
-}
-
-function animateCounter(el) {
-    const target = parseFloat(el.dataset.count);
-    const isDecimal = el.dataset.decimal === 'true';
-    const duration = 2000;
-    const start = performance.now();
-
-    function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-        const current = eased * target;
-
-        if (isDecimal) {
-            el.textContent = current.toFixed(1);
-        } else {
-            el.textContent = Math.floor(current);
-        }
-
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        }
-    }
-    requestAnimationFrame(update);
-}
-
-// ===================================
-// Role Rotation
-// ===================================
-function initRoleRotation() {
-    const roles = document.querySelectorAll('.role-item');
-    if (roles.length === 0) return;
-    let currentIndex = 0;
-
-    setInterval(() => {
-        roles[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % roles.length;
-        roles[currentIndex].classList.add('active');
-    }, 2500);
-}
-
-// ===================================
-// Card Glow Effect (follows mouse)
-// ===================================
-function initCardGlow() {
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            card.style.setProperty('--mouse-x', x + '%');
-            card.style.setProperty('--mouse-y', y + '%');
-        });
-    });
-}
-
-// ===================================
-// Tilt Effect
-// ===================================
-function initTiltEffect() {
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (isMobile) return;
-
-    document.querySelectorAll('[data-tilt]').forEach(el => {
-        el.addEventListener('mousemove', (e) => {
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / centerY * -4;
-            const rotateY = (x - centerX) / centerX * 4;
-            el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-        });
-
-        el.addEventListener('mouseleave', () => {
-            el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-            el.style.transition = 'transform 0.5s ease-out';
-        });
-
-        el.addEventListener('mouseenter', () => {
-            el.style.transition = 'none';
-        });
-    });
-}
-
-// ===================================
-// Parallax orbs on scroll
-// ===================================
-window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    document.querySelectorAll('.gradient-orb').forEach((orb, index) => {
-        const speed = (index + 1) * 0.08;
-        orb.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
