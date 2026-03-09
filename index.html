@@ -20,7 +20,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
     <!-- Lucide Icons -->
@@ -30,801 +30,511 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-logo">PA</div>
-            <div class="preloader-bar"><div class="preloader-fill"></div></div>
-            <div class="preloader-text">Loading Experience...</div>
-        </div>
-    </div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
-    <!-- Particle Canvas -->
-    <canvas id="particle-canvas"></canvas>
+    <!-- Stars Canvas -->
+    <canvas id="stars-canvas"></canvas>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#hero" class="nav-logo" data-magnetic>
+            <a href="#hero" class="nav-logo">
                 <span class="logo-text">PA</span>
                 <span class="logo-dot"></span>
             </a>
             <div class="nav-links">
-                <a href="#about" data-magnetic>About</a>
-                <a href="#experience" data-magnetic>Experience</a>
-                <a href="#projects" data-magnetic>Projects</a>
-                <a href="#skills" data-magnetic>Skills</a>
-                <a href="#contact" data-magnetic>Contact</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#tech">Tech</a>
+                <a href="#projects">Projects</a>
+                <a href="#achievements">Beyond Code</a>
+                <a href="#contact">Contact</a>
             </div>
-            <div class="nav-right">
-                <div class="nav-status">
-                    <span class="status-dot"></span>
-                    <span class="status-text">Available for hire</span>
-                </div>
-                <button class="nav-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <div class="mobile-menu-bg"></div>
         <div class="mobile-menu-content">
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
+            <a href="#tech">Tech</a>
             <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
+            <a href="#achievements">Beyond Code</a>
             <a href="#contact">Contact</a>
         </div>
     </div>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
-        <div class="hero-bg">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-            <div class="hero-grid-bg"></div>
-            <div class="aurora"></div>
-        </div>
         <div class="hero-content">
-            <div class="hero-badge" data-animate="fade-up" data-delay="0.2">
-                <span class="badge-pulse"></span>
-                <i data-lucide="apple" class="badge-icon"></i>
-                <span>Apple Developer</span>
+            <div class="hero-text-block">
+                <div class="hero-greeting">
+                    <div class="hero-line"></div>
+                    <span>Hi, I'm</span>
+                </div>
+                <h1 class="hero-name">Pierfrancesco<br>Amendola</h1>
+                <p class="hero-tagline">
+                    I develop <span class="gradient-text" id="rotating-text">iOS applications</span> — 
+                    creating innovative tools for medicine and university life through advanced software and AI.
+                </p>
             </div>
-            <h1 class="hero-title" data-animate="fade-up" data-delay="0.4">
-                <span class="greeting">Hello, I'm</span>
-                <span class="name glitch-text" data-text="Pierfrancesco Amendola">
-                    <span class="name-line">Pierfrancesco</span>
-                    <span class="name-line">Amendola</span>
-                </span>
-            </h1>
-            <div class="hero-roles" data-animate="fade-up" data-delay="0.6">
-                <span class="role-item active">iOS Developer</span>
-                <span class="role-separator">/</span>
-                <span class="role-item">CS Student</span>
-                <span class="role-separator">/</span>
-                <span class="role-item">AI Enthusiast</span>
+            <div class="hero-cta">
+                <a href="#projects" class="btn-primary">
+                    <i data-lucide="rocket"></i>
+                    View My Work
+                </a>
+                <a href="#contact" class="btn-outline">
+                    <i data-lucide="mail"></i>
+                    Get in Touch
+                </a>
             </div>
-            <p class="hero-description" data-animate="fade-up" data-delay="0.8">
-                Passionate about creating innovative tools for medicine and university life through advanced software
-                and AI. Currently pursuing a Bachelor's in Computer Science at University of Naples Federico II with 5+ apps
-                published on the App Store.
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-mouse">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Overview Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <p class="section-sub">Introduction</p>
+                <h2 class="section-title">Overview.</h2>
+            </div>
+            <p class="section-description" data-animate>
+                Computer Science student at the <strong>University of Naples Federico II</strong> with a passion 
+                for software development and artificial intelligence. I chose this path to provide innovative 
+                tools for doctors and contribute to medical progress through advanced software and technological systems.
+                Currently interning at <strong>CNR in bioinformatics</strong>, developing AI systems for medical image analysis. 
+                With <strong>5+ published apps</strong> on the App Store and a GPA of <strong>25.42/30</strong>, I bring 
+                a track record of shipping real products.
             </p>
-            <div class="hero-cta" data-animate="fade-up" data-delay="1.0">
-                <a href="#projects" class="btn btn-primary magnetic-btn">
-                    <span class="btn-bg"></span>
-                    <span class="btn-content">
-                        <i data-lucide="rocket"></i>
-                        View My Work
-                    </span>
-                </a>
-                <a href="#contact" class="btn btn-secondary magnetic-btn">
-                    <span class="btn-border"></span>
-                    <span class="btn-content">
-                        <i data-lucide="mail"></i>
-                        Get in Touch
-                    </span>
-                </a>
-            </div>
-            <div class="hero-stats" data-animate="fade-up" data-delay="1.2">
-                <div class="stat" data-tilt>
-                    <span class="stat-number" data-count="5">0</span>
-                    <span class="stat-plus">+</span>
-                    <span class="stat-label">Apps Published</span>
-                    <div class="stat-glow"></div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat" data-tilt>
-                    <span class="stat-number" data-count="25.4" data-decimal="true">0</span>
-                    <span class="stat-label">GPA / 30</span>
-                    <div class="stat-glow"></div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat" data-tilt>
-                    <span class="stat-number" data-count="5">0</span>
-                    <span class="stat-plus">+</span>
-                    <span class="stat-label">Languages</span>
-                    <div class="stat-glow"></div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="mouse-wheel"></div>
-            </div>
-            <span>Scroll to explore</span>
-        </div>
-        <div class="hero-marquee">
-            <div class="marquee-track">
-                <span>SWIFT</span><span>•</span>
-                <span>REACT NATIVE</span><span>•</span>
-                <span>PYTHON</span><span>•</span>
-                <span>JAVA</span><span>•</span>
-                <span>C++</span><span>•</span>
-                <span>SWIFTUI</span><span>•</span>
-                <span>TYPESCRIPT</span><span>•</span>
-                <span>AI/ML</span><span>•</span>
-                <span>SWIFT</span><span>•</span>
-                <span>REACT NATIVE</span><span>•</span>
-                <span>PYTHON</span><span>•</span>
-                <span>JAVA</span><span>•</span>
-                <span>C++</span><span>•</span>
-                <span>SWIFTUI</span><span>•</span>
-                <span>TYPESCRIPT</span><span>•</span>
-                <span>AI/ML</span><span>•</span>
-            </div>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-number">01</span>
-                <span class="section-label">About Me</span>
-                <h2 class="section-title reveal-text">Driven by Purpose</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="about-grid">
-                <div class="about-content" data-animate="fade-right">
-                    <blockquote class="about-quote">
-                        <span class="quote-mark">"</span>
-                        I want my time on this earth to be remembered; I want to write THE history.
-                        <span class="quote-mark">"</span>
-                    </blockquote>
-                    <p class="about-text">
-                        Computer Science student with a passion for software development and artificial intelligence.
-                        I chose this path to provide innovative tools for doctors and contribute to medical progress
-                        through advanced software and technological systems.
-                    </p>
-                    <p class="about-text">
-                        Currently doing an internship at <strong>CNR in bioinformatics</strong>, developing AI systems
-                        for medical image analysis. My goal is to deepen my skills in software engineering, data
-                        science,
-                        and algorithm design to make a tangible impact on the world.
-                    </p>
-                    <div class="about-highlights">
-                        <div class="highlight-card" data-tilt>
-                            <div class="highlight-icon-wrap">
-                                <i data-lucide="graduation-cap"></i>
-                            </div>
-                            <div>
-                                <h4>University of Naples Federico II</h4>
-                                <p>Bachelor's in Computer Science</p>
-                            </div>
-                            <div class="highlight-shine"></div>
-                        </div>
-                        <div class="highlight-card" data-tilt>
-                            <div class="highlight-icon-wrap">
-                                <i data-lucide="building-2"></i>
-                            </div>
-                            <div>
-                                <h4>CNR Bioinformatics Internship</h4>
-                                <p>AI for Medical Image Analysis</p>
-                            </div>
-                            <div class="highlight-shine"></div>
-                        </div>
+            <div class="services-grid">
+                <div class="service-card" data-animate data-tilt>
+                    <div class="service-icon">
+                        <i data-lucide="smartphone"></i>
                     </div>
+                    <h3>iOS Developer</h3>
+                    <p>5+ published apps built with Swift, SwiftUI, and React Native</p>
                 </div>
-                <div class="about-visual" data-animate="fade-left">
-                    <div class="visual-card glass-card" data-tilt>
-                        <div class="card-gradient-border"></div>
-                        <div class="location-badge">
-                            <i data-lucide="map-pin"></i>
-                            <span>Naples, Italy</span>
-                        </div>
-                        <div class="languages-grid">
-                            <div class="lang-item" data-animate="scale-in" data-delay="0.1">🇮🇹 Italian</div>
-                            <div class="lang-item" data-animate="scale-in" data-delay="0.2">🇬🇧 English</div>
-                            <div class="lang-item" data-animate="scale-in" data-delay="0.3">🇪🇸 Spanish</div>
-                            <div class="lang-item" data-animate="scale-in" data-delay="0.4">🇫🇷 French</div>
-                            <div class="lang-item" data-animate="scale-in" data-delay="0.5">🇩🇪 German</div>
-                            <div class="lang-item" data-animate="scale-in" data-delay="0.6">🇧🇷 Portuguese</div>
-                        </div>
-                        <div class="interests-pills">
-                            <span class="pill floating-pill" style="--float-delay: 0s">🎹 Pianist</span>
-                            <span class="pill floating-pill" style="--float-delay: 0.5s">🎭 Theatre</span>
-                            <span class="pill floating-pill" style="--float-delay: 1s">📚 Writer</span>
-                            <span class="pill floating-pill" style="--float-delay: 1.5s">🤖 AI</span>
-                        </div>
-                        <div class="visual-card-orb"></div>
+                <div class="service-card" data-animate data-tilt>
+                    <div class="service-icon">
+                        <i data-lucide="graduation-cap"></i>
                     </div>
+                    <h3>CS Student</h3>
+                    <p>Bachelor's at Federico II — 25.42/30 GPA, 2 exams remaining</p>
+                </div>
+                <div class="service-card" data-animate data-tilt>
+                    <div class="service-icon">
+                        <i data-lucide="brain"></i>
+                    </div>
+                    <h3>AI Enthusiast</h3>
+                    <p>CNR internship in bioinformatics — AI for medical image analysis</p>
+                </div>
+                <div class="service-card" data-animate data-tilt>
+                    <div class="service-icon">
+                        <i data-lucide="music"></i>
+                    </div>
+                    <h3>Musician & Writer</h3>
+                    <p>Pianist since age 3, published author, theatre actor</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section experience">
+    <!-- Experience Section - Vertical Timeline -->
+    <section id="experience" class="section">
         <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-number">02</span>
-                <span class="section-label">Experience</span>
-                <h2 class="section-title reveal-text">Education & Certifications</h2>
-                <div class="section-line"></div>
+            <div class="section-header" data-animate>
+                <p class="section-sub">What I've done so far</p>
+                <h2 class="section-title">Education & Certifications.</h2>
             </div>
 
-            <div class="timeline">
-                <div class="timeline-glow"></div>
-                <div class="timeline-item" data-animate="fade-right">
-                    <div class="timeline-marker">
-                        <span class="marker-pulse"></span>
+            <div class="vertical-timeline">
+                <!-- Bachelor's -->
+                <div class="timeline-element" data-animate>
+                    <div class="timeline-icon" style="background: #383E56;">
+                        <i data-lucide="graduation-cap"></i>
                     </div>
-                    <div class="timeline-content glass-card" data-tilt>
-                        <span class="timeline-date">2023 - Present</span>
+                    <div class="timeline-content-box">
                         <h3>Bachelor's in Computer Science</h3>
-                        <p class="timeline-org">University of Naples Federico II</p>
-                        <p>GPA: 25.42/30 (2 exams remaining)</p>
+                        <p class="timeline-subtitle">University of Naples Federico II</p>
+                        <ul>
+                            <li>GPA: 25.42/30 (2 exams remaining)</li>
+                            <li>Focus on software engineering, algorithms, and AI</li>
+                            <li>Multiple academic projects with perfect scores (30/30)</li>
+                        </ul>
+                        <span class="timeline-date">2023 — Present</span>
                     </div>
                 </div>
-                <div class="timeline-item" data-animate="fade-right">
-                    <div class="timeline-marker">
-                        <span class="marker-pulse"></span>
+
+                <!-- CNR Internship -->
+                <div class="timeline-element" data-animate>
+                    <div class="timeline-icon" style="background: #E6DEDD;">
+                        <i data-lucide="building-2"></i>
                     </div>
-                    <div class="timeline-content glass-card" data-tilt>
+                    <div class="timeline-content-box">
+                        <h3>Bioinformatics Internship</h3>
+                        <p class="timeline-subtitle">CNR — National Research Council</p>
+                        <ul>
+                            <li>Developing AI systems for medical image analysis</li>
+                            <li>Working with machine learning and computer vision</li>
+                            <li>Contributing to medical research with advanced software</li>
+                        </ul>
                         <span class="timeline-date">2025</span>
+                    </div>
+                </div>
+
+                <!-- freeCodeCamp -->
+                <div class="timeline-element" data-animate>
+                    <div class="timeline-icon" style="background: #383E56;">
+                        <i data-lucide="code-2"></i>
+                    </div>
+                    <div class="timeline-content-box">
                         <h3>JavaScript Algorithms & Data Structures</h3>
-                        <p class="timeline-org">freeCodeCamp</p>
+                        <p class="timeline-subtitle">freeCodeCamp</p>
+                        <ul>
+                            <li>Comprehensive certification in JavaScript fundamentals</li>
+                            <li>Algorithms, data structures, and functional programming</li>
+                        </ul>
                         <a href="https://www.freecodecamp.org/certification/pierfrancesco05/javascript-algorithms-and-data-structures-v8"
-                            target="_blank" rel="noopener noreferrer" class="cert-link">
-                            <i data-lucide="external-link"></i>
-                            View Certificate
+                            target="_blank" rel="noopener noreferrer" class="timeline-link">
+                            <i data-lucide="external-link"></i> View Certificate
                         </a>
+                        <span class="timeline-date">2025</span>
                     </div>
                 </div>
-                <div class="timeline-item" data-animate="fade-right">
-                    <div class="timeline-marker">
-                        <span class="marker-pulse"></span>
+
+                <!-- Cisco -->
+                <div class="timeline-element" data-animate>
+                    <div class="timeline-icon" style="background: #E6DEDD;">
+                        <i data-lucide="shield"></i>
                     </div>
-                    <div class="timeline-content glass-card" data-tilt>
-                        <span class="timeline-date">2023</span>
+                    <div class="timeline-content-box">
                         <h3>Cisco Cybersecurity Scholarship</h3>
-                        <p class="timeline-org">Cisco Networking Academy</p>
-                        <p>Advanced training in threat analysis and network defense</p>
+                        <p class="timeline-subtitle">Cisco Networking Academy</p>
+                        <ul>
+                            <li>Advanced training in threat analysis and network defense</li>
+                            <li>Security fundamentals and cyber threat management</li>
+                        </ul>
+                        <span class="timeline-date">2023</span>
                     </div>
                 </div>
-                <div class="timeline-item" data-animate="fade-right">
-                    <div class="timeline-marker">
-                        <span class="marker-pulse"></span>
+
+                <!-- EIPASS -->
+                <div class="timeline-element" data-animate>
+                    <div class="timeline-icon" style="background: #383E56;">
+                        <i data-lucide="award"></i>
                     </div>
-                    <div class="timeline-content glass-card" data-tilt>
-                        <span class="timeline-date">2022</span>
+                    <div class="timeline-content-box">
                         <h3>EIPASS 7 Modules User</h3>
-                        <p class="timeline-org">European Informatics Passport</p>
-                        <p>Digital competence certification across ICT areas</p>
+                        <p class="timeline-subtitle">European Informatics Passport</p>
+                        <ul>
+                            <li>Digital competence certification across ICT areas</li>
+                        </ul>
+                        <span class="timeline-date">2022</span>
                     </div>
                 </div>
-                <div class="timeline-item" data-animate="fade-right">
-                    <div class="timeline-marker">
-                        <span class="marker-pulse"></span>
+
+                <!-- High School -->
+                <div class="timeline-element" data-animate>
+                    <div class="timeline-icon" style="background: #E6DEDD;">
+                        <i data-lucide="school"></i>
                     </div>
-                    <div class="timeline-content glass-card" data-tilt>
-                        <span class="timeline-date">2018 - 2023</span>
-                        <h3>High School Diploma - Applied Sciences</h3>
-                        <p class="timeline-org">L.S.S. Francesco Saverio Nitti</p>
+                    <div class="timeline-content-box">
+                        <h3>High School Diploma — Applied Sciences</h3>
+                        <p class="timeline-subtitle">L.S.S. Francesco Saverio Nitti</p>
+                        <ul>
+                            <li>Scientific track with focus on applied sciences</li>
+                        </ul>
+                        <span class="timeline-date">2018 — 2023</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Section - Floating Balls -->
+    <section id="tech" class="section">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <p class="section-sub">What I work with</p>
+                <h2 class="section-title">Technologies.</h2>
+            </div>
+            <div class="tech-balls-grid">
+                <div class="tech-ball" data-animate data-tech="Swift">
+                    <div class="ball-inner"><span>Swift</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="SwiftUI">
+                    <div class="ball-inner"><span>SwiftUI</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="Python">
+                    <div class="ball-inner"><span>Python</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="Java">
+                    <div class="ball-inner"><span>Java</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="TypeScript">
+                    <div class="ball-inner"><span>TS</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="React Native">
+                    <div class="ball-inner"><span>React Native</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="C/C++">
+                    <div class="ball-inner"><span>C/C++</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="Docker">
+                    <div class="ball-inner"><span>Docker</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="Git">
+                    <div class="ball-inner"><span>Git</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="PostgreSQL">
+                    <div class="ball-inner"><span>SQL</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="Spring Boot">
+                    <div class="ball-inner"><span>Spring</span></div>
+                </div>
+                <div class="tech-ball" data-animate data-tech="Xcode">
+                    <div class="ball-inner"><span>Xcode</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section projects">
-        <div class="projects-bg-pattern"></div>
+    <section id="projects" class="section">
         <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-number">03</span>
-                <span class="section-label">Portfolio</span>
-                <h2 class="section-title reveal-text">Featured Projects</h2>
-                <div class="section-line"></div>
+            <div class="section-header" data-animate>
+                <p class="section-sub">My work</p>
+                <h2 class="section-title">Projects.</h2>
+            </div>
+            <p class="section-description" data-animate>
+                The following projects showcase my skills and experience through real-world examples.
+                Each project has links to the App Store where applicable. They reflect my ability to
+                solve complex problems, work with different technologies, and ship complete products.
+            </p>
+
+            <!-- Tab Filters -->
+            <div class="project-tabs" data-animate>
+                <button class="project-tab active" data-filter="published">Published Apps</button>
+                <button class="project-tab" data-filter="academic">Academic Projects</button>
             </div>
 
-            <div class="projects-tabs">
-                <button class="tab-btn active" data-tab="published">
-                    <span class="tab-bg"></span>
-                    <span class="tab-text">Published Apps</span>
-                </button>
-                <button class="tab-btn" data-tab="academic">
-                    <span class="tab-bg"></span>
-                    <span class="tab-text">Academic Projects</span>
-                </button>
-            </div>
-
-            <div class="projects-grid" id="published">
+            <div class="projects-grid" id="projects-published">
                 <!-- UniStudy Italia -->
-                <article class="project-card featured" data-tilt>
-                    <div class="project-card-glow"></div>
-                    <div class="project-header">
-                        <div class="project-icon"
-                            style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                            <i data-lucide="map-pin"></i>
+                <div class="project-card-3d" data-animate data-tilt data-category="published">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-icon-circle" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div class="project-card-links">
+                                <a href="https://apps.apple.com/us/app/unistudy-italia/id6757367573" target="_blank" rel="noopener noreferrer" title="App Store">
+                                    <i data-lucide="external-link"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-badges">
-                            <span class="badge ios">iOS</span>
-                            <span class="badge android">Android</span>
-                            <span class="badge live"><span class="live-dot"></span>Live</span>
+                        <h3>UniStudy Italia</h3>
+                        <p>Centralized platform for students to locate and navigate study spaces in real-time across 100+ Italian institutions.</p>
+                        <div class="project-tags">
+                            <span class="tag-blue">React Native</span>
+                            <span class="tag-green">Expo</span>
+                            <span class="tag-pink">TypeScript</span>
                         </div>
                     </div>
-                    <h3>UniStudy Italia</h3>
-                    <p class="project-desc">
-                        Centralized platform for students to locate and navigate study spaces in real-time across 100+
-                        Italian institutions.
-                    </p>
-                    <ul class="project-features">
-                        <li><i data-lucide="check-circle"></i>Real-time "Open/Closed" insights & crowding levels</li>
-                        <li><i data-lucide="check-circle"></i>Interactive map with multimodal navigation</li>
-                        <li><i data-lucide="check-circle"></i>BLE-based Student Radar for peer discovery</li>
-                        <li><i data-lucide="check-circle"></i>Dynamic UI with university-specific themes</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>React Native</span>
-                        <span>Expo</span>
-                        <span>TypeScript</span>
-                        <span>BLE (Bluetooth)</span>
-                        <span>Maps</span>
-                    </div>
-                    <a href="https://apps.apple.com/us/app/unistudy-italia/id6757367573" target="_blank"
-                        rel="noopener noreferrer" class="project-link magnetic-btn">
-                        <i data-lucide="app-window"></i>
-                        View on App Store
-                        <i data-lucide="arrow-up-right" class="link-arrow"></i>
-                    </a>
-                </article>
+                </div>
 
                 <!-- SubTracker -->
-                <article class="project-card featured" data-tilt>
-                    <div class="project-card-glow"></div>
-                    <div class="project-header">
-                        <div class="project-icon"
-                            style="background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);">
-                            <i data-lucide="credit-card"></i>
+                <div class="project-card-3d" data-animate data-tilt data-category="published">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-icon-circle" style="background: linear-gradient(135deg, #FF6B6B, #FFE66D);">
+                                <i data-lucide="credit-card"></i>
+                            </div>
+                            <div class="project-card-links">
+                                <a href="https://apps.apple.com/us/app/subtracker/id6757951413" target="_blank" rel="noopener noreferrer" title="App Store">
+                                    <i data-lucide="external-link"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-badges">
-                            <span class="badge ios">iOS</span>
-                            <span class="badge live"><span class="live-dot"></span>Live</span>
+                        <h3>SubTracker</h3>
+                        <p>Elegant subscription management app to track all your recurring expenses in one place with smart insights.</p>
+                        <div class="project-tags">
+                            <span class="tag-blue">Swift</span>
+                            <span class="tag-green">SwiftUI</span>
+                            <span class="tag-pink">StoreKit 2</span>
                         </div>
                     </div>
-                    <h3>SubTracker</h3>
-                    <p class="project-desc">
-                        Elegant subscription management app to track all your recurring expenses in one place.
-                        Take control of your monthly and yearly spending with smart insights and timely reminders.
-                    </p>
-                    <ul class="project-features">
-                        <li><i data-lucide="check-circle"></i>Smart Dashboard with auto-sorted renewals</li>
-                        <li><i data-lucide="check-circle"></i>Customizable push notifications</li>
-                        <li><i data-lucide="check-circle"></i>6 languages supported</li>
-                        <li><i data-lucide="check-circle"></i>Premium version with StoreKit 2</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>Swift</span>
-                        <span>SwiftUI</span>
-                        <span>SwiftData</span>
-                        <span>StoreKit 2</span>
-                        <span>iCloud</span>
-                    </div>
-                    <a href="https://apps.apple.com/us/app/subtracker/id6757951413" target="_blank"
-                        rel="noopener noreferrer" class="project-link magnetic-btn">
-                        <i data-lucide="app-window"></i>
-                        View on App Store
-                        <i data-lucide="arrow-up-right" class="link-arrow"></i>
-                    </a>
-                </article>
+                </div>
 
                 <!-- UniStats -->
-                <article class="project-card featured" data-tilt>
-                    <div class="project-card-glow"></div>
-                    <div class="project-header">
-                        <div class="project-icon"
-                            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                            <i data-lucide="bar-chart-3"></i>
+                <div class="project-card-3d" data-animate data-tilt data-category="published">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-icon-circle" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                <i data-lucide="bar-chart-3"></i>
+                            </div>
+                            <div class="project-card-links">
+                                <a href="https://apps.apple.com/us/app/unistats/id6756898737" target="_blank" rel="noopener noreferrer" title="App Store">
+                                    <i data-lucide="external-link"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-badges">
-                            <span class="badge ios">iOS</span>
-                            <span class="badge live"><span class="live-dot"></span>Live</span>
+                        <h3>UniStats</h3>
+                        <p>Comprehensive academic toolkit for Italian university students. Track progress and plan your degree path.</p>
+                        <div class="project-tags">
+                            <span class="tag-blue">Swift</span>
+                            <span class="tag-green">SwiftData</span>
+                            <span class="tag-pink">Swift Charts</span>
                         </div>
                     </div>
-                    <h3>UniStats</h3>
-                    <p class="project-desc">
-                        Comprehensive academic toolkit for Italian university students. Track progress,
-                        analyze performance trends, and strategically plan your degree path with data-driven insights.
-                    </p>
-                    <ul class="project-features">
-                        <li><i data-lucide="check-circle"></i>Smart Exam Management</li>
-                        <li><i data-lucide="check-circle"></i>PDF Import from transcripts</li>
-                        <li><i data-lucide="check-circle"></i>Degree Simulator & GPA Projection</li>
-                        <li><i data-lucide="check-circle"></i>100% On-Device Privacy</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>Swift</span>
-                        <span>SwiftUI</span>
-                        <span>SwiftData</span>
-                        <span>Swift Charts</span>
-                    </div>
-                    <a href="https://apps.apple.com/us/app/unistats/id6756898737" target="_blank"
-                        rel="noopener noreferrer" class="project-link magnetic-btn">
-                        <i data-lucide="app-window"></i>
-                        View on App Store
-                        <i data-lucide="arrow-up-right" class="link-arrow"></i>
-                    </a>
-                </article>
+                </div>
 
                 <!-- FreshCheck -->
-                <article class="project-card featured" data-tilt>
-                    <div class="project-card-glow"></div>
-                    <div class="project-header">
-                        <div class="project-icon"
-                            style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
-                            <i data-lucide="leaf"></i>
+                <div class="project-card-3d" data-animate data-tilt data-category="published">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-icon-circle" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
+                                <i data-lucide="leaf"></i>
+                            </div>
+                            <div class="project-card-links">
+                                <a href="https://apps.apple.com/it/app/freshcheck/id6757205025" target="_blank" rel="noopener noreferrer" title="App Store">
+                                    <i data-lucide="external-link"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-badges">
-                            <span class="badge ios">iOS</span>
-                            <span class="badge android">Android</span>
-                            <span class="badge live"><span class="live-dot"></span>Live</span>
+                        <h3>FreshCheck</h3>
+                        <p>Combat food waste with intelligent expiration tracking for domestic and professional environments.</p>
+                        <div class="project-tags">
+                            <span class="tag-blue">Swift</span>
+                            <span class="tag-green">SwiftUI</span>
+                            <span class="tag-pink">SwiftData</span>
                         </div>
                     </div>
-                    <h3>FreshCheck</h3>
-                    <p class="project-desc">
-                        Combat food waste with intelligent expiration tracking. Digitize and streamline
-                        monitoring of perishable goods for domestic use or small-scale professional environments.
-                    </p>
-                    <ul class="project-features">
-                        <li><i data-lucide="check-circle"></i>Intelligent Tracking with batch numbers</li>
-                        <li><i data-lucide="check-circle"></i>Proactive expiration alerts</li>
-                        <li><i data-lucide="check-circle"></i>Visual freshness analysis</li>
-                        <li><i data-lucide="check-circle"></i>Sustainability-focused workflow</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>Swift</span>
-                        <span>SwiftUI</span>
-                        <span>SwiftData</span>
-                        <span>Swift Charts</span>
-                    </div>
-                    <a href="https://apps.apple.com/it/app/freshcheck/id6757205025" target="_blank"
-                        rel="noopener noreferrer" class="project-link magnetic-btn">
-                        <i data-lucide="app-window"></i>
-                        View on App Store
-                        <i data-lucide="arrow-up-right" class="link-arrow"></i>
-                    </a>
-                </article>
+                </div>
 
                 <!-- Ripassa -->
-                <article class="project-card featured" data-tilt>
-                    <div class="project-card-glow"></div>
-                    <div class="project-header">
-                        <div class="project-icon"
-                            style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                            <i data-lucide="layers"></i>
+                <div class="project-card-3d" data-animate data-tilt data-category="published">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-icon-circle" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                                <i data-lucide="layers"></i>
+                            </div>
+                            <div class="project-card-links">
+                                <a href="https://apps.apple.com/us/app/ripassa-flashcard-minimal/id6756633023" target="_blank" rel="noopener noreferrer" title="App Store">
+                                    <i data-lucide="external-link"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-badges">
-                            <span class="badge ios">iOS</span>
-                            <span class="badge live"><span class="live-dot"></span>Live</span>
+                        <h3>Ripassa</h3>
+                        <p>Minimal flashcard app designed for distraction-free studying with focus on simplicity and performance.</p>
+                        <div class="project-tags">
+                            <span class="tag-blue">Swift</span>
+                            <span class="tag-green">SwiftUI</span>
                         </div>
                     </div>
-                    <h3>Ripassa</h3>
-                    <p class="project-desc">
-                        Minimal flashcard app designed for distraction-free studying. Create, organize,
-                        and review custom flashcards with focus on simplicity, performance, and user experience.
-                    </p>
-                    <ul class="project-features">
-                        <li><i data-lucide="check-circle"></i>Create & organize custom flashcards</li>
-                        <li><i data-lucide="check-circle"></i>Distraction-free minimal design</li>
-                        <li><i data-lucide="check-circle"></i>Efficient review sessions</li>
-                        <li><i data-lucide="check-circle"></i>High performance & simplicity</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>Swift</span>
-                        <span>SwiftUI</span>
-                    </div>
-                    <a href="https://apps.apple.com/us/app/ripassa-flashcard-minimal/id6756633023" target="_blank"
-                        rel="noopener noreferrer" class="project-link magnetic-btn">
-                        <i data-lucide="app-window"></i>
-                        View on App Store
-                        <i data-lucide="arrow-up-right" class="link-arrow"></i>
-                    </a>
-                </article>
+                </div>
 
                 <!-- Federico II App -->
-                <article class="project-card featured coming-soon" data-tilt>
-                    <div class="project-card-glow"></div>
-                    <div class="project-header">
-                        <div class="project-icon"
-                            style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                            <i data-lucide="school"></i>
+                <div class="project-card-3d" data-animate data-tilt data-category="published">
+                    <div class="project-card-inner coming-soon-card">
+                        <div class="project-card-top">
+                            <div class="project-icon-circle" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                                <i data-lucide="school"></i>
+                            </div>
+                            <div class="coming-badge">Coming Soon</div>
                         </div>
-                        <div class="project-badges">
-                            <span class="badge coming">Coming Soon</span>
+                        <h3>FedericoII App</h3>
+                        <p>All-in-one mobile app for Federico II students. Find classrooms, check schedules, calculate grades.</p>
+                        <div class="project-tags">
+                            <span class="tag-blue">React Native</span>
+                            <span class="tag-green">TypeScript</span>
                         </div>
                     </div>
-                    <h3>FedericoII App</h3>
-                    <p class="project-desc">
-                        All-in-one mobile app for Federico II students. Find classrooms, check schedules,
-                        explore departments, calculate grades, and predict future results.
-                    </p>
-                    <ul class="project-features">
-                        <li><i data-lucide="check-circle"></i>Classroom & department finder</li>
-                        <li><i data-lucide="check-circle"></i>Schedule management</li>
-                        <li><i data-lucide="check-circle"></i>Grade calculator & projections</li>
-                        <li><i data-lucide="check-circle"></i>Future results predictions</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>React Native</span>
-                        <span>TypeScript</span>
-                    </div>
-                    <span class="project-wip">
-                        <span class="wip-pulse"></span>
-                        In Development
-                    </span>
-                </article>
+                </div>
             </div>
 
-            <div class="projects-grid hidden" id="academic">
+            <div class="projects-grid hidden" id="projects-academic">
                 <!-- Multiplayer Battleship -->
-                <article class="project-card featured" data-tilt>
-                    <div class="project-card-glow"></div>
-                    <div class="project-header">
-                        <div class="project-icon"
-                            style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);">
-                            <i data-lucide="anchor"></i>
+                <div class="project-card-3d" data-animate data-tilt data-category="academic">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-icon-circle" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
+                                <i data-lucide="anchor"></i>
+                            </div>
+                            <div class="project-grade">30/30</div>
                         </div>
-                        <div class="project-badges">
-                            <span class="badge grade">30/30</span>
+                        <h3>Multiplayer Battleship</h3>
+                        <p>Client-server distributed application. Custom TCP protocol, C backend with POSIX threads, Python GUI.</p>
+                        <div class="project-tags">
+                            <span class="tag-blue">C</span>
+                            <span class="tag-green">Python</span>
+                            <span class="tag-pink">Docker</span>
                         </div>
                     </div>
-                    <h3>Multiplayer Battleship System</h3>
-                    <p class="project-desc">
-                        Client-server distributed application for a multiplayer Battleship game.
-                        Custom TCP protocol, backend in C with POSIX threads, frontend GUI in Python.
-                    </p>
-                    <ul class="project-features">
-                        <li><i data-lucide="check-circle"></i>TCP Custom Protocol</li>
-                        <li><i data-lucide="check-circle"></i>POSIX Threads & Mutexes</li>
-                        <li><i data-lucide="check-circle"></i>Clean Teardowns & Valgrind</li>
-                        <li><i data-lucide="check-circle"></i>Docker Containerization</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>C</span>
-                        <span>Python</span>
-                        <span>Docker</span>
-                        <span>POSIX</span>
-                    </div>
-                </article>
+                </div>
 
-                <!-- Software Engineering Project -->
-                <article class="project-card featured" data-tilt>
-                    <div class="project-card-glow"></div>
-                    <div class="project-header">
-                        <div class="project-icon"
-                            style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            <i data-lucide="workflow"></i>
+                <!-- Post Management System -->
+                <div class="project-card-3d" data-animate data-tilt data-category="academic">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-icon-circle" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                                <i data-lucide="workflow"></i>
+                            </div>
+                            <div class="project-grade">30/30</div>
                         </div>
-                        <div class="project-badges">
-                            <span class="badge grade">30/30</span>
+                        <h3>Post Management System</h3>
+                        <p>Full-stack microservices app. Three Spring Boot services with JWT auth and Docker orchestration.</p>
+                        <div class="project-tags">
+                            <span class="tag-blue">Java</span>
+                            <span class="tag-green">Spring Boot</span>
+                            <span class="tag-pink">PostgreSQL</span>
                         </div>
                     </div>
-                    <h3>Post Management System</h3>
-                    <p class="project-desc">
-                        Full-stack distributed application based on microservices architecture.
-                        Three independent Spring Boot services with JWT authentication and Docker orchestration.
-                    </p>
-                    <ul class="project-features">
-                        <li><i data-lucide="check-circle"></i>Microservices Architecture</li>
-                        <li><i data-lucide="check-circle"></i>JWT Authentication</li>
-                        <li><i data-lucide="check-circle"></i>Docker Compose</li>
-                        <li><i data-lucide="check-circle"></i>Multi-module Maven</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>Java</span>
-                        <span>Spring Boot</span>
-                        <span>PostgreSQL</span>
-                        <span>Docker</span>
-                    </div>
-                </article>
+                </div>
 
                 <!-- FoodLab -->
-                <article class="project-card" data-tilt>
-                    <div class="project-card-glow"></div>
-                    <div class="project-header">
-                        <div class="project-icon"
-                            style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                            <i data-lucide="chef-hat"></i>
+                <div class="project-card-3d" data-animate data-tilt data-category="academic">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-icon-circle" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                                <i data-lucide="chef-hat"></i>
+                            </div>
+                            <div class="project-grade">30/30</div>
                         </div>
-                        <div class="project-badges">
-                            <span class="badge grade">30/30</span>
+                        <h3>FoodLab</h3>
+                        <p>Full-stack application for managing cooking courses and chef activities. DAO + Java Swing MVC.</p>
+                        <div class="project-tags">
+                            <span class="tag-blue">Java</span>
+                            <span class="tag-green">Swing</span>
+                            <span class="tag-pink">PostgreSQL</span>
                         </div>
                     </div>
-                    <h3>FoodLab</h3>
-                    <p class="project-desc">
-                        Full-stack application for managing cooking courses and chef activities.
-                        DAO architecture with Java Swing MVC frontend.
-                    </p>
-                    <div class="project-tech">
-                        <span>Java</span>
-                        <span>Swing</span>
-                        <span>PostgreSQL</span>
-                    </div>
-                </article>
+                </div>
 
                 <!-- SetVec -->
-                <article class="project-card" data-tilt>
-                    <div class="project-card-glow"></div>
-                    <div class="project-header">
-                        <div class="project-icon"
-                            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                            <i data-lucide="binary"></i>
-                        </div>
-                        <div class="project-badges">
-                            <span class="badge grade">30/30</span>
-                        </div>
-                    </div>
-                    <h3>Ordered Data Structures</h3>
-                    <p class="project-desc">
-                        Generic SetVec class using circular vector and binary search for efficient
-                        insertion, deletion, and lookup operations.
-                    </p>
-                    <div class="project-tech">
-                        <span>C++</span>
-                        <span>Algorithms</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section skills">
-        <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-number">04</span>
-                <span class="section-label">Expertise</span>
-                <h2 class="section-title reveal-text">Technical Skills</h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="skills-grid">
-                <div class="skill-category glass-card" data-tilt data-animate="fade-up" data-delay="0.1">
-                    <div class="skill-header">
-                        <div class="skill-icon-wrap">
-                            <i data-lucide="code-2"></i>
-                        </div>
-                        <h3>Languages</h3>
-                    </div>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-meta">
-                                <span class="skill-name">Swift</span>
-                                <span class="skill-percent">90%</span>
+                <div class="project-card-3d" data-animate data-tilt data-category="academic">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-icon-circle" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                <i data-lucide="binary"></i>
                             </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" style="width: 90%">
-                                    <span class="skill-fill-glow"></span>
-                                </div>
-                            </div>
+                            <div class="project-grade">30/30</div>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-meta">
-                                <span class="skill-name">Python</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" style="width: 85%">
-                                    <span class="skill-fill-glow"></span>
-                                </div>
-                            </div>
+                        <h3>Ordered Data Structures</h3>
+                        <p>Generic SetVec class using circular vector and binary search for efficient operations.</p>
+                        <div class="project-tags">
+                            <span class="tag-blue">C++</span>
+                            <span class="tag-green">Algorithms</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-meta">
-                                <span class="skill-name">Java</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" style="width: 85%">
-                                    <span class="skill-fill-glow"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-meta">
-                                <span class="skill-name">TypeScript / JavaScript</span>
-                                <span class="skill-percent">80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" style="width: 80%">
-                                    <span class="skill-fill-glow"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-meta">
-                                <span class="skill-name">C / C++</span>
-                                <span class="skill-percent">75%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-fill" style="width: 75%">
-                                    <span class="skill-fill-glow"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category glass-card" data-tilt data-animate="fade-up" data-delay="0.2">
-                    <div class="skill-header">
-                        <div class="skill-icon-wrap">
-                            <i data-lucide="smartphone"></i>
-                        </div>
-                        <h3>Mobile Development</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag-animated">SwiftUI</span>
-                        <span class="skill-tag-animated">UIKit</span>
-                        <span class="skill-tag-animated">Swift Charts</span>
-                        <span class="skill-tag-animated">SwiftData</span>
-                        <span class="skill-tag-animated">React Native</span>
-                        <span class="skill-tag-animated">Expo</span>
-                    </div>
-                </div>
-
-                <div class="skill-category glass-card" data-tilt data-animate="fade-up" data-delay="0.3">
-                    <div class="skill-header">
-                        <div class="skill-icon-wrap">
-                            <i data-lucide="wrench"></i>
-                        </div>
-                        <h3>Tools & Technologies</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag-animated">Git</span>
-                        <span class="skill-tag-animated">GitHub</span>
-                        <span class="skill-tag-animated">GitHub Pages</span>
-                        <span class="skill-tag-animated">Docker</span>
-                        <span class="skill-tag-animated">Xcode</span>
-                        <span class="skill-tag-animated">VS Code</span>
-                        <span class="skill-tag-animated">Android Studio</span>
-                    </div>
-                </div>
-
-                <div class="skill-category glass-card" data-tilt data-animate="fade-up" data-delay="0.4">
-                    <div class="skill-header">
-                        <div class="skill-icon-wrap">
-                            <i data-lucide="database"></i>
-                        </div>
-                        <h3>Backend & Data</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag-animated">Spring Boot</span>
-                        <span class="skill-tag-animated">PostgreSQL</span>
-                        <span class="skill-tag-animated">REST APIs</span>
-                        <span class="skill-tag-animated">JWT</span>
-                        <span class="skill-tag-animated">Python AI/ML</span>
                     </div>
                 </div>
             </div>
@@ -832,132 +542,99 @@
     </section>
 
     <!-- Achievements Section -->
-    <section id="achievements" class="section achievements">
+    <section id="achievements" class="section">
         <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-number">05</span>
-                <span class="section-label">Beyond Code</span>
-                <h2 class="section-title reveal-text">Artistic & Cultural</h2>
-                <div class="section-line"></div>
+            <div class="section-header" data-animate>
+                <p class="section-sub">Beyond code</p>
+                <h2 class="section-title">Artistic & Cultural.</h2>
             </div>
 
             <div class="achievements-grid">
-                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.1">
-                    <div class="achievement-icon-wrap">
-                        <span class="achievement-icon">📚</span>
-                    </div>
+                <div class="achievement-card" data-animate data-tilt>
+                    <span class="achievement-emoji">📚</span>
                     <h4>Published Author</h4>
                     <p>Co-author of "Arcobaleni e Nuvole" with University Federico II. 4 children's books on Amazon KDP.</p>
-                    <div class="achievement-card-shine"></div>
                 </div>
-                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.2">
-                    <div class="achievement-icon-wrap">
-                        <span class="achievement-icon">🎹</span>
-                    </div>
+                <div class="achievement-card" data-animate data-tilt>
+                    <span class="achievement-emoji">🎹</span>
                     <h4>Musician</h4>
                     <p>Professional pianist since age 3. Guitar & violin instructor. Artistic Director for local music projects.</p>
-                    <div class="achievement-card-shine"></div>
                 </div>
-                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.3">
-                    <div class="achievement-icon-wrap">
-                        <span class="achievement-icon">🎭</span>
-                    </div>
+                <div class="achievement-card" data-animate data-tilt>
+                    <span class="achievement-emoji">🎭</span>
                     <h4>Theatre Actor</h4>
                     <p>Member of Tricca Ballacche Theatre Company. Performed at Auditorium di Bagnoli.</p>
-                    <div class="achievement-card-shine"></div>
                 </div>
-                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.4">
-                    <div class="achievement-icon-wrap">
-                        <span class="achievement-icon">🏆</span>
-                    </div>
+                <div class="achievement-card" data-animate data-tilt>
+                    <span class="achievement-emoji">🏆</span>
                     <h4>Competition Winner</h4>
                     <p>3rd place in "Adotta un filosofo e uno scienziato" national competition with original cinematic projects.</p>
-                    <div class="achievement-card-shine"></div>
                 </div>
-                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.5">
-                    <div class="achievement-icon-wrap">
-                        <span class="achievement-icon">🎓</span>
-                    </div>
+                <div class="achievement-card" data-animate data-tilt>
+                    <span class="achievement-emoji">🎓</span>
                     <h4>Berlin Scholarship</h4>
                     <p>Awarded merit scholarship at Freie Universität Berlin (declined to complete degree in Italy).</p>
-                    <div class="achievement-card-shine"></div>
                 </div>
-                <div class="achievement-card glass-card" data-tilt data-animate="fade-up" data-delay="0.6">
-                    <div class="achievement-icon-wrap">
-                        <span class="achievement-icon">🎼</span>
-                    </div>
+                <div class="achievement-card" data-animate data-tilt>
+                    <span class="achievement-emoji">🎼</span>
                     <h4>Chamber Music</h4>
                     <p>International Chamber Music Workshop with professors from Paris Conservatory and Avellino.</p>
-                    <div class="achievement-card-shine"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section contact">
+    <section id="contact" class="section contact-section">
         <div class="container">
-            <div class="section-header" data-animate="fade-up">
-                <span class="section-number">06</span>
-                <span class="section-label">Let's Connect</span>
-                <h2 class="section-title reveal-text">Get in Touch</h2>
-                <div class="section-line"></div>
+            <div class="section-header" data-animate>
+                <p class="section-sub">Get in touch</p>
+                <h2 class="section-title">Contact.</h2>
             </div>
 
-            <div class="contact-grid">
-                <div class="contact-info" data-animate="fade-right">
-                    <p class="contact-intro">
+            <div class="contact-wrapper">
+                <div class="contact-text" data-animate>
+                    <p>
                         I'm always open to discussing new opportunities, collaborations,
                         or just having a conversation about technology and innovation.
+                        Feel free to reach out!
                     </p>
-
-                    <div class="contact-cards">
-                        <a href="mailto:checcofran717@gmail.com" class="contact-card glass-card magnetic-btn">
+                    <div class="contact-info-grid">
+                        <a href="mailto:checcofran717@gmail.com" class="contact-info-item">
                             <i data-lucide="mail"></i>
                             <div>
-                                <span class="label">Email</span>
-                                <span class="value">checcofran717@gmail.com</span>
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">checcofran717@gmail.com</span>
                             </div>
-                            <div class="contact-card-shine"></div>
                         </a>
-                        <a href="tel:+393703394489" class="contact-card glass-card magnetic-btn">
+                        <a href="tel:+393703394489" class="contact-info-item">
                             <i data-lucide="phone"></i>
                             <div>
-                                <span class="label">Phone</span>
-                                <span class="value">+39 370 339 4489</span>
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-value">+39 370 339 4489</span>
                             </div>
-                            <div class="contact-card-shine"></div>
                         </a>
-                        <a href="https://github.com/PierfrancescoAmendola" target="_blank" rel="noopener noreferrer" class="contact-card glass-card magnetic-btn">
+                        <a href="https://github.com/PierfrancescoAmendola" target="_blank" rel="noopener noreferrer" class="contact-info-item">
                             <i data-lucide="github"></i>
                             <div>
-                                <span class="label">GitHub</span>
-                                <span class="value">PierfrancescoAmendola</span>
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">PierfrancescoAmendola</span>
                             </div>
-                            <div class="contact-card-shine"></div>
                         </a>
-                        <a href="https://www.instagram.com/pierfrancesco.amendola" target="_blank" rel="noopener noreferrer" class="contact-card glass-card magnetic-btn">
+                        <a href="https://www.instagram.com/pierfrancesco.amendola" target="_blank" rel="noopener noreferrer" class="contact-info-item">
                             <i data-lucide="instagram"></i>
                             <div>
-                                <span class="label">Instagram</span>
-                                <span class="value">@pierfrancesco.amendola</span>
+                                <span class="contact-label">Instagram</span>
+                                <span class="contact-value">@pierfrancesco.amendola</span>
                             </div>
-                            <div class="contact-card-shine"></div>
                         </a>
                     </div>
-                </div>
-
-                <div class="contact-cta" data-animate="fade-left">
-                    <div class="cta-card">
-                        <div class="cta-card-bg"></div>
+                    <div class="contact-cta-box">
                         <h3>Looking for an iOS Developer?</h3>
                         <p>I'm passionate about creating beautiful, functional apps that make a difference.</p>
-                        <a href="https://linktr.ee/PierfrancescoAmendola" target="_blank" rel="noopener noreferrer" class="btn btn-primary magnetic-btn">
-                            <span class="btn-bg"></span>
-                            <span class="btn-content">
-                                <i data-lucide="link"></i>
-                                View All Links
-                            </span>
+                        <a href="https://linktr.ee/PierfrancescoAmendola" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                            <i data-lucide="link"></i>
+                            View All Links
                         </a>
                     </div>
                 </div>
@@ -970,20 +647,18 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="nav-logo">
-                        <span class="logo-text">PA</span>
-                        <span class="logo-dot"></span>
-                    </span>
+                    <span class="logo-text">PA</span>
+                    <span class="logo-dot"></span>
                     <p>Crafted with passion in Naples, Italy</p>
                 </div>
-                <div class="footer-links">
-                    <a href="https://github.com/PierfrancescoAmendola" target="_blank" rel="noopener noreferrer" class="magnetic-btn">
+                <div class="footer-socials">
+                    <a href="https://github.com/PierfrancescoAmendola" target="_blank" rel="noopener noreferrer">
                         <i data-lucide="github"></i>
                     </a>
-                    <a href="https://www.instagram.com/pierfrancesco.amendola" target="_blank" rel="noopener noreferrer" class="magnetic-btn">
+                    <a href="https://www.instagram.com/pierfrancesco.amendola" target="_blank" rel="noopener noreferrer">
                         <i data-lucide="instagram"></i>
                     </a>
-                    <a href="mailto:checcofran717@gmail.com" class="magnetic-btn">
+                    <a href="mailto:checcofran717@gmail.com">
                         <i data-lucide="mail"></i>
                     </a>
                 </div>
