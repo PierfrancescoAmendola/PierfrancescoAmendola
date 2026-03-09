@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTextRotation();
     initProjectTabs();
     initSolarSystem();
+    initEarth();
 });
 
 // ─── STARS CANVAS ────────────────────────────────────────
@@ -358,6 +359,184 @@ function initSolarSystem() {
         const g = parseInt(hex.slice(3, 5), 16);
         const b = parseInt(hex.slice(5, 7), 16);
         return `rgba(${r},${g},${b},${a})`;
+    }
+
+    draw();
+}
+
+// ─── ROTATING EARTH ──────────────────────────────────────
+function initEarth() {
+    const canvas = document.getElementById('earth-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+    }
+
+    resize();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resize, 200);
+    });
+
+    // Generate land masses as procedural patches on a sphere
+    // We use a seeded set of "continent" blobs defined by lat/lng and size
+    const continents = [
+        // Roughly inspired by real positions
+        { lat: 48, lng: -10, r: 28, name: 'Europe' },
+        { lat: 35, lng: 20, r: 22, name: 'Middle East' },
+        { lat: 10, lng: 20, r: 35, name: 'Africa' },
+        { lat: 55, lng: 90, r: 40, name: 'Asia' },
+        { lat: 25, lng: 80, r: 25, name: 'India' },
+        { lat: 45, lng: -100, r: 30, name: 'North America' },
+        { lat: 30, lng: -90, r: 18, name: 'Central America' },
+        { lat: -15, lng: -55, r: 32, name: 'South America' },
+        { lat: -25, lng: 135, r: 26, name: 'Australia' },
+        { lat: 40, lng: 130, r: 15, name: 'Japan/Korea' },
+        { lat: 65, lng: -50, r: 18, name: 'Greenland' },
+        { lat: 60, lng: 60, r: 20, name: 'Russia West' },
+        { lat: 60, lng: 120, r: 25, name: 'Russia East' },
+        { lat: 5, lng: 110, r: 18, name: 'Southeast Asia' },
+    ];
+
+    let rotation = 0;
+
+    function latLngTo3D(lat, lng, r) {
+        const phi = (90 - lat) * Math.PI / 180;
+        const theta = (lng + rotation) * Math.PI / 180;
+        return {
+            x: r * Math.sin(phi) * Math.cos(theta),
+            y: r * Math.cos(phi),
+            z: r * Math.sin(phi) * Math.sin(theta)
+        };
+    }
+
+    function draw() {
+        const w = canvas.width / (window.devicePixelRatio || 1);
+        const h = canvas.height / (window.devicePixelRatio || 1);
+        ctx.clearRect(0, 0, w, h);
+
+        const cx = w / 2;
+        const cy = h / 2;
+        const earthR = Math.min(w, h) / 2 - 30;
+
+        // Atmosphere glow
+        const atmoGrad = ctx.createRadialGradient(cx, cy, earthR * 0.9, cx, cy, earthR + 35);
+        atmoGrad.addColorStop(0, 'rgba(100, 180, 255, 0.0)');
+        atmoGrad.addColorStop(0.5, 'rgba(80, 160, 255, 0.08)');
+        atmoGrad.addColorStop(0.8, 'rgba(60, 140, 255, 0.04)');
+        atmoGrad.addColorStop(1, 'transparent');
+        ctx.fillStyle = atmoGrad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, earthR + 35, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Ocean base
+        const oceanGrad = ctx.createRadialGradient(cx - earthR * 0.3, cy - earthR * 0.3, earthR * 0.1, cx, cy, earthR);
+        oceanGrad.addColorStop(0, '#4a90d9');
+        oceanGrad.addColorStop(0.4, '#2a6ab5');
+        oceanGrad.addColorStop(0.8, '#1a4a85');
+        oceanGrad.addColorStop(1, '#0d2d5a');
+        ctx.fillStyle = oceanGrad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, earthR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Clip to sphere for land
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, earthR, 0, Math.PI * 2);
+        ctx.clip();
+
+        // Draw continents
+        for (const c of continents) {
+            // Generate multiple dots per continent for organic shape
+            const steps = 12;
+            for (let dlat = -c.r; dlat <= c.r; dlat += steps) {
+                for (let dlng = -c.r; dlng <= c.r; dlng += steps) {
+                    const dist = Math.sqrt(dlat * dlat + dlng * dlng);
+                    if (dist > c.r) continue;
+
+                    const p = latLngTo3D(c.lat + dlat, c.lng + dlng, earthR);
+                    // Only draw if facing us (z > 0)
+                    if (p.z < 0) continue;
+
+                    const screenX = cx + p.x;
+                    const screenY = cy - p.y;
+
+                    // Size varies with depth
+                    const depthFactor = (p.z / earthR);
+                    const dotSize = (steps * 0.7) * depthFactor;
+
+                    // Color varies slightly
+                    const brightness = 0.3 + depthFactor * 0.7;
+                    const g1 = Math.floor(120 + brightness * 80);
+                    const g2 = Math.floor(80 + brightness * 60);
+                    ctx.fillStyle = `rgb(${g2}, ${g1}, ${g2 - 20})`;
+                    ctx.beginPath();
+                    ctx.arc(screenX, screenY, Math.max(dotSize, 2), 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        // Cloud layer - subtle white patches
+        const cloudSeeds = [
+            { lat: 40, lng: 30, r: 20 },
+            { lat: -10, lng: -30, r: 25 },
+            { lat: 20, lng: 100, r: 22 },
+            { lat: -30, lng: 70, r: 18 },
+            { lat: 50, lng: -60, r: 20 },
+            { lat: -5, lng: 150, r: 16 },
+            { lat: 30, lng: -120, r: 22 },
+        ];
+        for (const cl of cloudSeeds) {
+            const cloudLng = cl.lng + rotation * 0.15; // clouds move slightly slower
+            for (let dlat = -cl.r; dlat <= cl.r; dlat += 15) {
+                for (let dlng = -cl.r; dlng <= cl.r; dlng += 15) {
+                    if (Math.sqrt(dlat * dlat + dlng * dlng) > cl.r) continue;
+                    const p = latLngTo3D(cl.lat + dlat, cloudLng + dlng, earthR + 1);
+                    if (p.z < earthR * 0.2) continue;
+                    const sx = cx + p.x;
+                    const sy = cy - p.y;
+                    const df = p.z / earthR;
+                    ctx.fillStyle = `rgba(255, 255, 255, ${(df * 0.15).toFixed(2)})`;
+                    ctx.beginPath();
+                    ctx.arc(sx, sy, 6 * df, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        ctx.restore();
+
+        // Specular highlight
+        const specGrad = ctx.createRadialGradient(cx - earthR * 0.35, cy - earthR * 0.35, 0, cx, cy, earthR);
+        specGrad.addColorStop(0, 'rgba(255, 255, 255, 0.12)');
+        specGrad.addColorStop(0.3, 'rgba(255, 255, 255, 0.04)');
+        specGrad.addColorStop(1, 'rgba(0, 0, 0, 0.2)');
+        ctx.fillStyle = specGrad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, earthR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Edge rim light
+        ctx.strokeStyle = 'rgba(120, 180, 255, 0.2)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(cx, cy, earthR, 0, Math.PI * 2);
+        ctx.stroke();
+
+        rotation += 0.15;
+        requestAnimationFrame(draw);
     }
 
     draw();
