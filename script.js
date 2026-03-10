@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTiltEffect();
     initTextRotation();
     initProjectTabs();
+    initProjectLinks();
     initOverviewAliens();
     initSolarSystem();
     initAstronaut();
@@ -261,6 +262,28 @@ function initProjectTabs() {
                     grid.classList.add('hidden');
                 }
             });
+        });
+    });
+}
+
+// ─── PROJECT LINKS ──────────────────────────────────────
+function initProjectLinks() {
+    const links = document.querySelectorAll('.project-card-links a[href^="http"]');
+    if (!links.length) return;
+
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const href = link.getAttribute('href');
+            if (!href) return;
+
+            const opened = window.open(href, '_blank', 'noopener,noreferrer');
+            if (!opened) {
+                // Fallback if popup is blocked.
+                window.location.href = href;
+            }
         });
     });
 }
@@ -1008,6 +1031,35 @@ function initEarth() {
     const earth = new THREE.Mesh(earthGeometry, earthMaterial);
     scene.add(earth);
 
+    // Naples pin marker (40.8518 N, 14.2681 E)
+    const naplesPinGeometry = new THREE.SphereGeometry(0.03, 24, 24);
+    const naplesPinMaterial = new THREE.MeshBasicMaterial({ color: 0x39ff66 });
+    const naplesPin = new THREE.Mesh(naplesPinGeometry, naplesPinMaterial);
+
+    const naplesGlowGeometry = new THREE.SphereGeometry(0.05, 24, 24);
+    const naplesGlowMaterial = new THREE.MeshBasicMaterial({
+        color: 0x7dff8f,
+        transparent: true,
+        opacity: 0.35
+    });
+    const naplesGlow = new THREE.Mesh(naplesGlowGeometry, naplesGlowMaterial);
+
+    function latLonToVector3(lat, lon, radius) {
+        const phi = (90 - lat) * (Math.PI / 180);
+        const theta = (lon + 180) * (Math.PI / 180);
+        const x = -(radius * Math.sin(phi) * Math.cos(theta));
+        const z = radius * Math.sin(phi) * Math.sin(theta);
+        const y = radius * Math.cos(phi);
+        return new THREE.Vector3(x, y, z);
+    }
+
+    const naplesPos = latLonToVector3(40.8518, 14.2681, 1.01);
+    naplesPin.position.copy(naplesPos);
+    naplesGlow.position.copy(naplesPos.clone().multiplyScalar(1.002));
+
+    earth.add(naplesGlow);
+    earth.add(naplesPin);
+
     // Clouds
     const cloudsGeometry = new THREE.SphereGeometry(1.015, 64, 64);
     const cloudsMaterial = new THREE.MeshStandardMaterial({
@@ -1056,6 +1108,7 @@ function initEarth() {
     function animate() {
         requestAnimationFrame(animate);
         earth.rotation.y += 0.0008;
+        naplesGlow.scale.setScalar(1 + Math.sin(performance.now() * 0.004) * 0.08);
         clouds.rotation.y += 0.0012;
         clouds.rotation.z += 0.0002;
         glow.rotation.y += 0.0008;
