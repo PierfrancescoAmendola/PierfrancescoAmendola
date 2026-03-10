@@ -399,6 +399,36 @@
                         <span>Android Studio</span>
                     </div>
                 </div>
+                <div class="tech-ball" data-animate>
+                    <div class="ball-inner">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%2390ff7c' stroke-width='5'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%2349c15c'/%3E%3Cpath d='M10 32c8-10 36-10 44 0' fill='none' stroke='%23d6ffd1' stroke-width='3'/%3E%3C/svg%3E" alt="Antigravity">
+                        <span>Antigravity</span>
+                    </div>
+                </div>
+                <div class="tech-ball" data-animate>
+                    <div class="ball-inner">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg" alt="Codex" class="icon-white">
+                        <span>Codex</span>
+                    </div>
+                </div>
+                <div class="tech-ball" data-animate>
+                    <div class="ball-inner">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/anthropic.svg" alt="Claude" class="icon-white">
+                        <span>Claude</span>
+                    </div>
+                </div>
+                <div class="tech-ball" data-animate>
+                    <div class="ball-inner">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <div class="tech-ball" data-animate>
+                    <div class="ball-inner">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter">
+                        <span>Flutter</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -747,6 +777,41 @@
             </div>
         </div>
     </section>
+
+    <!-- Rocket Back to Top -->
+    <button id="rocket-btn" class="rocket-btn" aria-label="Back to top">
+        <div class="rocket-body">
+            <svg viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="rocket-svg">
+                <!-- Rocket nose -->
+                <path d="M12 0 C12 0 6 8 6 14 L18 14 C18 8 12 0 12 0Z" fill="url(#rocketNose)"/>
+                <!-- Rocket body -->
+                <rect x="6" y="14" width="12" height="14" rx="1" fill="url(#rocketBody)"/>
+                <!-- Window -->
+                <circle cx="12" cy="19" r="3" fill="#0a0a1a" stroke="#c084fc" stroke-width="0.8"/>
+                <circle cx="12" cy="19" r="1.5" fill="rgba(145,94,255,0.4)"/>
+                <!-- Fins -->
+                <path d="M6 24 L1 32 L6 28Z" fill="#c084fc"/>
+                <path d="M18 24 L23 32 L18 28Z" fill="#c084fc"/>
+                <!-- Nozzle -->
+                <rect x="8" y="28" width="8" height="3" rx="1" fill="#3a3a5c"/>
+                <defs>
+                    <linearGradient id="rocketNose" x1="12" y1="0" x2="12" y2="14">
+                        <stop offset="0%" stop-color="#ff3b30"/>
+                        <stop offset="100%" stop-color="#ff6b6b"/>
+                    </linearGradient>
+                    <linearGradient id="rocketBody" x1="12" y1="14" x2="12" y2="28">
+                        <stop offset="0%" stop-color="#e8e8f0"/>
+                        <stop offset="100%" stop-color="#c0c0d8"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="rocket-flame">
+            <div class="flame-core"></div>
+            <div class="flame-outer"></div>
+        </div>
+    </button>
+    <canvas id="rocket-trail-canvas"></canvas>
 
     <!-- Footer -->
     <footer class="footer">

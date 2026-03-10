@@ -11,10 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initTiltEffect();
     initTextRotation();
     initProjectTabs();
+    initOverviewAliens();
     initSolarSystem();
     initAstronaut();
     initCoder();
     initEarth();
+    initRocket();
 });
 
 // ─── STARS CANVAS ────────────────────────────────────────
@@ -64,6 +66,46 @@ function initStars() {
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => { resize(); createStars(); }, 200);
+    });
+}
+
+// ─── OVERVIEW ALIENS ────────────────────────────────────
+function initOverviewAliens() {
+    const cards = document.querySelectorAll('.services-grid .service-card');
+    if (!cards.length) return;
+
+    cards.forEach(card => {
+        if (card.querySelector('.alien-peek')) return;
+
+        const cornerClass = Math.random() > 0.5 ? 'corner-tl' : 'corner-tr';
+        const eyesCount = Math.random() > 0.5 ? 3 : 2;
+
+        const alien = document.createElement('div');
+        alien.className = `alien-peek ${cornerClass} eyes-${eyesCount}`;
+
+        const head = document.createElement('div');
+        head.className = 'alien-head';
+
+        const antenna = document.createElement('div');
+        antenna.className = 'alien-antenna';
+
+        const antennaDot = document.createElement('div');
+        antennaDot.className = 'alien-antenna-dot';
+
+        const eyesWrap = document.createElement('div');
+        eyesWrap.className = 'alien-eyes';
+
+        for (let i = 0; i < eyesCount; i++) {
+            const eye = document.createElement('span');
+            eye.className = 'alien-eye';
+            eyesWrap.appendChild(eye);
+        }
+
+        head.appendChild(antenna);
+        head.appendChild(antennaDot);
+        head.appendChild(eyesWrap);
+        alien.appendChild(head);
+        card.appendChild(alien);
     });
 }
 
@@ -257,7 +299,9 @@ function initSolarSystem() {
         { name: 'Neptune', orbit: 0.82, size: 6.5, color: '#5b7fc7', speed: 0.006 },
     ];
 
-    let time = 0;
+    // Start from a non-zero phase so planets look already in motion on first render.
+    let time = Math.random() * Math.PI * 200;
+    const orbitSpeedBoost = 1.55;
 
     function drawGlow(x, y, r, color, glowSize) {
         const grad = ctx.createRadialGradient(x, y, r * 0.5, x, y, r + glowSize);
@@ -302,7 +346,7 @@ function initSolarSystem() {
             ctx.stroke();
 
             // Planet position
-            const angle = time * p.speed * 0.3;
+            const angle = time * p.speed * 0.3 * orbitSpeedBoost;
             const px = cx + Math.cos(angle) * orbitR;
             const py = cy + Math.sin(angle) * orbitR;
 
@@ -342,7 +386,7 @@ function initSolarSystem() {
             }
         }
 
-        time += 0.008;
+        time += 0.012;
         requestAnimationFrame(draw);
     }
 
@@ -1020,4 +1064,168 @@ function initEarth() {
     }
 
     animate();
+}
+
+// ─── ROCKET BACK TO TOP ──────────────────────────────────
+function initRocket() {
+    const btn = document.getElementById('rocket-btn');
+    const trailCanvas = document.getElementById('rocket-trail-canvas');
+    if (!btn || !trailCanvas) return;
+
+    const ctx = trailCanvas.getContext('2d');
+    let particles = [];
+    let animating = false;
+    let rocketY = 0;
+    let rocketX = 0;
+
+    function resizeCanvas() {
+        trailCanvas.width = window.innerWidth;
+        trailCanvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Show/hide button on scroll
+    window.addEventListener('scroll', () => {
+        if (animating) return;
+        if (window.scrollY > 600) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        if (animating) return;
+        animating = true;
+
+        // Get rocket position
+        const rect = btn.getBoundingClientRect();
+        rocketX = rect.left + rect.width / 2;
+        rocketY = rect.top + rect.height * 0.7;
+
+        // Start launch
+        btn.classList.add('launched');
+
+        // Spawn trail particles continuously during launch
+        const trailDuration = 1400;
+        const startTime = performance.now();
+        let scrollStarted = false;
+
+        function spawnTrailParticles(currentRocketY) {
+            const count = 4 + Math.floor(Math.random() * 3);
+            for (let i = 0; i < count; i++) {
+                const angle = (Math.random() - 0.5) * 0.8 + Math.PI / 2;
+                const speed = Math.random() * 3 + 1.5;
+                const size = Math.random() * 4 + 2;
+                // Flame colors: white core -> yellow -> orange -> purple
+                const colorRoll = Math.random();
+                let color;
+                if (colorRoll < 0.15) {
+                    color = { r: 255, g: 248, b: 224 }; // white-yellow
+                } else if (colorRoll < 0.35) {
+                    color = { r: 251, g: 191, b: 36 }; // yellow
+                } else if (colorRoll < 0.55) {
+                    color = { r: 245, g: 158, b: 11 }; // orange
+                } else if (colorRoll < 0.75) {
+                    color = { r: 232, g: 121, b: 249 }; // pink
+                } else {
+                    color = { r: 145, g: 94, b: 255 }; // purple
+                }
+                particles.push({
+                    x: rocketX + (Math.random() - 0.5) * 12,
+                    y: currentRocketY,
+                    vx: Math.cos(angle) * speed * (Math.random() > 0.5 ? 1 : -1),
+                    vy: Math.sin(angle) * speed,
+                    size: size,
+                    life: 1,
+                    decay: Math.random() * 0.015 + 0.012,
+                    color: color,
+                    type: 'fire'
+                });
+            }
+            // Smoke particles
+            for (let i = 0; i < 2; i++) {
+                particles.push({
+                    x: rocketX + (Math.random() - 0.5) * 18,
+                    y: currentRocketY + Math.random() * 8,
+                    vx: (Math.random() - 0.5) * 2,
+                    vy: Math.random() * 1.5 + 0.5,
+                    size: Math.random() * 8 + 5,
+                    life: 1,
+                    decay: Math.random() * 0.008 + 0.005,
+                    color: { r: 160, g: 160, b: 180 },
+                    type: 'smoke'
+                });
+            }
+        }
+
+        function animateTrail() {
+            const elapsed = performance.now() - startTime;
+            const progress = Math.min(elapsed / trailDuration, 1);
+
+            // Eased rocket Y position (matches CSS cubic-bezier roughly)
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const currentRocketY = rocketY - eased * (window.innerHeight + 200);
+
+            // Spawn new particles at the rocket's current position
+            if (progress < 0.9) {
+                spawnTrailParticles(currentRocketY);
+            }
+
+            // Start scrolling at ~20% of the animation
+            if (!scrollStarted && progress > 0.2) {
+                scrollStarted = true;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update & draw particles
+            ctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+
+            particles = particles.filter(p => p.life > 0);
+
+            for (const p of particles) {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.03; // slight gravity
+                p.vx *= 0.99; // air resistance
+                p.life -= p.decay;
+                p.size *= 0.997;
+
+                if (p.life <= 0) continue;
+
+                ctx.save();
+                if (p.type === 'fire') {
+                    const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
+                    gradient.addColorStop(0, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.life * 0.9})`);
+                    gradient.addColorStop(1, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0)`);
+                    ctx.fillStyle = gradient;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    // Smoke - larger, fading
+                    ctx.globalAlpha = p.life * 0.3;
+                    ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.life * 0.25})`;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+
+            if (progress < 1 || particles.length > 0) {
+                requestAnimationFrame(animateTrail);
+            } else {
+                // Cleanup
+                ctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+                btn.classList.remove('launched');
+                btn.classList.remove('visible');
+                animating = false;
+                particles = [];
+            }
+        }
+
+        requestAnimationFrame(animateTrail);
+    });
 }
