@@ -36,6 +36,12 @@ Computer Science student passionate about software development and artificial in
 
 ## 📜 Certifications
 
+### Google Challenge Campania (2026)
+* **Category:** Health
+* **Achievement:** Winner with **Team Inf^2**
+* **Project:** Developed **CareTrack**, a mobile app designed for the management of post-hospital home care.
+* **Description:** The app connects patients, caregivers, and nurses. It allows nurses to set personalized care plans, caregivers to receive notifications and confirm administrations, and patients to easily check their clinical history and reports. The goal is to improve care continuity after hospital discharge, reducing the risk of errors and enhancing coordination among all involved figures.
+
 ### EIPASS 7 Modules User (Certificate No. TXY7A3FKYS)
 Completed the **European Informatics Passport** certification, demonstrating digital competence across seven core ICT areas:
 * ICT fundamentals and computer essentials
