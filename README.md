@@ -29,7 +29,7 @@ My goal is to deepen my skills in software engineering, data science, and algori
 
 ### University of Naples Federico II - Bachelor's Degree in Computer Science
 - Enrollment: 2023 - Present
-- GPA: 25.42/30 (2 exams remaining)
+- GPA: 25.38/30 
 
 ### Francesco Saverio Nitti Scientific High School - High School Diploma in Applied Sciences
 - Enrollment: 2018 - 2023
