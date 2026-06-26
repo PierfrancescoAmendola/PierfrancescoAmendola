@@ -38,35 +38,65 @@ My goal is to deepen my skills in software engineering, data science, and algori
 
 ## Certifications
 
-### Google Challenge Campania (2026)
-- Category: Health
-- Achievement: Winner with Team Inf^2
-- Project CareTrack: Mobile app for post-hospital home care management
-- Impact: Connects patients, caregivers, and nurses; improves continuity of care and reduces medical errors with accessible clinical history
+### Artificial Intelligence & Machine Learning
 
-### JavaScript Algorithms and Data Structures - freeCodeCamp
-- Issued: Nov 3, 2025
+#### Google Challenge Campania (2026)
+- **Award**: Winner (Health Category) with Team Inf^2
+- **Project CareTrack**: Mobile app for post-hospital home care management, connecting patients, caregivers, and nurses to reduce medical errors.
+
+#### NVIDIA Certifications (Coursera, May 2026)
+- **NVIDIA – Fundamentals of Deep Learning**: Core deep learning concepts, model training, and neural network optimization.
+- **NVIDIA – Large Language Models and Generative AI Deployment**: Deploying LLMs and genAI models for production environments.
+- **NVIDIA – Fundamentals of NLP and Transformers**: Working with transformers, attention mechanisms, and NLP pipelines.
+- **NVIDIA – Prompt Engineering and Data Analysis**: Custom prompting strategies, system prompting, and AI-driven data exploration.
+- **NVIDIA – LLM Experimentation, Deployment, and Ethical AI**: Ethical considerations, bias detection, and rigorous testing for LLM apps.
+
+#### Google AI & Prompt Engineering Certifications (Coursera, May 2026)
+- **Google – Google AI**: Comprehensive foundation on Google's AI technologies and applications.
+- **Google – Google AI Essentials**: Essential AI concepts, tools, and productivity workflows.
+- **Google – AI for Data Analysis**: Using AI for advanced data wrangling, visualization, and insights.
+- **Google – AI for Research and Insights**: Leveraging AI to accelerate literature search and analyze trends.
+- **Google – AI for Writing and Communicating**: Elevating communication and drafting with AI assistants.
+- **Google – AI for Brainstorming and Planning**: Strategy development, mind-mapping, and task decomposition using AI.
+- **Google – AI for Content Creation**: Dynamic copy, media generation, and creative assistance.
+- **Google – Discover the Art of Prompting**: Advanced prompt design, few-shot prompting, and chain-of-thought methods.
+- **Google – Use AI Responsibly**: AI safety guidelines, algorithmic fairness, and ethical engineering.
+- **Coursera – Google Ads for Beginners**: Setting up campaigns, search advertising fundamentals, and performance tracking.
+
+### Computer Science & Cybersecurity
+
+#### JavaScript Algorithms and Data Structures (freeCodeCamp, Nov 2025)
+- Practical programming, OOP, functional programming, and algorithmic problem-solving.
 - Certificate: [freeCodeCamp Certification](https://www.freecodecamp.org/certification/pierfrancesco05/javascript-algorithms-and-data-structures-v8)
 
-### EIPASS 7 Modules User (Certificate No. TXY7A3FKYS)
-Completed the European Informatics Passport certification across seven ICT areas:
-- ICT fundamentals and computer essentials
-- Cybersecurity and data protection
-- Web navigation and online information search
-- Online communication and collaboration
-- Word processing and document editing
-- Spreadsheets and data organization
-- Multimedia presentations and digital content creation
+#### Cisco Networking & Security Certifications
+- **Cisco Cybersecurity Scholarship Program (2023)**: Threat analysis, network defense strategies, and incident response.
+- **Cisco Networking Academy – Introduction to Cybersecurity (2022)**: Cyber threat landscape, risk management, and device security.
+- **Cisco – Network Fundamentals (May 2026)**: OSI/TCP-IP models, switching, and basic routing.
+- **Cisco – Network Architecture Fundamentals (May 2026)**: Designing enterprise networks, routing protocols, and WAN topologies.
+- **Cisco – Network Management Approaches (May 2026)**: Automation, monitoring tools, and network optimization.
+- **Cisco – Overview of Important Protocols (May 2026)**: In-depth study of DHCP, DNS, NAT, and core internet protocols.
 
-### Cisco Cybersecurity Scholarship Program (2023)
-Successfully completed an advanced training path focused on threat analysis, network defense strategies, and cybersecurity fundamentals.
+#### EIPASS 7 Modules User (Feb 2019)
+- Completed the European Informatics Passport certification across seven ICT areas (ICT fundamentals, cybersecurity, word processing, spreadsheets, multimedia).
 
-### Cisco Networking Academy - Introduction to Cybersecurity (2022)
-Completed the Cisco Networking Academy course with competencies in:
-- Global implications of cyber threats and vulnerabilities
-- Impact of cyber-attacks across industries
-- Threat detection and defense approaches
-- Cybersecurity career awareness
+### Mobile Development & Marketing
+
+#### Apple Ads Certification (June 2025)
+- Official certification for planning, managing, and optimizing Apple Search Ads campaigns.
+
+### Healthcare & Biology
+
+#### Yale University – Introduction to Breast Cancer (Coursera, May 2026)
+- Biology, staging, treatment options, and screening methods for breast cancer (enriching context for medical AI).
+
+### Languages & Arts
+
+#### MLA English Certificate (August 2023)
+- **Level C2** English certification issued by London Banksides English School.
+
+#### Workshop Internazionale di Musica da Camera (Nov 2024)
+- Performance and collaboration under Dora Cantella and Pierfrancesco Borrelli.
 
 ---
 

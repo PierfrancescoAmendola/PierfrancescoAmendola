@@ -1523,6 +1523,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .vertical-timeline .timeline-element:nth-child(4) { transition-delay: 0.45s; }
 .vertical-timeline .timeline-element:nth-child(5) { transition-delay: 0.6s; }
 .vertical-timeline .timeline-element:nth-child(6) { transition-delay: 0.75s; }
+.vertical-timeline .timeline-element:nth-child(7) { transition-delay: 0.9s; }
+.vertical-timeline .timeline-element:nth-child(8) { transition-delay: 1.05s; }
+.vertical-timeline .timeline-element:nth-child(9) { transition-delay: 1.2s; }
+.vertical-timeline .timeline-element:nth-child(10) { transition-delay: 1.35s; }
+.vertical-timeline .timeline-element:nth-child(11) { transition-delay: 1.5s; }
+.vertical-timeline .timeline-element:nth-child(12) { transition-delay: 1.65s; }
+.vertical-timeline .timeline-element:nth-child(13) { transition-delay: 1.8s; }
+.vertical-timeline .timeline-element:nth-child(14) { transition-delay: 1.95s; }
+.vertical-timeline .timeline-element:nth-child(15) { transition-delay: 2.1s; }
 
 .tech-balls-grid [data-animate]:nth-child(1) { transition-delay: 0s; }
 .tech-balls-grid [data-animate]:nth-child(2) { transition-delay: 0.05s; }
@@ -1798,4 +1807,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (max-width: 768px) {
     .rocket-btn { bottom: 20px; right: 20px; width: 48px; height: 68px; }
     .rocket-body { width: 40px; height: 54px; }
+}
+
+/* Timeline Portfolio CTA */
+.timeline-portfolio-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 3.5rem;
 }
