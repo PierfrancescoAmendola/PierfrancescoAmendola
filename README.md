@@ -10,14 +10,16 @@
 - Instagram: [@pierfrancesco.amendola](https://www.instagram.com/pierfrancesco.amendola)
 - Portfolio Website: [pierfrancescoamendola.github.io/PierfrancescoAmendola](https://pierfrancescoamendola.github.io/PierfrancescoAmendola/)
 - CV (PDF): [Download Curriculum](Curriculum-2.pdf)
+- Certificates Portfolio: [Interactive portfolio (28+ certificates)](https://pierfrancescoamendola.github.io/PierfrancescoAmendola/Certificati/)
 - Linktree: [PierfrancescoAmendola](https://linktr.ee/PierfrancescoAmendola)
-- Role: Currently an Apple Developer
+- Role: iOS Developer & Computer Science Student
+- Availability: Open to internships and collaborations
 
 ---
 
 ## Profile
 
-Computer Science student passionate about software development and artificial intelligence. I chose computer science to provide innovative tools for doctors and contribute to medical progress through advanced software and technological systems. Currently, I am doing an internship at CNR in bioinformatics, developing AI systems for medical image analysis.
+Computer Science student passionate about software development and artificial intelligence. I chose computer science to provide innovative tools for doctors and contribute to medical progress through advanced software and technological systems. Currently, I am doing an internship at CNR in bioinformatics, developing AI systems for medical image analysis. I have published 5+ apps on the App Store, built with Swift, SwiftUI, and React Native.
 
 My goal is to deepen my skills in software engineering, data science, and algorithm design to make a tangible impact on the world.
 
@@ -29,7 +31,9 @@ My goal is to deepen my skills in software engineering, data science, and algori
 
 ### University of Naples Federico II - Bachelor's Degree in Computer Science
 - Enrollment: 2023 - Present
-- GPA: 25.38/30 
+- GPA: 25.38/30 (2 exams remaining)
+- Focus on software engineering, algorithms, and AI
+- Multiple academic projects graded 30/30
 
 ### Francesco Saverio Nitti Scientific High School - High School Diploma in Applied Sciences
 - Enrollment: 2018 - 2023
@@ -37,6 +41,8 @@ My goal is to deepen my skills in software engineering, data science, and algori
 ---
 
 ## Certifications
+
+All certificates are collected in the [interactive certificates portfolio](https://pierfrancescoamendola.github.io/PierfrancescoAmendola/Certificati/) (28+ certificates). The original files are stored in [Certificati/certificates](Certificati/certificates).
 
 ### Artificial Intelligence & Machine Learning
 
@@ -84,6 +90,7 @@ My goal is to deepen my skills in software engineering, data science, and algori
 
 #### Apple Ads Certification (June 2025)
 - Official certification for planning, managing, and optimizing Apple Search Ads campaigns.
+- Campaign budgeting, keyword discovery, and performance optimization.
 
 ### Healthcare & Biology
 
@@ -96,7 +103,7 @@ My goal is to deepen my skills in software engineering, data science, and algori
 - **Level C2** English certification issued by London Banksides English School.
 
 #### Workshop Internazionale di Musica da Camera (Nov 2024)
-- Performance and collaboration under Dora Cantella and Pierfrancesco Borrelli.
+- Performance and collaboration under Dora Cantella and Pierfrancesco Borrelli, with professors from the Paris Conservatory and Avellino.
 
 ---
 
@@ -104,8 +111,10 @@ My goal is to deepen my skills in software engineering, data science, and algori
 
 ### Internship
 
-#### CNR Internship - Bioinformatics and AI
+#### CNR Internship - Bioinformatics and AI (2025 - Present)
+- National Research Council (CNR)
 - Developing AI systems for medical image analysis
+- Working with machine learning and computer vision
 - Classification of malignant and benign tumors using expert-annotated images
 
 ### Work and Community Experience
@@ -186,9 +195,10 @@ My goal is to deepen my skills in software engineering, data science, and algori
 ## Technical Skills
 
 - Programming Languages: C, C++, Python, Java, Flutter/Dart, Swift, JavaScript, Prolog, TypeScript
-- Frameworks and Libraries: React Native, HTML, CSS, Spring Boot, Swing, JavaFX, Three.js, Mockito, Node.js, Vue
+- Frameworks and Libraries: SwiftUI, SwiftData, Swift Charts, StoreKit 2, React Native (Expo), React, HTML, CSS, Spring Boot, Swing, JavaFX, Three.js, Mockito, Node.js, Vue
+- Databases: PostgreSQL, SwiftData, Supabase, Firebase
 - Operating Systems: Windows, macOS, Linux (Ubuntu, Kali Linux, Fedora), iOS, Android
-- Tools and Technologies: Docker, Git, GitHub, VS Code, Xcode, Android Studio, Eclipse, SonarQube, GitHub Pages, WSL, pgAdmin, UTM, Oracle VM, BalenaEtcher, Codex, Antigravity, PyCharm, Terminal, iOS Simulator, Supabase, Firebase, AWS, Vercel, Netlify
+- Tools and Technologies: Docker, Git, GitHub, VS Code, Xcode, Android Studio, Eclipse, SonarQube, GitHub Pages, WSL, pgAdmin, UTM, Oracle VM, BalenaEtcher, Codex, Claude, Antigravity, PyCharm, Terminal, iOS Simulator, Supabase, Firebase, AWS, Vercel, Netlify
 - Other Skills: Bash scripting, mobile development, data analysis, full-stack development, web development, relational database development, software architecture, prompt engineering
 - Soft Skills: Teamwork, problem solving, adaptability, curiosity-driven learning, communication, loyalty, strong verbal communication, persuasion, influence
 
@@ -213,7 +223,7 @@ My goal is to deepen my skills in software engineering, data science, and algori
 - Author and Researcher: Co-author of Arcobaleni e Nuvole (University of Naples Federico II); currently writing a philosophical essay, novel, and songbook
 - Cultural Projects - Adotta un filosofo e uno scienziato: 5th place in first edition, 3rd in second edition
 - Merit Scholarship - Freie Universitat Berlin (declined): Scholarship awarded and declined to complete degree in Italy
-- Published Children's Books: [Amazon KDP Author Page](https://www.amazon.it/stores/Pierfrancesco-Amendola/author/B0G2FJ3QPF)
+- Published Children's Books: 4 children's books on [Amazon KDP Author Page](https://www.amazon.it/stores/Pierfrancesco-Amendola/author/B0G2FJ3QPF)
 - Theatre Activities: Member of Tricca Ballacche Theatre Company; performances at Auditorium of Bagnoli
 - Award Ceremony - 49th National Competition Civis Sum: Participation in national civic and cultural recognition event
 - Learning Walk in San Giovanni a Teduccio: Urban transformation and local development exploration
@@ -228,3 +238,13 @@ My goal is to deepen my skills in software engineering, data science, and algori
 - Passion for AI applied to medicine and bioinformatics
 - Software development projects to improve university tools and services
 - Philosophy and literature
+
+---
+
+## About This Repository
+
+This repository hosts my personal portfolio website, published with GitHub Pages at [pierfrancescoamendola.github.io/PierfrancescoAmendola](https://pierfrancescoamendola.github.io/PierfrancescoAmendola/).
+
+- `index.html`, `styles.css`, `script.js`: main portfolio (about, education and certifications timeline, community experience, technologies, projects, artistic achievements, languages, contact)
+- `Certificati/`: interactive certificates portfolio (prebuilt React app) with the original certificate files in `Certificati/certificates/`
+- `Curriculum-2.pdf`: downloadable CV
