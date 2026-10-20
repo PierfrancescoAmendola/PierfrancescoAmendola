@@ -31,7 +31,7 @@ My goal is to deepen my skills in software engineering, data science, and algori
 
 ### University of Naples Federico II - Bachelor's Degree in Computer Science
 - Enrollment: 2023 - Present
-- GPA: 25.38/30 (2 exams remaining)
+- 2 exams remaining
 - Focus on software engineering, algorithms, and AI
 - Multiple academic projects graded 30/30
 
